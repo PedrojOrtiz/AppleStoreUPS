@@ -1,0 +1,19 @@
+*{
+    --color1: #3B3B53;
+    --color2: #A3A0FB;
+    --colorBlanco:#FFFFFF;
+    --colorRojo: #FF6565;
+    --colorAzul:#3B86FF;
+    --bgColor:#F0F0F7;
+}
+body .slidshow{
+    height: 8em;
+    background-color: brown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--colorBlanco);
+    font-size: 5em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
