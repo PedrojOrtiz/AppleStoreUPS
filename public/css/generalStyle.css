@@ -5,10 +5,11 @@
     --colorRojo: #FF6565;
     --colorAzul:#3B86FF;
     --bgColor:#F0F0F7;
+    --colorFontGeneral:#4D4F5C;
 }
 body .slidshow{
-    height: 8em;
-    background-color: brown;
+    height: 6.5em;
+    background-color: var(--colorRojo);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,4 +17,123 @@ body .slidshow{
     font-size: 5em;
     text-transform: uppercase;
     letter-spacing: 3px;
+}
+/*--------PAGINA PRODUCTO---------*/
+.content .product{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 15px;
+}
+
+/*---SECCION IMAGEN----------*/
+.content .product .productSlide{
+    height: 34em;
+    text-align: center;
+}
+.content .product .productSlide .productSlideImg{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.content .product .productSlide .productSlideImg img{
+    width: 70%;
+}
+/*---SECCION PRODUCTO----*/
+
+.content .product .productInfo{
+    padding: 10px 50px 10px 10px;
+}
+.content .product .productInfo>h2{
+    font-weight: 700;
+    font-size: 22pt;
+    margin-bottom: 20px;
+}
+.content .product .productInfo>h3{
+    color: var(--colorFontGeneral);
+    opacity: .7;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+.content .product .productInfo>p{
+    color: var(--colorFontGeneral);
+    opacity: .5;
+    margin-bottom: 4em;
+}
+.content .product .productInfo>span{
+    font-size: 20pt;
+    color: var(--colorFontGeneral);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.content .product .productInfo .dataStore{
+    display: flex;
+    justify-content: space-between; 
+}
+.content .product .productInfo .dataStore label{
+    color: var(--colorFontGeneral);
+    opacity: .7;
+    font-weight: normal;
+    margin-bottom: 20px;
+    margin-right: 5px;
+}
+.content .product .productInfo .dataStore p{
+    display: flex;
+    align-items: center;
+    color: #3B3B53;
+    font-size: 15pt;
+}
+.content .product .productInfo .dataStore p span{
+    color: var(--colorFontGeneral);
+    opacity: .7;
+    font-weight: normal;
+    margin-right: 5px;
+    font-size: 15pt;
+}
+.content .product .productInfo span:hover{
+    cursor: text;
+}
+.content .product .productInfo .productPrice{
+    color: var(--colorFontGeneral);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 15px;
+
+}
+.content .product .productInfo .productPrice p{
+    display: flex;
+    align-items: center;
+    font-size: 15pt;
+}
+.content .product .productInfo .productPrice span{
+    color: var(--colorFontGeneral);
+    font-weight: 700;
+    font-size: 15pt;
+    margin-right: 5px;
+}
+.content .product .productInfo .productBtns{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.content .product .productInfo .productBtns button{
+    padding: 10px 15px;
+    background-color: var(--colorAzul);
+}
+.content .product .productInfo .productBtns button:hover{
+    background-color: #79ACFF;
+}
+.content .product .productInfo .productBtns button:active{
+    background-color: #1062E5;
+}
+.content .product .productInfo .productBtns button i{
+    font-size: 13pt;
+}
+.content .product .productInfo .productBtns>i{
+    font-size: 25pt;
+    color: var(--colorAzul);
+    margin-left: 10px;
+}
+.content .product .productInfo .productBtns i:hover{
+    cursor: pointer;
+    color: #1062E5;
 }

@@ -9,6 +9,7 @@
     --colorAzul:#3B86FF;
     --bgColor:#F0F0F7;
     --colorDark:#4D4F5C;
+    --colorBtns:#43425D;
 }
 .content{
     width: 90%;
@@ -18,12 +19,21 @@ body{
     background-color: var(--bgColor);
     font-family: 'Source Sans Pro', sans-serif;
 }
+
+/*-----HEADER-----------*/
 body header{
     width: 100%;
     background-color: var(--color1);
     padding: 6px 0;
 }body header li{
     list-style: none;
+}
+body header a,span,i{
+    display: block;
+    text-decoration: none;
+    color: var(--colorBlanco);
+    font-size: .9em;
+    padding: 5px;
 }
 body header i.fa-apple{
     font-size: 1.5em;
@@ -32,21 +42,21 @@ body header i.fa-apple:hover{
     color: var(--color2);
     cursor: pointer;
 }
+body header i.fa-shopping-cart{
+    font-size: 1.3em;
+}
 body header i.fa-shopping-cart:hover{
     color: var(--color2);
     cursor: pointer;
+}
+body header i.fa-heart{
+    font-size: 1.3em;
 }
 body header i.fa-heart:hover{
     color: var(--colorRojo);
     cursor: pointer;
 }
-body header a,span,i{
-    display: block;
-    text-decoration: none;
-    color: var(--colorBlanco);
-    font-size: 20px;
-    padding: 10px;
-}
+
 body header a:hover,span:hover{
     color: var(--color2);
     cursor: pointer;
@@ -72,14 +82,18 @@ body header>.content>.menu ul ul{
     position: absolute;
     padding: 0;
     background-color: var(--colorBlanco);
-    box-shadow: 2px 2px 3px 4px #ccc;
+    box-shadow: 1px 1px 10px 0px #000;
     border-radius: 10px;
-    width: 10em;
+    width: 12.5em;
+
     
 }
 body header>.content>.menu ul ul li{
     float: none;
     border-bottom: 1px solid var(--bgColor);
+}
+body header>.content>.menu ul ul li:last-child{
+    border: none;
 }
 body header>.content>.menu ul ul a{
     line-height: 120%;
@@ -96,12 +110,13 @@ body header>.content>.menu ul li:hover>ul{
 header .content .search{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 header .content .search .barSearch{
     position: relative;
 }
 header .content .search .barSearch input{
-    padding: 1em 3em;
+    padding: .7em 3.5em;
     border-radius: 20px;
     width: 25em;
     border: none;
@@ -110,22 +125,23 @@ header .content .search .barSearch input{
 header .content .search .barSearch i{
     color: var(--color1);
     position: absolute;
-    left: 0;
+    left: 5px;
+    top: 0;
+    font-size: 1.5em;
 }
 header .content .sessionItems{
     display: flex;
     align-items: center;
 }
 header .content .sessionItems .imgUser{
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     margin: 0 10px;
 
 }
 header .content .sessionItems .imgUser img{
-    width: 60px;
-    height: 60px;
-    width: 100%;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 header .content .sessionItems .imgUser img:hover{
@@ -151,6 +167,7 @@ header .content .sessionItems .imgUser img:hover{
 }
 .content section article{
     background-color: var(--colorBlanco);
+    
 }
 article .contentImg{
     width: 100%;
@@ -166,7 +183,7 @@ article .contentImg img:hover{
 article .contentImg span{
     background: var(--colorRojo);
     width: 5em;
-    font-size: .8em;
+    font-size: .6em;
     text-align: center;
     border-radius: 20px;
     padding: .5em 0;
@@ -174,11 +191,14 @@ article .contentImg span{
     top: 1em;
     left: 1em;
 }
+article .contentImg span:hover{
+    color: var(--colorBlanco)
+}
 article .contentImg i{
     color: var(--colorRojo);
     font-size: 1.5em;
     position: absolute;
-    top: 1em;
+    top: .1em;
     right: 1em;
 }
 article .contentImg i:hover{
@@ -187,7 +207,7 @@ article .contentImg i:hover{
 article .contentDescription{
     display: flex;
     justify-content: space-between;
-    margin: 3em 2em;
+    margin: 2em 1em;
     
 }
 article .contentDescription .descripProduct{
@@ -197,20 +217,24 @@ article .contentDescription .descripProduct a{
     text-decoration: none;
     color: var(--colorRojo);
 }
+article .contentDescription .descripProduct a h2{
+    font-size: 1.3em;
+}
 article .contentDescription .descripProduct p{
     overflow: hidden;
     height: 1.5em;
+    font-size: .7em;
     color: var(--color1);
     opacity: .5;
 }
 article .contentDescription span{
     color: var(--colorAzul);
-    font-size: 1.7em;
+    font-size: 1.4em;
 }
 
 /*------FOOTER-----*/
 footer{
-    margin-top: 20em;
+    margin-top: 2em;
     width: 100%;
     background-color: var(--color1);
 }
@@ -233,14 +257,14 @@ footer .content .listFooter h3{
     padding: 10px 0;
     margin-bottom: 10px;
     border-bottom: 1px solid var(--bgColor);
-    font-size: 1.5em;
+    font-size: 1.2em;
 
 }
 footer .content .listFooter a{
     display: block;
     text-decoration: none;
     color: var(--colorBlanco);
-    font-size: 20px;
+    font-size: 1em;
 }
 footer .content .listFooter a:hover{
     color: var(--color2);
@@ -256,4 +280,45 @@ footer .content .infoFooter{
     justify-content: space-between;
     padding: 20px 0;
     color: var(--colorBlanco);
+    font-size: .7em;
 }
+/*-----buttons------*/
+body button, input[type=button]{
+    padding: 15px 25px;
+    border: none;
+    background-color: var(--colorBtns);
+    border-radius: 5px;
+    color: #F0F0F7;
+    font-size: 11pt;
+}
+body button:hover, input[type=button]:hover{
+    background-color: #838296;
+    cursor: pointer;
+}
+body button:active, input[type=button]:active{
+    background-color: #2F2E50;
+}
+
+
+body select{
+    background: var(--colorBlanco);
+    border: 1px solid #D7DAE2;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-size: 11pt;
+    background-image: url(../../global/img/down.png); 
+    background-repeat: no-repeat;
+    background-position: right center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance:none;
+}
+body select::-ms-expand{
+    display: none;
+}
+body select option {
+    background-color: var(--colorBlanco);
+    border: none;
+}
+
