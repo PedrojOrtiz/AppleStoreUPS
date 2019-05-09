@@ -149,3 +149,13 @@ body .slidshow{
     text-decoration: none;
     color: var(--colorAzul);
 }
+.content>h2{
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--colorBtns);
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+    margin-top: 1.5em;
+}
