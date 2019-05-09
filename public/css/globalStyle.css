@@ -88,18 +88,20 @@ body header>.content>.menu ul ul{
 
     
 }
-body header>.content>.menu ul ul li{
+body header>.content>.menu ul ul li{ 
     float: none;
     border-bottom: 1px solid var(--bgColor);
 }
 body header>.content>.menu ul ul li:last-child{
     border: none;
 }
+body header>.content>.menu ul li ul li a:hover{
+    color: var(--color2);
+}
 body header>.content>.menu ul ul a{
     line-height: 120%;
     padding: 10px 15px;
     color:#404040;
-
 }
 body header>.content>.menu ul ul a:hover{
     color: ver(--color2);
