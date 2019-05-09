@@ -137,3 +137,15 @@ body .slidshow{
     cursor: pointer;
     color: #1062E5;
 }
+/*------FORM-------*/
+
+.content .form form .nombres input{
+    margin-right: 10px;
+}
+.content .form form .remember label{
+    font-size: .8em;
+}
+.content .form form a{
+    text-decoration: none;
+    color: var(--colorAzul);
+}

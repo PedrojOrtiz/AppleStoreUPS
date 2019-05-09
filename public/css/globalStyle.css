@@ -283,7 +283,7 @@ footer .content .infoFooter{
     font-size: .7em;
 }
 /*-----buttons------*/
-body button, input[type=button]{
+body button, input[type=button], input[type=submit]{
     padding: 15px 25px;
     border: none;
     background-color: var(--colorBtns);
@@ -291,11 +291,11 @@ body button, input[type=button]{
     color: #F0F0F7;
     font-size: 11pt;
 }
-body button:hover, input[type=button]:hover{
+body button:hover, input[type=button]:hover, input[type=submit]:hover{
     background-color: #838296;
     cursor: pointer;
 }
-body button:active, input[type=button]:active{
+body button:active, input[type=button]:active, input[type=submit]:active{
     background-color: #2F2E50;
 }
 
@@ -322,3 +322,68 @@ body select option {
     border: none;
 }
 
+/*-------FORMS-------*/
+.form{
+    background-color: #FFFFFF;
+    text-align: center;
+    width: 55%;
+    margin: 25px auto;
+}
+.form form{
+    display: flex;
+    flex-direction: column;
+    
+    padding: 5em 10em;
+}
+.form form h2{
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--colorBtns);
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+.form form p{
+    color: #4D4F5C;
+    opacity: .5;
+    font-size: .9em;
+    margin-bottom: 50px;
+}
+.form form input{
+    margin-bottom: 25px;
+    padding: 10px 10px;
+    border: none;
+    border-bottom: 2px solid #E9E9F0; 
+}
+
+.form form input[type=checkbox]{
+    border-radius: 6px;
+}
+.form form .remember label{
+    margin-right: 16px;
+    color: var(--colorBtns);
+    font-size: .9em;
+}
+.form form .remember a{
+    text-decoration: none;
+    color: var(--colorAzul);
+    font-size: .9em;
+}
+.form form .btns input{
+    border: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+    margin-top: 15px;
+}
+.form form .btns input[type=button]{
+    background: var(--colorBlanco);
+    color: var(--colorBtns);
+    border: 1px solid var(--colorBtns);
+    margin-left: 15px;
+    padding: 9px 40px;
+    transition: all ease .5s;
+}
+.form form .btns input[type=button]:hover{
+    border: transparent;
+    color: var(--colorBlanco);
+    background: var(--colorAzul);
+}
