@@ -286,7 +286,7 @@ footer .content .infoFooter{
 }
 /*-----buttons------*/
 body button, input[type=button], input[type=submit]{
-    padding: 15px 25px;
+    padding: 10px 30px;
     border: none;
     background-color: var(--colorBtns);
     border-radius: 5px;

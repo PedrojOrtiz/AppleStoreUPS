@@ -79,14 +79,14 @@ body .slidshow{
     display: flex;
     align-items: center;
     color: #3B3B53;
-    font-size: 15pt;
+    font-size: 1em;
 }
 .content .product .productInfo .dataStore p span{
     color: var(--colorFontGeneral);
     opacity: .7;
     font-weight: normal;
     margin-right: 5px;
-    font-size: 15pt;
+    font-size: 1em;
 }
 .content .product .productInfo span:hover{
     cursor: text;
@@ -102,12 +102,12 @@ body .slidshow{
 .content .product .productInfo .productPrice p{
     display: flex;
     align-items: center;
-    font-size: 15pt;
+    font-size: 1em;
 }
 .content .product .productInfo .productPrice span{
     color: var(--colorFontGeneral);
     font-weight: 700;
-    font-size: 15pt;
+    font-size: 1em;
     margin-right: 5px;
 }
 .content .product .productInfo .productBtns{
@@ -159,3 +159,117 @@ body .slidshow{
     text-align: center;
     margin-top: 1.5em;
 }
+/*--------SHOPPING CART---------*/
+.content .product .cart{
+    overflow: scroll;
+}
+.content .product .cart article{
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+}
+.content .product .cart article .cartImg{
+    width: 17em;
+    margin-right: 10px;
+    
+}
+.content .product .cart article .cartImg img{
+    width: 10em;
+    margin: 0;
+}
+.content .product .cart article .cartDescription{
+    text-align: left;
+    color: var(--colorFontGeneral);
+}
+.content .product .cart article .cartDescription h2{
+    color: #43425D;
+}
+.content .product .cart article .cartDescription h3{
+    opacity: .7;
+    font-weight: normal;
+    font-size: 1em;
+}
+.content .product .cart article .cartDescription p{
+    opacity: .5;
+    font-size: .9em;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.content .product .cart article .cartDescription span{
+    color: var(--colorAzul);
+    margin-bottom: 10px;
+}
+.content .product .cart article>span{
+    color: var(--colorFontGeneral);
+    font-size: 2em;
+    font-weight: 600;
+    margin-left: 10px;
+}
+.content .product .cart article span:hover{
+    cursor: text;
+}
+.content .product .cart article>i{
+    color: var(--colorAzul);
+    font-size: 1.5em;
+    position: absolute;
+    top: .4em;
+    right: .4em;
+    transition: all ease .5s;
+}
+.content .product .cart article>i:hover{
+    cursor: pointer;
+    color: var(--colorRojo);
+}
+/*-------FACTURA-------*/
+.content .product .bill .billInfo{
+    background-color: var(--colorBlanco);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--colorFontGeneral);
+    margin-bottom: 20px;
+}
+.content .product .bill .billInfo h2{
+    color: var(--color1);
+    margin-bottom: 15px;
+}
+.content .product .bill .billInfo span{
+    color: var(--colorFontGeneral);
+    margin-top: 10px;
+    margin-bottom: -20px;
+    opacity: .5;
+}
+.content .product .bill .billInfo .data{
+    margin-bottom: 10px;
+}
+/*------------DETALLE FACTURA---------------*/
+.content .product .bill .buydetall{
+    background-color: var(--colorBlanco);
+    padding: 15px;
+}
+.content .product .bill .buydetall h2{
+    color: var(--color1);
+}
+.content .product .bill .buydetall .price p{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1.5em;
+}
+.content .product .bill .buydetall .price span{
+    color: var(--colorFontGeneral);
+    font-weight: 700;
+    font-size: 1em;
+    margin-right: 5px;
+}
+.content .product .bill .buydetall .btns{
+    text-align: center;
+    margin-top: 20px;
+}
+
+
