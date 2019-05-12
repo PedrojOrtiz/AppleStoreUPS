@@ -84,9 +84,8 @@ body header>.content>.menu ul ul{
     background-color: var(--colorBlanco);
     box-shadow: 1px 1px 10px 0px #000;
     border-radius: 10px;
-    width: 12.5em;
-
-    
+    width: 12.5em;   
+    z-index: 100;
 }
 body header>.content>.menu ul ul li{ 
     float: none;
