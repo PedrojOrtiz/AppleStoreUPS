@@ -151,3 +151,98 @@ footer{
 .container section .cardContent .formData .perfilImg input{
     width: 100%;
 }
+
+/*---------TABLE--------------*/
+.container section .cardContent article table {
+    background-color: var(--colorBlanco);
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+.container section .cardContent article table thead{
+    background-color: #F5F6FA;    
+}
+.container section .cardContent article table thead tr td{
+    color: #A3A6B4;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: .9em;
+}
+.container section .cardContent article table td{
+    border: 1px solid var(--bgColor);
+    padding: 3px 2px;
+}
+.container section .cardContent article table thead th:first-child {
+    border-left: none;
+} 
+.container section .cardContent article table thead select{
+    padding: 5px 35px 5px 10px;
+    border: none;
+
+}
+.container section .cardContent article table tbody tr td{
+    font-weight: normal;
+    color: var(--colorBtns);
+}
+/* .container section .cardContent article table tbody tr .db_null{
+    color: #A40808;
+    font-weight: 700;
+    padding: 20px 0;
+}
+.container section .cardContent article table tbody tr .db_null i{
+    font-size: 3em;
+    margin-top: 5px;
+} */
+.container section .cardContent article table tbody tr td{
+    padding: 10px 0;
+}
+.container section .cardContent article table tbody tr td a{
+    text-decoration: none;
+    color: var(--colorBtns);
+    cursor: pointer;
+}
+.container section .cardContent article table tbody tr td a:hover{
+    color: var(--colorAzul);
+}
+.container section .cardContent article table tbody span{
+    /* 
+    background-color: #FFCA83; Pendiente
+    background-color: #FF7285; Cancelado
+    background-color: #69E4A6; Enviado
+     */
+    background-color: #FFCA83;
+    color: #000;
+    opacity: .5;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 2px 10px;
+}
+.container section .cardContent article table tbody span:hover{
+    cursor: text;
+}
+.container section .cardContent article table tr:nth-child(even) {
+    background: var(--bgColor);
+}
+
+.container section .cardContent article table tfoot {
+    color: #FFFFFF;
+    background: #F5F6FA;
+}
+.container section .cardContent article table tfoot .links {
+    text-align: right;
+}
+.container section .cardContent article table tfoot .links a i{
+    color: var(--colorBtns);
+}
+.container section .cardContent article table tfoot .links a{
+    display: inline-block;
+    background: #FFFFFF;
+    color: var(--colorBtns);
+    padding: 2px 8px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.container section .cardContent article table tfoot .links a:hover{
+    color: var(--colorBlanco);
+    background: var(--colorAzul);
+}
