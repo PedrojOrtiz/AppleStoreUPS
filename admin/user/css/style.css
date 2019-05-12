@@ -12,13 +12,13 @@ footer{
     margin: 0;
 }
 .container{
-    display: flex;
+    display: grid;
+    grid-template-columns: 25% 1fr;
     height: 100%;
     margin-bottom: -32px;
 }
+/*-----------HEADER----------------*/
 .container header{
-    width: 45%;
-    height: 91vh;
     background-color: var(--colorBlanco);
 }
 .container header .perfil{
@@ -27,7 +27,7 @@ footer{
     flex-direction: column;
     align-items: center;
     padding: 5px 0;
-    border-bottom: 1px solid #F0F0F7;
+    border-bottom: 1px solid var(--bgColor);
 }
 .container header .perfil .img{
     width: 110px;
@@ -65,11 +65,10 @@ footer{
 .container header nav ul li::before{ 
     content: "";
     border: 2.5px solid var(--color1);
-    height: 90%;
-    width: 0;
-    color: rgb(246, 246, 253);
+    height: 91%;
     position: absolute;
     left: 0;
+    top: 0;
     display: none;
 }
 .container header nav ul li:hover{
@@ -78,4 +77,77 @@ footer{
 }
 .container header nav ul li:hover:before{
     display: block;
+}
+.container section{
+    padding: 25px;
+}
+
+/*-------------SECTION---------------*/
+.container section>h2{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color1);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+.container section .cardContent{
+    background-color: var(--colorBlanco);
+    padding: 15px;
+}
+.container section .cardContent>h2{
+    color: var(--color1);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+.container section .cardContent .formData{
+    display: flex;
+}
+.container section .cardContent .formData form{
+    display: grid;
+    grid-template-columns: 35% 1fr;
+    grid-row-gap: 15px;
+    align-items: center;
+    width: 65%;
+    margin-right: 15px;
+
+}
+.container section .cardContent label{
+    font-weight: 600;
+    color: var(--colorBtns);
+    text-align: right;
+    margin-right: 10px;
+}
+.container section .cardContent .formData form input{
+    padding: 10px 10px;
+    border: none;
+    border-bottom: 1px solid var(--color1);
+    font-weight: normal;
+    color: var(--colorBtns);
+}
+.container section .cardContent .formData form #save{
+    color: var(--colorRojo);
+}
+.container section .cardContent .formData form input[type=submit]{
+    color: var(--colorBlanco);
+    border: none;
+}
+.container section .cardContent .formData .perfilImg{
+    width: 35%;
+}
+.container section .cardContent .formData .perfilImg .img{
+    width: 100%;
+    height: 40%;
+    margin-bottom: 15px;
+}
+.container section .cardContent .formData .perfilImg .img img{
+    width: 100%;
+    height: 100%;
+}
+.container section .cardContent .formData .perfilImg label{
+    margin-bottom: 15px;
+    display: inline-block;
+    text-align: left;
+}
+.container section .cardContent .formData .perfilImg input{
+    width: 100%;
 }
