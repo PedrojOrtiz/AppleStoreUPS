@@ -424,7 +424,7 @@ footer{
     text-align: justify;
     color: var(--colorBtns);
 }
-.messageContent .messageBody .messageReply{
+.messageReply{
     background-color: #F5F6FA;
     width: 100%;
     height: 7em;
@@ -434,29 +434,54 @@ footer{
     justify-content: flex-end;
     align-items: flex-end;
 }
-.messageContent .messageBody .messageReply button i{
+.messageReply button i{
     color: var(--colorBtns);
 }
-.messageContent .messageBody .messageReply button:first-child{
+.messageReply button:first-child{
     background-color: var(--colorBlanco);
     border: 1px solid #D7DAE2;
     color: var(--colorBtns);
     margin-right: 10px;
 }
-.messageContent .messageBody .messageReply button:first-child:hover{
+.messageReply button:first-child:hover{
     background: var(--bgColor);
 }
-.messageContent .messageBody .messageReply button:first-child:active{
+.messageReply button:first-child:active{
     background: var(--colorBlanco);
     border: 1px solid #69E4A6;
 }
-.messageContent .messageBody .messageReply button:last-child{
+.messageReply button:last-child{
     background-color: #FF7285;
     color: var(--colorBtns);
 }
-.messageContent .messageBody .messageReply button:last-child:hover{
+.messageReply button:last-child:hover{
     background-color: #FB98A6;
 }
-.messageContent .messageBody .messageReply button:last-child:active{
+.messageReply button:last-child:active{
     background-color: #FF7285;
+}
+
+/*------------SEND MESSAGE-------------*/
+.sendMessage{
+    width: 75%;
+    margin: 0 auto;
+}
+.sendMessage .formData form textarea{
+    resize: none;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+}
+.sendMessage .formData form .messageReply{
+    grid-column: 2/3;
+}
+.sendMessage .formData form .messageReply button:first-child{
+    background-color: #69E4A6;
+    border: none;
+}
+.sendMessage .formData form .messageReply button:first-child:hover{
+    background-color: #90F1C0;
+}
+.sendMessage .formData form .messageReply button:first-child:active{
+    background-color: #59E854;
 }
