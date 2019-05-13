@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../../public/css/globalStyle.css">
+    <title>Factura</title>
+</head>
+
+<body>
+    <header>
+        <div class="content">
+            <a href="#"><i class="fab fa-apple"></i></a>
+            <nav class="menu">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li> <span>Productos</span>
+                        <ul>
+                            <li><a href="#">Mac</a></li>
+                            <li><a href="#">iPad</a></li>
+                            <li><a href="#">iPhone</a></li>
+                            <li><a href="#">Watch</a></li>
+                            <li><a href="#">TV</a></li>
+                            <li><a href="#">Musica</a></li>
+                            <li><a href="#">Accesorios</a></li>
+                        </ul>
+                    </li>
+                    <li> <span>Donde Comprar</span>
+                        <ul>
+                            <li><a href="#">Quito</a></li>
+                            <li><a href="#">Guayaquil</a></li>
+                            <li><a href="#">Cuenca</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="search">
+                <div class="barSearch">
+                    <input type="search" name="search" id="search" placeholder="Buscar">
+                    <i class="fas fa-search"></i>
+                </div>
+                <a href="#">Buscar</a>
+            </div>
+            <div class="buyCar itemsUser">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="sessionItems">
+                <!-- <a href="#">Iniciar Sesión</a>
+                <a href="#">Registrarse</a>-->
+                <i class="far fa-heart"></i>
+                <div class="imgUser">
+                    <img src="../../../img/user/perfil.jpg" alt="user">
+                </div>
+                <span>Richard Torres</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <header>
+            <div class="perfil">
+                <div class="img">
+                    <img src="../../../img/user/perfil.jpg" alt="">
+                </div>
+                <h2>Richard Torres</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-user"></i> Perfil</a></li>
+                    <li><a href="#"><i class="fas fa-history"></i> Historial de compras</a></li>
+                    <li><a href="#"><i class="fas fa-shopping-cart"></i> Carrito de compras</a></li>
+                    <li><a href="#"><i class="far fa-heart"></i> Favoritos</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Opciones</a></li>
+                    <li><a href="#"><i class="fas fa-envelope-open-text"></i> Mensajes</a></li>
+                    <li><a href="#"><i class="far fa-life-ring"></i> Ayuda</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <h2>Factura</h2>
+            <div class="cardContent invoice">
+                <div class="map">
+
+                </div>
+                <div class="invoiceHeader">
+                    <div class="invoiceDetail">
+                        <h2>Apple Store EC</h2>
+                        <p>Cuenca, Azuay</p>
+                        <p>Tel. 0978781341</p>
+                    </div>
+                    <div class="invoicePrint">
+                        <h2>Factura</h2>
+                        <button><i class="fas fa-print"></i> Imprimir</button>
+                    </div>
+                </div>
+                <div class="invoiceBody">
+                    <div class="ivoiceBodyDetall">
+                        <div class="invoiceDetailTo">
+                            <h3>Factura a:</h3>
+                            <p>Richard Torres</p>
+                            <p>Cl. 0106464456</p>
+                            <p>Dir. Av. Jaime Roldos y 3 de Noviembre</p>
+                            <p>Tel. 0992631254</p>
+                        </div>
+                        <div class="invoiceDetailStatus">
+                            <p><span>Fecha: </span>25/01/2019</p>
+                            <p><span>Status: </span><span class="status">Pendiente</span></p>
+                            <p><span>Codigo de orden: </span>GBS5632</p>
+                        </div>
+                    </div>
+
+                    <article>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Producto</td>
+                                    <td>Descripcion</td>
+                                    <td>Tienda</td>
+                                    <td>Precio</td>
+                                    <td></td>
+
+                                </tr>
+                            </thead>
+
+                            <tfoot>
+                                <tr>
+                                    <td colspan="10">
+                                        <div class="links">
+                                            <a href="#"><i class="fas fa-angle-left"></i></a>
+                                            <a class="active" href="#">1</a>
+                                            <a href="#">2</a>
+                                            <a href="#">3</a>
+                                            <a href="#">4</a>
+                                            <a href="#"><i class="fas fa-chevron-right"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><a href="">
+                                            <img src="../../../img/product/producto.jpg" alt="">
+                                            <p>Lorem</p>
+                                        </a>
+                                    </td>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                                    <td><a href="">Guayaquil</a></td>
+                                    <td>$700.00</td>
+                                    <td><a href="">Ver ruta</a></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td><a href="">
+                                            <img src="../../../img/product/product2.png" alt="">
+                                            <p>Lorem</p>
+                                        </a>
+                                    </td>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex voluptatem harum
+                                        reiciendis sunt quam animi praesentium impedit pariatur, debitis quaerat velit
+                                        odit facere quos est maxime aspernatur vitae voluptatibus quas consequuntur cum
+                                        repellendus assumenda blanditiis temporibus? Eveniet id odio, facere culpa
+                                        fugiat placeat numquam tempora molestiae provident ipsum similique! Vel.</td>
+                                    <td><a href="">Guayaquil</a></td>
+                                    <td>$700.00</td>
+                                    <td><a href="">Ver ruta</a></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td><a href="">
+                                            <img src="../../../img/product/producto.jpg" alt="">
+                                            <p>Lorem</p>
+                                        </a>
+                                    </td>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                                    <td><a href="">Guayaquil</a></td>
+                                    <td>$700.00</td>
+                                    <td><a href="">Ver ruta</a></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td><a href="">
+                                            <img src="../../../img/product/producto.jpg" alt="">
+                                            <p>Lorem</p>
+                                        </a>
+                                    </td>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                                    <td><a href="">Guayaquil</a></td>
+                                    <td>$700.00</td>
+                                    <td><a href="">Ver ruta</a></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td><a href="">
+                                            <img src="../../../img/product/producto.jpg" alt="">
+                                            <p>Lorem</p>
+                                        </a>
+                                    </td>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                                    <td><a href="">Guayaquil</a></td>
+                                    <td>$700.00</td>
+                                    <td><a href="">Ver ruta</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </article>
+                    <div class="invoiceFooter">
+                        <p><span>Sub-total: </span> $2930.00</p>
+                        <h2>USD 4930.00</h2>
+                        <button id="cancelar">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="content">
+            <div class="listFooter">
+                <h3>Productos</h3>
+                <ul>
+                    <li><a href="#">Mac</a></li>
+                    <li><a href="#">iPad</a></li>
+                    <li><a href="#">iPhone</a></li>
+                    <li><a href="#">Watch</a></li>
+                    <li><a href="#">TV</a></li>
+                    <li><a href="#">Musica</a></li>
+                    <li><a href="#">Accesorios</a></li>
+                </ul>
+            </div>
+            <div class="listFooter">
+                <h3>Tiendas</h3>
+                <ul>
+                    <li><a href="#">Quito</a></li>
+                    <li><a href="#">Guayaquil</a></li>
+                    <li><a href="#">Cuenca</a></li>
+                </ul>
+            </div>
+            <div class="listFooter">
+                <h3>Desarrolladores</h3>
+                <ul>
+                    <li><a href="#">Henry Guaman</a></li>
+                    <li><a href="#">Claudio Maldonado</a></li>
+                    <li><a href="#">Jonnathan Ochoa</a></li>
+                    <li><a href="#">Pedro Ortiz</a></li>
+                    <li><a href="#">Yandry Romero</a></li>
+                </ul>
+            </div>
+            <div class="infoFooter">
+                <p>Copyright &copy; 2019 Todos los derechos reservados</p>
+                <p>Designed by Group 5</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
