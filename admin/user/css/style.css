@@ -151,6 +151,38 @@ footer{
 .container section .cardContent .formData .perfilImg input{
     width: 100%;
 }
+/*---------SOTRE JO--------------*/
+img.pequeña{
+   width: 1519px;
+   height: 700px;
+    }
+img.direccion{
+        width: 600px;
+        height: 500px;
+}
+h2.posicion{
+text-align: center;
+color: #A3A6B4;
+    }
+h1.posicion{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin-top: 300px;
+    font-size: 50px;
+    margin-bottom: 300px;
+    background-color: #3B3B53;
+}
+
+div.posicion{
+    width: 500px;
+    height: 100;
+    margin-left: 200px;
+}
+#color{
+    background-color: #3B86FF;
+
+}
+
 
 /*---------TABLE--------------*/
 .container section .cardContent article table {
