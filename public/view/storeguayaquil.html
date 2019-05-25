@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
     <title>Tienda Guayaquil</title>
 </head>
 
@@ -99,7 +102,20 @@
         </div>
     </section>
 
-    <script src="../js/map.js" onload="loadMap(-2.15525,-79.89212,17,'Guayaquil','Mall del Sol')"></script>
+    <script src="../js/map.js"></script>
+    <script>
+        navigator.geolocation.getCurrentPosition(fn_ok, fn_mal);
+        function fn_mal() { }
+
+        function fn_ok(rta) {
+
+            lat = rta.coords.latitude;
+            long = rta.coords.longitude;
+
+            //loadMap(lat, long, -2.91900, -79.01455)
+            loadMap(lat, long, -2.15525, -79.89212, 10, 'Guayaquil', 'Mall del Sol')
+        }
+    </script>
 
     <footer>
         <div class="content">

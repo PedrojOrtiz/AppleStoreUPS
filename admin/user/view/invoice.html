@@ -10,6 +10,12 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../../../public/css/globalStyle.css">
+
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script> -->
+
     <title>Factura</title>
 </head>
 
@@ -124,7 +130,7 @@
                                     <td>Descripcion</td>
                                     <td>Tienda</td>
                                     <td>Precio</td>
-                                    <td>Rutas</td>
+                                    <!-- <td>Rutas</td> -->
                                 </tr>
                             </thead>
 
@@ -154,10 +160,13 @@
                                     <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
                                     <td><a href="">Guayaquil</a></td>
                                     <td>$700.00</td>
-                                    <div id="floatWindow">
-                                        <div id="map"><i class="fas fa-times" onclick="cluseWindow()"></i></div>
+                                    <!-- <div id="floatWindow">
+                                        <div class="contentMap">
+                                            <i class="fas fa-times" onclick="cluseWindow()"></i>
+                                            <div id="map"></div>
+                                        </div>
                                     </div>
-                                    <td><a onclick="openWindow()">Ver ruta</a></td>
+                                    <td><a onclick="openWindow()">Ver ruta</a></td> -->
                                 </tr>
                                 <tr>
                                     <td>1</td>
@@ -173,10 +182,10 @@
                                         fugiat placeat numquam tempora molestiae provident ipsum similique! Vel.</td>
                                     <td><a href="">Guayaquil</a></td>
                                     <td>$700.00</td>
-                                    <div id="floatWindow">
+                                    <!-- <div id="floatWindow">
                                         <div id="map"><i class="fas fa-times" onclick="cluseWindow()"></i></div>
                                     </div>
-                                    <td><a onclick="openWindow()">Ver ruta</a></td>
+                                    <td><a onclick="openWindow()">Ver ruta</a></td> -->
                                 </tr>
                                 <tr>
                                     <td>1</td>
@@ -188,7 +197,7 @@
                                     <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
                                     <td><a href="">Guayaquil</a></td>
                                     <td>$700.00</td>
-                                    <td><a href="">Ver ruta</a></td>
+                                    <!-- <td><a href="">Ver ruta</a></td> -->
                                 </tr>
                                 <tr>
                                     <td>1</td>
@@ -200,7 +209,7 @@
                                     <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
                                     <td><a href="">Guayaquil</a></td>
                                     <td>$700.00</td>
-                                    <td><a href="">Ver ruta</a></td>
+                                    <!-- <td><a href="">Ver ruta</a></td> -->
                                 </tr>
                                 <tr>
                                     <td>1</td>
@@ -212,7 +221,7 @@
                                     <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
                                     <td><a href="">Guayaquil</a></td>
                                     <td>$700.00</td>
-                                    <td><a href="">Ver ruta</a></td>
+                                    <!-- <td><a href="">Ver ruta</a></td> -->
                                 </tr>
                             </tbody>
                         </table>
@@ -265,7 +274,20 @@
             </div>
         </div>
     </footer>
-    <script src="../js/functions.js"></script>
+    <!-- <script src="../js/functions.js"></script>
+    <script>
+        navigator.geolocation.getCurrentPosition(fn_ok, fn_mal);
+        function fn_mal() { }
+
+        function fn_ok(rta) {
+
+            lat = rta.coords.latitude;
+            long = rta.coords.longitude;
+
+            loadMap(lat, long, -2.91900, -79.01455)
+        }
+    </script> -->
+
 </body>
 
 </html>

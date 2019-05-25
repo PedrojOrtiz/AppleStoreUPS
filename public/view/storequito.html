@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
 
     <title>Tienda Quito</title>
 </head>
@@ -100,8 +103,20 @@
         </div>
     </section>
 
-    <script src="../js/map.js"
-        onload="loadMap(-0.17753,-78.48483,20,'Quito','Centro Comercial Iñaquito (CCI)')"></script>
+    <script src="../js/map.js"></script>
+    <script>
+        navigator.geolocation.getCurrentPosition(fn_ok, fn_mal);
+        function fn_mal() { }
+
+        function fn_ok(rta) {
+
+            lat = rta.coords.latitude;
+            long = rta.coords.longitude;
+
+            //loadMap(lat, long, -2.91900, -79.01455)
+            loadMap(lat, long, -0.17753, -78.48483, 10, 'Quito', 'Centro Comercial Iñaquito (CCI)')
+        }
+    </script>
 
     <footer>
         <div class="content">
