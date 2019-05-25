@@ -10,6 +10,11 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../../../public/css/globalStyle.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+
+
     <title>Tienda Quito</title>
 </head>
 
@@ -90,12 +95,13 @@
                 </div>
             </div>
             <div class="storeMap">
-                <img class="direccion" src="../../../img/user/direccion.png">
+                <div id="map"></div>
             </div>
         </div>
     </section>
 
-
+    <script src="../js/map.js"
+        onload="loadMap(-0.17753,-78.48483,20,'Quito','Centro Comercial Iñaquito (CCI)')"></script>
 
     <footer>
         <div class="content">

@@ -416,6 +416,7 @@ body .headerImg.storeImg.storeGuayaqil{
     background-image: url("../../img/store/tienda1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     height: 90vh;
 }
 body .storeInf {
@@ -459,7 +460,7 @@ body .storeInf .storeMap{
     width: 50%;
     height: 450px;
 }
-body .storeInf .storeMap img{
+body .storeInf .storeMap #map{
     height: 100%;
     width: 100%;
 }

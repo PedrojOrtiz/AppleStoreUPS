@@ -10,6 +10,10 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../../../public/css/globalStyle.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+
     <title>Tienda Cuenca</title>
 </head>
 
@@ -90,12 +94,12 @@
                 </div>
             </div>
             <div class="storeMap">
-                <img class="direccion" src="../../../img/user/direccion.png">
+                <div id="map"></div>
             </div>
         </div>
     </section>
 
-
+    <script src="../js/map.js" onload="loadMap(-2.91900,-79.01455,18,'Cuenca','Mall del Rio')"></script>
 
     <footer>
         <div class="content">
