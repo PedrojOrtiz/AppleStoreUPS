@@ -2,10 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    --color1: #3B3B53;
+    --color1: rgb(58, 58, 59);
     --color2: #A3A0FB;
     --colorBlanco:#FFFFFF;
-    --colorRojo: #FF6565;
+    --colorRojo: #3B3B53;
     --colorAzul:#3B86FF;
     --bgColor:#F0F0F7;
     --colorDark:#4D4F5C;
