@@ -7,17 +7,7 @@
     --bgColor:#F0F0F7;
     --colorFontGeneral:#4D4F5C;
 }
-body .slidshow{
-    height: 6.5em;
-    background-color: var(--colorRojo);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--colorBlanco);
-    font-size: 5em;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
+
 /*--------PAGINA PRODUCTO---------*/
 .content .product{
     display: grid;

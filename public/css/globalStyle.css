@@ -304,7 +304,7 @@ body button:active, input[type=button]:active, input[type=submit]:active{
 body select{
     background: var(--colorBlanco);
     border: 1px solid #D7DAE2;
-    padding: 10px 25px;
+    padding: 10px 40px 10px 15px;
     border-radius: 5px;
     font-size: 11pt;
     background-image: url(../../global/img/down.png); 
@@ -389,3 +389,84 @@ body select option {
     background: var(--colorAzul);
 }
 
+body .headerImg{
+    height: 6.5em;
+    background-color: var(--colorRojo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--colorBlanco);
+    font-size: 5em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+body .headerImg h1{
+    font-size: .9em;
+    text-transform: uppercase;
+}
+body .headerImg .bg{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body .headerImg.storeImg.storeGuayaqil{
+    background-image: url("../../img/store/tienda1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 90vh;
+}
+body .storeInf {
+    display: flex;
+    margin-top: 20px;
+}
+body .storeInf h3{
+    color: var(--colorDark);
+    margin: 15px 0;
+    font-size: 1.5em;
+}
+body .storeInf .storeDescription{
+    width: 50%;
+}
+body .storeInf .storeAbout p{
+    text-align: justify;
+    margin-top: 30px;
+}
+body .storeInf .storeContact{
+    margin-top: 50px;
+}
+body .storeInf .storeContact p{
+    opacity: .8;
+    margin: 5px 0;
+}
+body .storeInf .storeContact p a{
+    color: var(--colorAzul);
+    text-decoration: none;
+}
+body .storeInf .storeContact p i{
+    color: var(--color1);
+    opacity: 1;
+}
+body .storeInf .storeContact p:nth-child(2){
+    margin: 15px 0 40px 0;
+    font-size: 1.2em;
+    opacity: .7;
+}
+body .storeInf .storeMap{
+    margin-left: 50px;
+    width: 50%;
+    height: 450px;
+}
+body .storeInf .storeMap img{
+    height: 100%;
+    width: 100%;
+}
+
+body .headerImg.storeImg.storeQuito{
+    background-image: url("../../img/store/tienda2.jpg");
+}
+body .headerImg.storeImg.storeCuenca{
+    background-image: url("../../img/store/tienda3.jpg");
+}
