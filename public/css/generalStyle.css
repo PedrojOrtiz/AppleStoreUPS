@@ -2,7 +2,7 @@
     --color1: #3B3B53;
     --color2: #A3A0FB;
     --colorBlanco:#FFFFFF;
-    --colorRojo: #FF6565;
+    --colorRojo: rgb(0, 0, 0), 213, 213);
     --colorAzul:#3B86FF;
     --bgColor:#F0F0F7;
     --colorFontGeneral:#4D4F5C;
