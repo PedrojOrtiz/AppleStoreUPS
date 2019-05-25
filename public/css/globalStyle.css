@@ -486,3 +486,33 @@ body .headerImg.pageError p{
     opacity: .5;
     font-size: .3em;
 }
+#floatWindow{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all ease 1s;
+    z-index: 100;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#floatWindow #map{
+    width: 60%;
+    height: 60%;
+    background-color: var(--bgColor);
+    position: relative;
+}
+#floatWindow #map i {
+    color: var(--colorAzul);
+    font-size: 2em;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+#floatWindow #map i:hover{
+    color: var(--colorRojo);
+    cursor: pointer;
+}

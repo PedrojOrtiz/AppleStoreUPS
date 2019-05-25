@@ -13,13 +13,14 @@ footer{
 }
 .container{
     display: grid;
-    grid-template-columns: 25% 1fr;
+    grid-template-columns: 22% 1fr;
     height: 100%;
+    width: 100%;
     margin-bottom: -32px;
 }
 /*-----------HEADER----------------*/
 .container header{
-    background-color: var(--colorBlanco);
+    background-color: var(--colorBlanco);  
 }
 .container header .perfil{
     text-align: center;

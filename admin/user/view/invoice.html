@@ -125,7 +125,6 @@
                                     <td>Tienda</td>
                                     <td>Precio</td>
                                     <td>Rutas</td>
-
                                 </tr>
                             </thead>
 
@@ -155,7 +154,10 @@
                                     <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
                                     <td><a href="">Guayaquil</a></td>
                                     <td>$700.00</td>
-                                    <td><a href="">Ver ruta</a></td>
+                                    <div id="floatWindow">
+                                        <div id="map"><i class="fas fa-times" onclick="cluseWindow()"></i></div>
+                                    </div>
+                                    <td><a onclick="openWindow()">Ver ruta</a></td>
                                 </tr>
                                 <tr>
                                     <td>1</td>
@@ -171,7 +173,10 @@
                                         fugiat placeat numquam tempora molestiae provident ipsum similique! Vel.</td>
                                     <td><a href="">Guayaquil</a></td>
                                     <td>$700.00</td>
-                                    <td><a href="">Ver ruta</a></td>
+                                    <div id="floatWindow">
+                                        <div id="map"><i class="fas fa-times" onclick="cluseWindow()"></i></div>
+                                    </div>
+                                    <td><a onclick="openWindow()">Ver ruta</a></td>
                                 </tr>
                                 <tr>
                                     <td>1</td>
@@ -260,7 +265,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="../js/functions.js"></script>
 </body>
 
 </html>
