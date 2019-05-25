@@ -1,14 +1,14 @@
-// function openWindow() {
+function openWindow() {
 
-//     let windowFloat = document.getElementById("floatWindow")
-//     windowFloat.style.display = "flex"
+    let windowFloat = document.getElementById("floatWindow")
+    windowFloat.style.display = "flex"
 
-// }
+}
 
-// function cluseWindow() {
-//     let windowFloat = document.getElementById("floatWindow")
-//     windowFloat.style.display = "none"
-// }
+function cluseWindow() {
+    let windowFloat = document.getElementById("floatWindow")
+    windowFloat.style.display = "none"
+}
 
 // function loadMap(usuLat, usuLong, storeLat, storeLong) {
 

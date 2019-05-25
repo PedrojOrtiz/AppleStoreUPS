@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/globalStyle.css">
     <link rel="stylesheet" href="../css/generalStyle.css">
+    <script src="../../admin/user/js/functions.js"></script>
     <title>Carrito</title>
 </head>
 
@@ -61,6 +62,44 @@
             </div>
         </div>
     </header>
+
+    <div id="floatWindow">
+        <div class="contentWindow">
+            <!-- FORMULARIO  -->
+            <div class="form">
+                <form action="">
+                    <h2>Pagar con tarjeta</h2>
+                    <p>Introdisca los datos de su tarjeta</p>
+                    <input type="text" name="numbreCard" id="numbreCard" placeholder="1234 1234 1234 1234" required>
+                    <div class="nombres">
+                        <input type="text" name="dateCard" id="dateCard" placeholder="MM/YY" required>
+                        <input type="text" name="cvcCard" id="cvcCard" placeholder="CVC" required>
+                    </div>
+
+                    <input type="text" name="nameCard" id="nameCard" placeholder="Nombre del propietario" required>
+                    <input type="text" name="countryCard" id="countryCard" placeholder="Pais" required>
+                    <div class="btns">
+                        <input type="submit" value="Pagar">
+                    </div>
+                </form>
+            </div>
+
+            <!-- ESTADOS DEL PAGO -->
+            <!-- <div class="confirmPayment">
+                <h2>Pago realizado con exito.</h2>
+                <i class="far fa-check-circle"></i>
+                <h2>No se pudo realizar el pago.</h2>
+                <i class="far fa-times-circle"></i>
+                <a onclick="cluseWindow()">Cerrar</a>
+            </div> -->
+            <i class="fas fa-times" onclick="cluseWindow()"></i>
+        </div>
+
+    </div>
+
+
+
+
 
     <div class="content">
         <section class="product">
@@ -140,7 +179,7 @@
                         <p><span>Total: </span>$749.00</p>
                     </div>
                     <div class="btns">
-                        <button>
+                        <button onclick="openWindow()">
                             <i class="far fa-credit-card"></i> Tarjeta
                         </button>
                     </div>

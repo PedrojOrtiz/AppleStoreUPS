@@ -1,8 +1,8 @@
 *{
-    --color1: rgb(0, 0, 0);
+    --color1: #3B3B53;;
     --color2: #A3A0FB;
     --colorBlanco:#FFFFFF;
-    --colorRojo: rgb(0, 0, 0), 213, 213);
+    --colorRojo: #FF6565;
     --colorAzul:#3B86FF;
     --bgColor:#F0F0F7;
     --colorFontGeneral:#4D4F5C;
@@ -262,4 +262,64 @@
     margin-top: 20px;
 }
 
+#floatWindow .form{
+    width: 500px;
+    height: 80%;
+    margin: 0;
+}
+#floatWindow .form form{
+    width: 100%;
+    height: 100%;
+    padding: 20px 15px;
+}
+#floatWindow .form form .nombres{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+}
+#floatWindow .contentWindow .confirmPayment{
+    height: 300px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#floatWindow .contentWindow .confirmPayment h2{
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--colorBtns);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+#floatWindow .contentWindow .confirmPayment i{
+    position: relative;
+    font-size: 4em;
+    opacity: .7;
+    text-align: center;
+    padding: 0;
+    left: 0;
+    right: 0;
+}
+#floatWindow .contentWindow .confirmPayment i.fa-check-circle{
+    color: #69E4A6;
+}
+#floatWindow .contentWindow .confirmPayment i.fa-times-circle{
+    color: var(--colorRojo);
+}
+
+#floatWindow .contentWindow .confirmPayment i:hover{
+    cursor: text;
+}
+#floatWindow .contentWindow .confirmPayment a{
+    margin-top: 25px;
+    color: var(--colorAzul);
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+#floatWindow .contentWindow .confirmPayment a:hover{
+    color: var(--colorRojo);
+    cursor: pointer;
+}
 

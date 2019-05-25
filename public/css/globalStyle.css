@@ -2,10 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    --color1: rgb(58, 58, 59);
+    --color1: #3B3B53;
     --color2: #A3A0FB;
     --colorBlanco:#FFFFFF;
-    --colorRojo: #3B3B53;
+    --colorRojo: #FF6565;
     --colorAzul:#3B86FF;
     --bgColor:#F0F0F7;
     --colorDark:#4D4F5C;
@@ -216,7 +216,7 @@ article .contentDescription .descripProduct{
 }
 article .contentDescription .descripProduct a{
     text-decoration: none;
-    color: var(--colorRojo);
+    color: var(--colorDark);
 }
 article .contentDescription .descripProduct a h2{
     font-size: 1.3em;
@@ -509,13 +509,27 @@ body .headerImg.pageError p{
     background-color: var(--bgColor);
     
 }
-#floatWindow .contentMap i {
+#floatWindow i {
     color: var(--bgColor);
-    font-size: 2em;
+    font-size: 1.6em;
     float: right;
     z-index: 300;
 }
-#floatWindow .contentMap i:hover{
+#floatWindow i:hover{
     color: var(--colorRojo);
     cursor: pointer;
+}
+
+#floatWindow .contentWindow{
+    background-color: var(--bgColor);
+    position: relative;
+}
+#floatWindow .contentWindow i{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--colorAzul);
+}
+#floatWindow .contentWindow i:hover{
+    color: var(--colorRojo);
 }
