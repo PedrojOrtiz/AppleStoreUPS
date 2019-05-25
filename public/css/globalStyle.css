@@ -470,3 +470,18 @@ body .headerImg.storeImg.storeQuito{
 body .headerImg.storeImg.storeCuenca{
     background-image: url("../../img/store/tienda3.jpg");
 }
+body .headerImg.pageError{
+    background-color: var(--bgColor);
+    flex-direction: column;
+}
+body .headerImg.pageError h2{
+    color: var(--colorRojo);
+    opacity: .4;
+    font-size: 3em;
+    font-weight: 900;
+}
+body .headerImg.pageError p{
+    color: var(--colorDark);
+    opacity: .5;
+    font-size: .3em;
+}
