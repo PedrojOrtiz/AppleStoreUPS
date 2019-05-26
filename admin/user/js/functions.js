@@ -1,7 +1,38 @@
-function openWindow() {
+var directionsService
+var directionsDisplay
 
+function initMap() {
+    console.log(document.getElementById('start').value)
+    directionsService = new google.maps.DirectionsService;
+    directionsDisplay = new google.maps.DirectionsRenderer;
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 7,
+        center: document.getElementById('start').value
+    });
+    directionsDisplay.setMap(map);
+
+}
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+    directionsService.route({
+        origin: document.getElementById('start').value,
+        destination: document.getElementById('end').value,
+        travelMode: 'DRIVING'
+    }, function (response, status) {
+        if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
+}
+
+
+function openWindow() {
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
     let windowFloat = document.getElementById("floatWindow")
     windowFloat.style.display = "flex"
+
 
 }
 
@@ -9,28 +40,3 @@ function cluseWindow() {
     let windowFloat = document.getElementById("floatWindow")
     windowFloat.style.display = "none"
 }
-
-// function loadMap(usuLat, usuLong, storeLat, storeLong) {
-
-//     var map = L.map('map').setView([usuLat, usuLong], 20);
-
-//     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-//     }).addTo(map);
-
-//     // L.marker([usuLat, usuLong]).addTo(map)
-//     //     .bindPopup('Mi ubicacion.')
-//     //     .openPopup();
-
-//     // L.marker([storeLat, storeLong]).addTo(map)
-//     //     .bindPopup('Tienda.')
-//     //     .openPopup();
-
-//     L.Routing.control({
-//         waypoints: [
-//             L.latLng(usuLat, usuLong),
-//             L.latLng(storeLat, storeLong)
-//         ],
-//         routeWhileDragging: true,
-//     }).addTo(map);
-// }

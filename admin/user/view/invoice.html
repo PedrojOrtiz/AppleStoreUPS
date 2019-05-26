@@ -91,9 +91,6 @@
         <section>
             <h2>Factura</h2>
             <div class="cardContent invoice">
-                <div class="map">
-
-                </div>
                 <div class="invoiceHeader">
                     <div class="invoiceDetail">
                         <h2>Apple Store EC</h2>
@@ -130,7 +127,7 @@
                                     <td>Descripcion</td>
                                     <td>Tienda</td>
                                     <td>Precio</td>
-                                    <!-- <td>Rutas</td> -->
+                                    <td>Rutas</td>
                                 </tr>
                             </thead>
 
@@ -149,6 +146,16 @@
                                 </tr>
                             </tfoot>
 
+                            <div id="floatWindow">
+                                <input id="start" type="hidden" name="" value="gualaceo">
+                                <input id="end" type="hidden" name="" value="Calle Vieja, Cuenca 010105">
+
+                                <div class="contentMap">
+                                    <i class="fas fa-times" onclick="cluseWindow()"></i>
+                                    <div id="map"></div>
+                                </div>
+                            </div>
+
                             <tbody>
                                 <tr>
                                     <td>1</td>
@@ -157,16 +164,13 @@
                                             <p>Lorem</p>
                                         </a>
                                     </td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                                    <td>Este es el de la prueba de mapa.</td>
                                     <td><a href="">Guayaquil</a></td>
                                     <td>$700.00</td>
-                                    <!-- <div id="floatWindow">
-                                        <div class="contentMap">
-                                            <i class="fas fa-times" onclick="cluseWindow()"></i>
-                                            <div id="map"></div>
-                                        </div>
-                                    </div>
-                                    <td><a onclick="openWindow()">Ver ruta</a></td> -->
+                                    <td><a onclick="openWindow()">Ver ruta</a>
+                                    </td>
+
+
                                 </tr>
                                 <tr>
                                     <td>1</td>
@@ -182,10 +186,7 @@
                                         fugiat placeat numquam tempora molestiae provident ipsum similique! Vel.</td>
                                     <td><a href="">Guayaquil</a></td>
                                     <td>$700.00</td>
-                                    <!-- <div id="floatWindow">
-                                        <div id="map"><i class="fas fa-times" onclick="cluseWindow()"></i></div>
-                                    </div>
-                                    <td><a onclick="openWindow()">Ver ruta</a></td> -->
+                                    <td><a namer onclick="openWindow()">Ver ruta</a></td>
                                 </tr>
                                 <tr>
                                     <td>1</td>
@@ -273,6 +274,9 @@
                 <p>Designed by Group 5</p>
             </div>
         </div>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWSPPYtqD1tZgvQ-pPzLRXttQoVCOM9Jc&callback&callback=initMap"></script>
+        <script src="../js/functions.js"></script>
     </footer>
     <!-- <script src="../js/functions.js"></script>
     <script>
@@ -287,6 +291,8 @@
             loadMap(lat, long, -2.91900, -79.01455)
         }
     </script> -->
+
+
 
 </body>
 
