@@ -72,6 +72,7 @@ body header .content{
 /*------------MENU-----------------*/
 body header .content .menu ul li i{
     font-size: .9em;
+    margin-left: -4px;
 }
 body header .content .menu ul{
     display: flex;
@@ -90,11 +91,23 @@ body header .content .menu ul ul{
     padding: 0;
     background-color: var(--colorBlanco);
     /* box-shadow: 1px 1px 10px 0px #000; */
-    border-radius: 5px;
+    border-radius: 3px;
     width: 12em;   
     z-index: 100;
     top: 48px;
 }
+body header .content .menu ul ul:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-width: 0 8px 13px;
+    border-style: solid;
+    border-color: transparent transparent var(--colorBlanco);
+}
+
 body header .content .menu ul ul li{ 
     float: none;
     border-bottom: 1px solid var(--bgColor);
