@@ -24,7 +24,6 @@ body{
 body header{
     width: 100%;
     background-color: var(--color1);
-    padding: 6px 0;
 }body header li{
     list-style: none;
 }
@@ -65,47 +64,56 @@ body header i{
     color: var(--colorBlanco);
     font-size: 25px;
 }
-body header>.content{
+body header .content{
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-body header>.content>.menu ul{
-    display: flex;
+/*------------MENU-----------------*/
+body header .content .menu ul li i{
+    font-size: .9em;
 }
-body header>.content>.menu ul li{
+body header .content .menu ul{
+    display: flex;
+    
+}
+body header .content .menu>ul>li{
     position: relative;
     float: left;
+    padding: 10px 0;
+    display: flex;
+    align-items: unset;
 }
-body header>.content>.menu ul ul{
+body header .content .menu ul ul{
     display: none;
     position: absolute;
     padding: 0;
     background-color: var(--colorBlanco);
-    box-shadow: 1px 1px 10px 0px #000;
-    border-radius: 10px;
-    width: 12.5em;   
+    /* box-shadow: 1px 1px 10px 0px #000; */
+    border-radius: 5px;
+    width: 12em;   
     z-index: 100;
+    top: 48px;
 }
-body header>.content>.menu ul ul li{ 
+body header .content .menu ul ul li{ 
     float: none;
     border-bottom: 1px solid var(--bgColor);
 }
-body header>.content>.menu ul ul li:last-child{
+body header .content .menu ul ul li:last-child{
     border: none;
 }
-body header>.content>.menu ul li ul li a:hover{
+body header .content .menu ul li ul li a:hover{
     color: var(--color2);
 }
-body header>.content>.menu ul ul a{
+body header .content .menu ul ul a{
     line-height: 120%;
     padding: 10px 15px;
     color:#404040;
 }
-body header>.content>.menu ul ul a:hover{
+body header .content .menu ul ul a:hover{
     color: ver(--color2);
 }
-body header>.content>.menu ul li:hover>ul{
+body header .content .menu ul li:hover>ul{
     display: block;
 }
 header .content .search{
@@ -113,6 +121,7 @@ header .content .search{
     justify-content: center;
     align-items: center;
 }
+/*-------------SEARCH BAR--------------------*/
 header .content .search .barSearch{
     position: relative;
 }
@@ -135,14 +144,14 @@ header .content .sessionItems{
     align-items: center;
 }
 header .content .sessionItems .imgUser{
-    width: 50px;
-    height: 50px;
-    margin: 0 10px;
+    width: 40px;
+    height: 40px;
+    margin: 0 5px 0 25px;
 
 }
 header .content .sessionItems .imgUser img{
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
 }
 header .content .sessionItems .imgUser img:hover{
@@ -391,7 +400,7 @@ body select option {
 
 body .headerImg{
     height: 6.5em;
-    background-color: var(--colorRojo);
+    background-color: var(--bgColor);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -470,6 +479,10 @@ body .headerImg.storeImg.storeQuito{
 }
 body .headerImg.storeImg.storeCuenca{
     background-image: url("../../img/store/tienda3.jpg");
+}
+body .headerImg.storeImg.storeIndex{
+    background-image: url("../../img/store/apple_logo_10-wallpaper-7680x4800.jpg");
+    background-attachment: scroll;
 }
 body .headerImg.pageError{
     background-color: var(--bgColor);

@@ -66,7 +66,7 @@
     <div id="floatWindow">
         <div class="contentWindow">
             <!-- FORMULARIO  -->
-            <div class="form">
+            <!-- <div class="form">
                 <form action="">
                     <h2>Pagar con tarjeta</h2>
                     <p>Introdisca los datos de su tarjeta</p>
@@ -82,24 +82,25 @@
                         <input type="submit" value="Pagar">
                     </div>
                 </form>
-            </div>
+            </div> -->
 
             <!-- ESTADOS DEL PAGO -->
-            <!-- <div class="confirmPayment">
-                <h2>Pago realizado con exito.</h2>
+            <div class="confirmVtn">
+                <h2>Gracias por su compra.</h2>
+                <p>Pago realizado con exito</p>
                 <i class="far fa-check-circle"></i>
-                <h2>No se pudo realizar el pago.</h2>
-                <i class="far fa-times-circle"></i>
-                <a onclick="cluseWindow()">Cerrar</a>
-            </div> -->
-            <i class="fas fa-times" onclick="cluseWindow()"></i>
+                <!-- <h2>No se pudo realizar el pago.</h2>
+                <i class="far fa-times-circle"></i> -->
+                <div class="btns">
+                    <input type="button" value="Inicio" onclick="window.location.href = 'index.html'">
+                    <input type="button" value="Ver Compras"
+                        onclick="window.location.href = '../../admin/user/view/shoppinghistory.html'">
+                </div>
+            </div>
+            <i class=" fas fa-times" onclick="cluseWindow()"></i>
         </div>
 
     </div>
-
-
-
-
 
     <div class="content">
         <section class="product">
@@ -111,9 +112,12 @@
                     <div class="cartDescription">
                         <h2>iPhone X</h2>
                         <h3>Descripcion</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, sint aut, alias dolorum optio
-                            ut tempora voluptatibus voluptatum ad, qui recusandae cumque. Temporibus officiis nobis sunt
-                            perferendis, nulla enim ea unde cum sequi animi dignissimos voluptas et iusto delectus modi
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, sint aut, alias dolorum
+                            optio
+                            ut tempora voluptatibus voluptatum ad, qui recusandae cumque. Temporibus officiis
+                            nobis sunt
+                            perferendis, nulla enim ea unde cum sequi animi dignissimos voluptas et iusto
+                            delectus modi
                             at pariatur vel amet sit quod aliquid! Asperiores, magni vel.</p>
                         <h3>Tienda</h3>
                         <span>Guayaquil</span>
@@ -129,7 +133,8 @@
                     <div class="cartDescription">
                         <h2>iPhone X</h2>
                         <h3>Descripcion</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt neque ipsum ea itaque ullam
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt neque ipsum ea
+                            itaque ullam
                             dolore!</p>
                         <div class="store">
                             <h3>Tienda</h3>
@@ -147,7 +152,8 @@
                     <div class="cartDescription">
                         <h2>iPhone X</h2>
                         <h3>Descripcion</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt neque ipsum ea itaque ullam
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt neque ipsum ea
+                            itaque ullam
                             dolore!</p>
                         <div class="store">
                             <h3>Tienda</h3>
@@ -168,7 +174,7 @@
                         <span>Av. Jaime Roldos y 3 de Noviembre</span>
                         <span class="data">0106464456,Cuenca,Azuay</span>
                     </div>
-                    <button>
+                    <button onclick="window.location.href = '../../admin/user/view/index.html'">
                         <i class="far fa-edit"></i> Editar
                     </button>
                 </div>

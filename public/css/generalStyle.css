@@ -278,7 +278,7 @@
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 10px;
 }
-#floatWindow .contentWindow .confirmPayment{
+#floatWindow .contentWindow .confirmVtn{
     height: 300px;
     width: 500px;
     display: flex;
@@ -286,14 +286,18 @@
     align-items: center;
     justify-content: center;
 }
-#floatWindow .contentWindow .confirmPayment h2{
+#floatWindow .contentWindow .confirmVtn h2{
     text-transform: uppercase;
     letter-spacing: 4px;
     color: var(--colorBtns);
     font-size: 1.5em;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
-#floatWindow .contentWindow .confirmPayment i{
+#floatWindow .contentWindow .confirmVtn p{
+    color: var(--colorFontGeneral);
+    opacity: .5;
+}
+#floatWindow .contentWindow .confirmVtn i{
     position: relative;
     font-size: 4em;
     opacity: .7;
@@ -301,25 +305,28 @@
     padding: 0;
     left: 0;
     right: 0;
+    margin: 15px 0;
 }
-#floatWindow .contentWindow .confirmPayment i.fa-check-circle{
+#floatWindow .contentWindow .confirmVtn i.fa-check-circle{
     color: #69E4A6;
 }
-#floatWindow .contentWindow .confirmPayment i.fa-times-circle{
+#floatWindow .contentWindow .confirmVtn i.fa-times-circle{
     color: var(--colorRojo);
 }
 
-#floatWindow .contentWindow .confirmPayment i:hover{
+#floatWindow .contentWindow .confirmVtn i:hover{
     cursor: text;
 }
-#floatWindow .contentWindow .confirmPayment a{
+#floatWindow .contentWindow .confirmVtn .btns{
     margin-top: 25px;
     color: var(--colorAzul);
     font-size: 1.2em;
     text-transform: uppercase;
 }
-#floatWindow .contentWindow .confirmPayment a:hover{
-    color: var(--colorRojo);
-    cursor: pointer;
+#floatWindow .contentWindow .confirmVtn .btns input:last-child{
+    color: var(--colorFontGeneral);
+    background-color: var(--colorBlanco);
+    border: 1px solid var(--colorFontGeneral);
+    margin-left: 15px;
 }
 
