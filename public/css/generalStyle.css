@@ -23,9 +23,21 @@
 .content .product .productSlide .productSlideImg{
     width: 100%;
     margin-bottom: 10px;
+    position: relative;
 }
 .content .product .productSlide .productSlideImg img{
     width: 70%;
+}
+.content .product .productSlide .productSlideImg i{
+    color: var(--colorBlanco);
+    font-size: 5em;
+    position: absolute;
+    top: 50%;
+    transition: all ease .5s;
+}
+.content .product .productSlide .productSlideImg i:hover{
+    cursor: pointer;
+    color: rgba(0, 0, 0, .1);
 }
 /*---SECCION PRODUCTO----*/
 
@@ -328,5 +340,8 @@
     background-color: var(--colorBlanco);
     border: 1px solid var(--colorFontGeneral);
     margin-left: 15px;
+}
+#floatWindow .contentWindow .confirmVtn .btns input:last-child:hover{
+    background-color: var(--bgColor);
 }
 
