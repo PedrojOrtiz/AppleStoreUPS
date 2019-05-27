@@ -22,7 +22,7 @@
 
     <div class="content">
         <div class="form">
-            <form action="">
+            <form action="../controller/signup.php">
                 <h2>Apple store EC</h2>
                 <p>Bienvenido! Por favor, ingrese sus datos.</p>
                 <div class="nombres">
@@ -33,13 +33,13 @@
                 <input type="password" name="pass" id="pass" placeholder="Contraseña" required>
                 <input type="password" name="epass" id="epass" placeholder="Confirmar contraseña" required>
                 <div class="remember">
-                    <input type="checkbox" name="recordar" id="recordar">
+                    <input type="checkbox" name="recordar" id="recordar" required>
                     <label for="recordar">Estoy de acuerdo con los terminos y condiciones del sitio.</label>
                 </div>
                 <div class="btns">
                     <input type="submit" value="Crear">
                 </div>
-                <a href="#">Ya tienes? Inicia sesión</a>
+                <a href="login.php">Ya tienes? Inicia sesión</a>
             </form>
         </div>
     </div>

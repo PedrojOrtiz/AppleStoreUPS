@@ -31,15 +31,17 @@
         </div>
         <a href="#">Buscar</a>
     </div>
-    <div class="buyCar itemsUser">
+    <!-- <div class="buyCar itemsUser">
         <a href="../../public/view/shoppingcart.php"><i class="fas fa-shopping-cart"></i></a>
-    </div>
+    </div> -->
     <div class="sessionItems">
-        <!-- <a href="login.php">Iniciar Sesión</a>
-                <a href="sigup.php">Registrarse</a>-->
+        <a href="login.php">Iniciar Sesión</a>
+        <a href="signup.php">Registrarse</a>
 
-        <a href="../../admin/user/view/favorites.php"><i class="far fa-heart"></i></a>
-        <div class="imgUser">
+        <!-- <a href="../../admin/user/view/favorites.php"><i class="far fa-heart"></i></a>-->
+
+        <!-- <div class="imgUser">
+        <a href="../../public/view/shoppingcart.php"><i class="fas fa-shopping-cart"></i></a>
             <img src="../../img/user/perfil.jpg" alt="user">
         </div>
         <nav class="menu perfil">
@@ -50,12 +52,11 @@
                         </li>
                         <li><a href="../../admin/user/view/shoppinghistory.php">Historial</a>
                         </li>
-                        <li><a href="../../admin/user/view/messages.php">Mensajes</a></li>
                         <li><a href="../../admin/user/view/settings.php">Opciones</a></li>
                         <li><a href="#">Salir</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
+    </div> -->
     </div>
-</div>

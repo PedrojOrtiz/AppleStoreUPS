@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -101,10 +101,10 @@
 
     <footer>
         <?php
-        include("../../global/php/footerPublic.php");
+        include("../../../global/php/footerPublic.php");
         ?>
     </footer>
 
 </body>
 
-</html>
+</html> -->

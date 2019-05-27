@@ -36,7 +36,10 @@
                             <a href="product.php"><img src="../../img/product/xsmax.jpg" alt="producto"></a>
                         </div>
                         <span>Nuevo</span>
-                        <i class="fas fa-heart"></i>
+                        <div class="ranking">
+                            <i class="fas fa-star"></i>
+                            <span>4.5</span>
+                        </div>
                     </div>
                     <div class="contentDescription">
                         <div class="descripProduct">

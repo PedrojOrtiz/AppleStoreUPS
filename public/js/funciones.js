@@ -7,7 +7,7 @@ function cluseWindow() {
     let windowFloat = document.getElementById("floatWindow")
     windowFloat.style.display = "none"
 }
-
+//PENDIENTE
 function elemento(e) {
     let elements = document.getElementById('valoration')
 

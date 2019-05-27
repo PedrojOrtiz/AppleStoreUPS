@@ -23,9 +23,7 @@
     <div class="content">
         <h2>Resultados</h2>
         <section>
-            <a href="#">
-                <h2>Resultados para iPhone</h2>
-            </a>
+            <h2>Resultados para "iPhone"</h2>
             <div class="contentCards">
                 <article>
                     <div class="contentImg">

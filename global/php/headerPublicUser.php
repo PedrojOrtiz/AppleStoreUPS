@@ -31,15 +31,17 @@
         </div>
         <a href="#">Buscar</a>
     </div>
-    <div class="buyCar itemsUser">
+    <!-- <div class="buyCar itemsUser">
         <a href="../../../public/view/shoppingcart.php"><i class="fas fa-shopping-cart"></i></a>
-    </div>
+    </div> -->
     <div class="sessionItems">
         <!-- <a href="../../../public/view/login.php">Iniciar Sesión</a>
-                <a href="../../../public/view/sigup.php">Registrarse</a>-->
+                <a href="../../../public/view/signup.php">Registrarse</a>-->
 
-        <a href="favorites.php"><i class="far fa-heart"></i></a>
+        <!-- <a href="favorites.php"><i class="far fa-heart"></i></a> -->
+
         <div class="imgUser">
+            <a href="../../../public/view/shoppingcart.php"><i class="fas fa-shopping-cart"></i></a>
             <img src="../../../img/user/perfil.jpg" alt="user">
         </div>
         <nav class="menu perfil">
@@ -50,7 +52,6 @@
                         </li>
                         <li><a href="shoppinghistory.php">Historial</a>
                         </li>
-                        <li><a href="messages.php">Mensajes</a></li>
                         <li><a href="settings.php">Opciones</a></li>
                         <li><a href="#">Salir</a></li>
                     </ul>

@@ -27,11 +27,11 @@
                 <p>Bienvenido! Por favor, ingrese sus datos.</p>
                 <input type="email" name="email" id="email" placeholder="Correo" required>
                 <input type="password" name="pass" id="pass" placeholder="Contraseña" required>
-                <div class="remember">
+                <!-- <div class="remember">
                     <input type="checkbox" name="recordar" id="recordar">
                     <label for="recordar">Recordarme contraseña</label>
                     <a href="#">Olvide la contraseña</a>
-                </div>
+                </div> -->
                 <div class="btns">
                     <input type="submit" value="Iniciar Sesión">
                     <input type="button" value="Registro">
