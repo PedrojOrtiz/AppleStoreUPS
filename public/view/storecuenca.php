@@ -60,7 +60,7 @@
         </div>
     </section>
 
-    <!-- <script src="../js/funciones.js"></script>
+    <!-- <script src="../js/map.js"></script>
     <script>
         navigator.geolocation.getCurrentPosition(fn_ok, fn_mal);
         function fn_mal() { }
@@ -76,7 +76,7 @@
     </script> -->
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWSPPYtqD1tZgvQ-pPzLRXttQoVCOM9Jc&callback"></script>
-    <script src="../js/funciones.js" onload="initMap(-2.91900, -79.01455, 18)"></script>
+    <script src="../js/map.js" onload="initMap(-2.91900, -79.01455, 18)"></script>
 
     <footer>
         <?php

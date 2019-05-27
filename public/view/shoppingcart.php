@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/globalStyle.css">
     <link rel="stylesheet" href="../css/generalStyle.css">
-    <script src="../../admin/user/js/functions.js"></script>
+    <script src="../js/funciones.js"></script>
     <title>Carrito</title>
 </head>
 
@@ -24,7 +24,7 @@
     <div id="floatWindow">
         <div class="contentWindow">
             <!-- FORMULARIO  -->
-            <!-- <div class="form">
+            <div class="form">
                 <form action="">
                     <h2>Pagar con tarjeta</h2>
                     <p>Introdisca los datos de su tarjeta</p>
@@ -40,21 +40,21 @@
                         <input type="submit" value="Pagar">
                     </div>
                 </form>
-            </div> -->
+            </div>
 
             <!-- ESTADOS DEL PAGO -->
-            <div class="confirmVtn">
+            <!-- <div class="confirmVtn">
                 <h2>Gracias por su compra.</h2>
                 <p>Pago realizado con exito</p>
                 <i class="far fa-check-circle"></i>
-                <!-- <h2>No se pudo realizar el pago.</h2>
-                <i class="far fa-times-circle"></i> -->
+                <h2>No se pudo realizar el pago.</h2>
+                <i class="far fa-times-circle"></i>
                 <div class="btns">
                     <input type="button" value="Inicio" onclick="window.location.href = 'index.html'">
                     <input type="button" value="Ver Compras"
                         onclick="window.location.href = '../../admin/user/view/shoppinghistory.html'">
                 </div>
-            </div>
+            </div> -->
             <i class=" fas fa-times" onclick="cluseWindow()"></i>
         </div>
 

@@ -182,7 +182,7 @@
 
     <footer>
         <?php
-        include("../../global/php/footerPublic.php");
+        include("../../../global/php/footerPublic.php");
         ?>
     </footer>
     <script async defer

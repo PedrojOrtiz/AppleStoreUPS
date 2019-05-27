@@ -27,7 +27,6 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     });
 }
 
-
 function openWindow() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
     let windowFloat = document.getElementById("floatWindow")

@@ -69,11 +69,11 @@
                             <tr>
                                 <td>1</td>
                                 <td>GBS5632</td>
-                                <td>Tarjeta</td>
+                                <td>Tarjeta Prueba link</td>
                                 <td>$800.00</td>
                                 <td><span>Pendiente</span></td>
                                 <td>25/01/2019 10:15</td>
-                                <td><a href="">Ver orden</a></td>
+                                <td><a href="invoice.php">Ver orden</a></td>
                             </tr>
                             <tr>
                                 <td>1</td>
