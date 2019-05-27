@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/globalStyle.css">
     <link rel="stylesheet" href="../css/generalStyle.css">
+    <script src="../js/funciones.js"></script>
     <title>Producto</title>
 </head>
 
@@ -54,11 +55,23 @@
                     <p><span>Total: </span>$749.00</p>
                 </div>
                 <div class="productBtns">
-                    <button>
-                        <i class="fas fa-cart-plus"></i>
-                        Agregar al carrito
-                    </button>
-                    <i class="far fa-heart"></i>
+                    <div class="valoration" id="valoration" onmousemove="elemento(event)">
+                        <!--Cambiar por esta estrella -->
+                        <i class="fas fa-star"></i>
+                        <!--Fin-->
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>3.0</span>
+                    </div>
+                    <div class="btns">
+                        <button>
+                            <i class="fas fa-cart-plus"></i>
+                            Agregar al carrito
+                        </button>
+                        <i class="far fa-heart"></i>
+                    </div>
                 </div>
             </div>
         </section>

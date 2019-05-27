@@ -132,7 +132,7 @@
                         <span>Av. Jaime Roldos y 3 de Noviembre</span>
                         <span class="data">0106464456,Cuenca,Azuay</span>
                     </div>
-                    <button onclick="window.location.href = '../../admin/user/view/index.html'">
+                    <button onclick="window.location.href = '../../admin/user/view/index.php'">
                         <i class="far fa-edit"></i> Editar
                     </button>
                 </div>

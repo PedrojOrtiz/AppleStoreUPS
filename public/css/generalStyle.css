@@ -114,7 +114,7 @@
 }
 .content .product .productInfo .productBtns{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 }
 .content .product .productInfo .productBtns button{
@@ -129,8 +129,11 @@
 }
 .content .product .productInfo .productBtns button i{
     font-size: 13pt;
+    color: var(--colorBlanco);
+}.content .product .productInfo .productBtns button i:hover{
+    color: var(--colorBlanco);
 }
-.content .product .productInfo .productBtns>i{
+.content .product .productInfo .productBtns i{
     font-size: 25pt;
     color: var(--colorAzul);
     margin-left: 10px;
@@ -138,6 +141,21 @@
 .content .product .productInfo .productBtns i:hover{
     cursor: pointer;
     color: #1062E5;
+}
+.content .product .productInfo .productBtns .valoration{
+    display: flex;
+    align-items: center;
+}
+.content .product .productInfo .productBtns .valoration i{
+    font-size: 1em;
+    margin: 0;
+    pad: 0px;
+    color:#FFCA83;
+}
+.content .product .productInfo .productBtns .valoration span{
+    color: var(--colorFontGeneral);
+    font-size: 1.3em;
+
 }
 /*------FORM-------*/
 
