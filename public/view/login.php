@@ -22,7 +22,7 @@
 
     <div class="content">
         <div class="form">
-            <form action="">
+            <form action="../controller/login.php" method="post">
                 <h2>Apple store EC</h2>
                 <p>Bienvenido! Por favor, ingrese sus datos.</p>
                 <input type="email" name="email" id="email" placeholder="Correo" required>
@@ -34,7 +34,7 @@
                 </div> -->
                 <div class="btns">
                     <input type="submit" value="Iniciar Sesión">
-                    <input type="button" value="Registro">
+                    <input type="button" value="Registro" onclick="window.location.href = 'signup.php'">
                 </div>
             </form>
         </div>

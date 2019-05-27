@@ -35,13 +35,13 @@
         <a href="../../public/view/shoppingcart.php"><i class="fas fa-shopping-cart"></i></a>
     </div> -->
     <div class="sessionItems">
-        <a href="login.php">Iniciar Sesión</a>
-        <a href="signup.php">Registrarse</a>
+        <!-- <a href="login.php">Iniciar Sesión</a>
+        <a href="signup.php">Registrarse</a> -->
 
         <!-- <a href="../../admin/user/view/favorites.php"><i class="far fa-heart"></i></a>-->
 
-        <!-- <div class="imgUser">
-        <a href="../../public/view/shoppingcart.php"><i class="fas fa-shopping-cart"></i></a>
+        <div class="imgUser">
+            <a href="../../public/view/shoppingcart.php"><i class="fas fa-shopping-cart"></i></a>
             <img src="../../img/user/perfil.jpg" alt="user">
         </div>
         <nav class="menu perfil">
@@ -58,5 +58,5 @@
                 </li>
             </ul>
         </nav>
-    </div> -->
     </div>
+</div>
