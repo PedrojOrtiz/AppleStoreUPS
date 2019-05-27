@@ -21,72 +21,16 @@
 
 <body>
     <header>
-        <div class="content">
-            <a href="#"><i class="fab fa-apple"></i></a>
-            <nav class="menu">
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li> <span>Productos</span>
-                        <ul>
-                            <li><a href="#">Mac</a></li>
-                            <li><a href="#">iPad</a></li>
-                            <li><a href="#">iPhone</a></li>
-                            <li><a href="#">Watch</a></li>
-                            <li><a href="#">TV</a></li>
-                            <li><a href="#">Musica</a></li>
-                            <li><a href="#">Accesorios</a></li>
-                        </ul>
-                    </li>
-                    <li> <span>Donde Comprar</span>
-                        <ul>
-                            <li><a href="#">Quito</a></li>
-                            <li><a href="#">Guayaquil</a></li>
-                            <li><a href="#">Cuenca</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <div class="search">
-                <div class="barSearch">
-                    <input type="search" name="search" id="search" placeholder="Buscar">
-                    <i class="fas fa-search"></i>
-                </div>
-                <a href="#">Buscar</a>
-            </div>
-            <div class="buyCar itemsUser">
-                <i class="fas fa-shopping-cart"></i>
-            </div>
-            <div class="sessionItems">
-                <!-- <a href="#">Iniciar Sesión</a>
-                <a href="#">Registrarse</a>-->
-                <i class="far fa-heart"></i>
-                <div class="imgUser">
-                    <img src="../../../img/user/perfil.jpg" alt="user">
-                </div>
-                <span>Richard Torres</span>
-            </div>
-        </div>
+        <?php
+        include("../../../global/php/headerPublicUser.php");
+        ?>
     </header>
 
     <div class="container">
         <header>
-            <div class="perfil">
-                <div class="img">
-                    <img src="../../../img/user/perfil.jpg" alt="">
-                </div>
-                <h2>Richard Torres</h2>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html"><i class="fas fa-user"></i> Perfil</a></li>
-                    <li><a href="#"><i class="fas fa-history"></i> Historial de compras</a></li>
-                    <li><a href="#"><i class="fas fa-shopping-cart"></i> Carrito de compras</a></li>
-                    <li><a href="#"><i class="far fa-heart"></i> Favoritos</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Opciones</a></li>
-                    <li><a href="#"><i class="fas fa-envelope-open-text"></i> Mensajes</a></li>
-                    <li><a href="#"><i class="far fa-life-ring"></i> Ayuda</a></li>
-                </ul>
-            </nav>
+            <?php
+            include("../../../global/php/headerUser.php");
+            ?>
         </header>
         <section>
             <h2>Factura</h2>
@@ -170,7 +114,6 @@
                                     <td><a onclick="openWindow()">Ver ruta</a>
                                     </td>
 
-
                                 </tr>
                                 <tr>
                                     <td>1</td>
@@ -238,61 +181,14 @@
     </div>
 
     <footer>
-        <div class="content">
-            <div class="listFooter">
-                <h3>Productos</h3>
-                <ul>
-                    <li><a href="#">Mac</a></li>
-                    <li><a href="#">iPad</a></li>
-                    <li><a href="#">iPhone</a></li>
-                    <li><a href="#">Watch</a></li>
-                    <li><a href="#">TV</a></li>
-                    <li><a href="#">Musica</a></li>
-                    <li><a href="#">Accesorios</a></li>
-                </ul>
-            </div>
-            <div class="listFooter">
-                <h3>Tiendas</h3>
-                <ul>
-                    <li><a href="#">Quito</a></li>
-                    <li><a href="#">Guayaquil</a></li>
-                    <li><a href="#">Cuenca</a></li>
-                </ul>
-            </div>
-            <div class="listFooter">
-                <h3>Desarrolladores</h3>
-                <ul>
-                    <li><a href="#">Henry Guaman</a></li>
-                    <li><a href="#">Claudio Maldonado</a></li>
-                    <li><a href="#">Jonnathan Ochoa</a></li>
-                    <li><a href="#">Pedro Ortiz</a></li>
-                    <li><a href="#">Yandry Romero</a></li>
-                </ul>
-            </div>
-            <div class="infoFooter">
-                <p>Copyright &copy; 2019 Todos los derechos reservados</p>
-                <p>Designed by Group 5</p>
-            </div>
-        </div>
-        <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWSPPYtqD1tZgvQ-pPzLRXttQoVCOM9Jc&callback&callback=initMap"></script>
-        <script src="../js/functions.js"></script>
+        <?php
+        include("../../global/php/footerPublic.php");
+        ?>
     </footer>
-    <!-- <script src="../js/functions.js"></script>
-    <script>
-        navigator.geolocation.getCurrentPosition(fn_ok, fn_mal);
-        function fn_mal() { }
-
-        function fn_ok(rta) {
-
-            lat = rta.coords.latitude;
-            long = rta.coords.longitude;
-
-            loadMap(lat, long, -2.91900, -79.01455)
-        }
-    </script> -->
-
-
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWSPPYtqD1tZgvQ-pPzLRXttQoVCOM9Jc&callback&callback=initMap">
+    </script>
+    <script src="../js/functions.js"></script>
 
 </body>
 

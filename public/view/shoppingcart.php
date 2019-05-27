@@ -16,51 +16,9 @@
 
 <body>
     <header>
-        <div class="content">
-            <a href="#"><i class="fab fa-apple"></i></a>
-            <nav class="menu">
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li> <span>Productos</span>
-                        <ul>
-                            <li><a href="#">Mac</a></li>
-                            <li><a href="#">iPad</a></li>
-                            <li><a href="#">iPhone</a></li>
-                            <li><a href="#">Watch</a></li>
-                            <li><a href="#">TV</a></li>
-                            <li><a href="#">Musica</a></li>
-                            <li><a href="#">Accesorios</a></li>
-                        </ul>
-                    </li>
-                    <li> <span>Donde Comprar</span>
-                        <ul>
-                            <li><a href="#">Quito</a></li>
-                            <li><a href="#">Guayaquil</a></li>
-                            <li><a href="#">Cuenca</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <div class="search">
-                <div class="barSearch">
-                    <input type="search" name="search" id="search" placeholder="Buscar">
-                    <i class="fas fa-search"></i>
-                </div>
-                <a href="#">Buscar</a>
-            </div>
-            <div class="buyCar itemsUser">
-                <i class="fas fa-shopping-cart"></i>
-            </div>
-            <div class="sessionItems">
-                <a href="#">Iniciar Sesión</a>
-                <a href="#">Registrarse</a>
-                <!-- <i class="far fa-heart"></i>
-                <div class="imgUser">
-                    <img src="../../img/user/perfil.jpg" alt="user">
-                </div>
-                <span>Richard Torres</span>-->
-            </div>
-        </div>
+        <?php
+        include("../../global/php/headerPublic.php");
+        ?>
     </header>
 
     <div id="floatWindow">
@@ -195,42 +153,9 @@
     </div>
 
     <footer>
-        <div class="content">
-            <div class="listFooter">
-                <h3>Productos</h3>
-                <ul>
-                    <li><a href="#">Mac</a></li>
-                    <li><a href="#">iPad</a></li>
-                    <li><a href="#">iPhone</a></li>
-                    <li><a href="#">Watch</a></li>
-                    <li><a href="#">TV</a></li>
-                    <li><a href="#">Musica</a></li>
-                    <li><a href="#">Accesorios</a></li>
-                </ul>
-            </div>
-            <div class="listFooter">
-                <h3>Tiendas</h3>
-                <ul>
-                    <li><a href="#">Quito</a></li>
-                    <li><a href="#">Guayaquil</a></li>
-                    <li><a href="#">Cuenca</a></li>
-                </ul>
-            </div>
-            <div class="listFooter">
-                <h3>Desarrolladores</h3>
-                <ul>
-                    <li><a href="#">Henry Guaman</a></li>
-                    <li><a href="#">Claudio Maldonado</a></li>
-                    <li><a href="#">Jonnathan Ochoa</a></li>
-                    <li><a href="#">Pedro Ortiz</a></li>
-                    <li><a href="#">Yandry Romero</a></li>
-                </ul>
-            </div>
-            <div class="infoFooter">
-                <p>Copyright &copy; 2019 Todos los derechos reservados</p>
-                <p>Designed by Group 5</p>
-            </div>
-        </div>
+        <?php
+        include("../../global/php/footerPublic.php");
+        ?>
     </footer>
 
 </body>

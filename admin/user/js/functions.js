@@ -32,8 +32,6 @@ function openWindow() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
     let windowFloat = document.getElementById("floatWindow")
     windowFloat.style.display = "flex"
-
-
 }
 
 function cluseWindow() {
