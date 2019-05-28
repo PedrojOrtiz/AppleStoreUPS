@@ -184,6 +184,7 @@ if (isset($_SESSION['isLogin'])) {
                             FROM producto pro, imagen img, rating rat 
                             WHERE pro.pro_id = img.PRODUCTO_pro_id AND
                                 pro.pro_id = rat.PRODUCTO_pro_id AND
+                                pro.pro_descuento > 0 AND
                                 pro.pro_estado=1 
                             ORDER BY 1 DESC limit 8;";
 

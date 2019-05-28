@@ -31,14 +31,14 @@ if (isset($_SESSION['isLogin'])) {
 
     <div class="content">
         <h2>Resultados</h2>
-        <section>
+        <section id="contentCards">
             <h2>Resultados para "<?php if (isset($_GET['searchCat'])) {
                                         echo $_GET['searchCat'];
                                     } elseif (isset($_GET['searchName'])) {
                                         echo $_GET['searchName'];
                                     }
                                     ?>"</h2>
-            <div class="contentCards" id="contentCards">
+            <div class="contentCards">
                 <?php
                 include '../../config/configDB.php';
                 if (isset($_GET['searchCat'])) {
@@ -124,10 +124,6 @@ if (isset($_SESSION['isLogin'])) {
             }
             $conn->close();
             ?>
-
-
-
-
 
 
                 <article>

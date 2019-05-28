@@ -12,29 +12,32 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         ?>
-<article>
-    <div class="contentImg">
-        <div class="cardImg">
-            <a href="product.php?producto=<?php echo $row['pro_id']; ?>"><img
-                    src="../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>"
-                    alt="<?php echo $row['img_nombre']; ?>"></a>
+<h2>Resultados para "<?php echo $_GET['searchName']; ?>"</h2>
+<div class="contentCards">
+    <article>
+        <div class="contentImg">
+            <div class="cardImg">
+                <a href="product.php?producto=<?php echo $row['pro_id']; ?>"><img
+                        src="../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>"
+                        alt="<?php echo $row['img_nombre']; ?>"></a>
+            </div>
+            <span>Nuevo</span>
+            <div class="ranking">
+                <i class="fas fa-star"></i>
+                <span><?php echo $row['rat_calificacion']; ?></span>
+            </div>
         </div>
-        <span>Nuevo</span>
-        <div class="ranking">
-            <i class="fas fa-star"></i>
-            <span><?php echo $row['rat_calificacion']; ?></span>
+        <div class="contentDescription">
+            <div class="descripProduct">
+                <a href="product.php?producto=<?php echo $row['pro_id']; ?>">
+                    <h2><?php echo $row['pro_nombre']; ?></h2>
+                </a>
+                <p><?php echo $row['pro_descripcion']; ?></p>
+            </div>
+            <span>$<?php echo $row['pro_precio']; ?></span>
         </div>
-    </div>
-    <div class="contentDescription">
-        <div class="descripProduct">
-            <a href="product.php?producto=<?php echo $row['pro_id']; ?>">
-                <h2><?php echo $row['pro_nombre']; ?></h2>
-            </a>
-            <p><?php echo $row['pro_descripcion']; ?></p>
-        </div>
-        <span>$<?php echo $row['pro_precio']; ?></span>
-    </div>
-</article>
+    </article>
+</div>
 <?php
 }
 } else {

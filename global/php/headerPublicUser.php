@@ -5,13 +5,13 @@
             <li><a href="../../../index.php">Inicio</a></li>
             <li> <span>Productos</span> <i class="fas fa-sort-down"></i>
                 <ul>
-                    <li><a href="#">Mac</a></li>
-                    <li><a href="#">iPad</a></li>
-                    <li><a href="#">iPhone</a></li>
-                    <li><a href="#">Watch</a></li>
-                    <li><a href="#">TV</a></li>
-                    <li><a href="#">Musica</a></li>
-                    <li><a href="#">Accesorios</a></li>
+                    <li><a href="../../../public/view/search.php?searchCat=mac">Mac</a></li>
+                    <li><a href="../../../public/view/search.php?searchCat=ipad">iPad</a></li>
+                    <li><a href="../../../public/view/search.php?searchCat=iphone">iPhone</a></li>
+                    <li><a href="../../../public/view/search.php?searchCat=watch">Watch</a></li>
+                    <li><a href="../../../public/view/search.php?searchCat=tv">TV</a></li>
+                    <li><a href="../../../public/view/search.php?searchCat=musica">Musica</a></li>
+                    <li><a href="../../../public/view/search.php?searchCat=accesorios">Accesorios</a></li>
                 </ul>
             </li>
             <li> <span>Donde Comprar</span> <i class="fas fa-sort-down"></i>
@@ -29,7 +29,7 @@
             <input type="search" name="search" id="search" placeholder="Buscar">
             <i class="fas fa-search"></i>
         </div>
-        <a href="#">Buscar</a>
+        <a onclick="searchBtn()">Buscar</a>
     </div>
     <!-- <div class="buyCar itemsUser">
         <a href="../../../public/view/shoppingcart.php"><i class="fas fa-shopping-cart"></i></a>
@@ -67,3 +67,4 @@
     }
     ?>
     </div>
+    <script src="../js/funciones.js"></script>
