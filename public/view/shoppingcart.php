@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (isset($_SESSION['isLogin'])) {
+    //header("Location: ../admin/index.php");
+    if ($_SESSION['rol'] == 'admin') {
+        //header("Location: ../admin/index.php");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 

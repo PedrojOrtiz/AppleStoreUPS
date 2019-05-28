@@ -35,18 +35,19 @@
         <a href="../../../public/view/shoppingcart.php"><i class="fas fa-shopping-cart"></i></a>
     </div> -->
     <div class="sessionItems">
-        <!-- <a href="../../../public/view/login.php">Iniciar Sesión</a>
-                <a href="../../../public/view/signup.php">Registrarse</a>-->
-
-        <!-- <a href="favorites.php"><i class="far fa-heart"></i></a> -->
+        <?php
+        if (isset($_SESSION['isLogin'])) {
+            ?>
 
         <div class="imgUser">
             <a href="../../../public/view/shoppingcart.php"><i class="fas fa-shopping-cart"></i></a>
-            <img src="../../../img/user/perfil.jpg" alt="user">
+            <img src="../../../img/user/<?php echo $_SESSION['codigo']; ?>/<?php echo $_SESSION['img']; ?>"
+                alt="<?php echo $_SESSION['img']; ?>">
         </div>
         <nav class="menu perfil">
             <ul>
-                <li><span>Richard Torres</span> <i class="fas fa-sort-down"></i>
+                <li><span><?php echo $_SESSION['nombre'] . ' ' . $_SESSION['apellido']; ?></span> <i
+                        class="fas fa-sort-down"></i>
                     <ul>
                         <li><a href="index.php">Perfil</a>
                         </li>
@@ -58,5 +59,11 @@
                 </li>
             </ul>
         </nav>
+
+        <?php
+    } else {
+        echo '<a href="login.php">Iniciar Sesión</a>';
+        echo '<a href="signup.php">Registrarse</a>';
+    }
+    ?>
     </div>
-</div>

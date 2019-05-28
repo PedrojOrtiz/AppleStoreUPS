@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['isLogin'])) {
+    header("Location:index.php");
+}
+//header("Location: ../admin/index.php");
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 

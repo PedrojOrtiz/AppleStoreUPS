@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (isset($_SESSION['isLogin'])) {
+    //header("Location: ../admin/index.php");
+    if ($_SESSION['rol'] == 'admin') {
+        //header("Location: ../admin/index.php");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,7 +14,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/globalStyle.css">
@@ -31,9 +41,13 @@
             <div class="storeDescription">
                 <div class="storeAbout">
                     <h3>Acerca de nosostros</h3>
-                    <p>Somos una empresa de éxito nacional y tecnología innovadora, cuya sede está ubicada en la ciudad de Cuenca.
-                        Nuestros productos y servicios nos han convertido en líder tecnológico en el mercado y en un socio fiable del sector de distribución de tecnología.
-                        Nuestra experiencia de más de 85 años en la venta de productos totalmente originales de Apple nos a llevado a una gran reputación a lo largo de este tiempo ya que nuestros productos son de alta calidad y excelente garantía a nivel nacional.
+                    <p>Somos una empresa de éxito nacional y tecnología innovadora, cuya sede está ubicada en la ciudad
+                        de Cuenca.
+                        Nuestros productos y servicios nos han convertido en líder tecnológico en el mercado y en un
+                        socio fiable del sector de distribución de tecnología.
+                        Nuestra experiencia de más de 85 años en la venta de productos totalmente originales de Apple
+                        nos a llevado a una gran reputación a lo largo de este tiempo ya que nuestros productos son de
+                        alta calidad y excelente garantía a nivel nacional.
                     </p>
                 </div>
                 <div class="storeContact">
@@ -41,7 +55,8 @@
                     <p>Lunes a Viernes de 8:00 a 16:00</p>
                     <p><i class="fas fa-phone"></i> 0989420495</p>
                     <p><i class="fas fa-tty"></i> (07)2255887</p>
-                    <p><i class="fas fa-at"></i> <a href="mailto:aplestoreguayaquil@aple.com">applestoreguayaquil@apple.com</a></p>
+                    <p><i class="fas fa-at"></i> <a
+                            href="mailto:aplestoreguayaquil@aple.com">applestoreguayaquil@apple.com</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> Av.Juan Tamariz y 3 de Octubre</p>
                 </div>
             </div>
