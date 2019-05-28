@@ -68,6 +68,7 @@ ul, ol {
 .container header{
     background-color: var(--color1);
 }
+
 .container header .perfil{
     text-align: center;
     display: flex;

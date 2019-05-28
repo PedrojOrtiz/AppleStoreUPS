@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -19,10 +19,10 @@
             <div class="sessionItems">
                     <div class="header">
                         <ul class="nav">
-                            <li> <a>Nombre Apellido
+                            <li> <a>Nombre Apellido</a>
                                 <ul>
-                                    <li><a href="#">Ajustes</a></li>
-                                    <li><a href="#">Cerrar Sesion</a></li>
+                                    <li><a href="modify.php">Ajustes</a></li>
+                                    <li><a href="logout.php">Cerrar Sesion</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -41,17 +41,17 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
-                    <li><a href="#"><i class="fas fa-chart-bar"></i> Ordenes</a></li>
-                    <li><a href="#"><i class="far fa-envelope"></i> Mensajes</a></li>
-                    <li><a href="#"><i class="fa fa-barcode"></i> Productos</a></li>
-                    <li><a href="#"><i class="fas fa-users"></i> Clientes</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Configuracion</a></li>
+                    <li><a href="index.php"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="orders.php"><i class="fas fa-chart-bar"></i> Ordenes</a></li>
+                    <li><a href="inbox.php"><i class="far fa-envelope"></i> Mensajes</a></li>
+                    <li><a href="products.php"><i class="fa fa-barcode"></i> Productos</a></li>
+                    <li><a href="clientes.php"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li><a href="settings.php"><i class="fas fa-cog"></i> Configuracion</a></li>
                 </ul>
             </nav>
         </header>
         <section>
-            <h2>Inicio</h2>
+            <h2>Mensajes</h2>
             <div class="cardContent">
                 <h2>Sucursal: "Nombre Sucursal"</h2>
                 <div class="formData">
