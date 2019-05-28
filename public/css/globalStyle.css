@@ -196,8 +196,10 @@ header .content .sessionItems .imgUser img:hover{
     grid-column-gap: 15px;
 }
 .content section article{
-    background-color: var(--colorBlanco);
-    
+    background-color: var(--colorBlanco); 
+}
+.content .contentCards article{
+    margin-top: 20px;
 }
 article .contentImg{
     width: 100%;

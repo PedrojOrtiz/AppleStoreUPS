@@ -147,6 +147,9 @@ footer{
 .container section .cardContent .formData .perfilImg input{
     width: 100%;
 }
+.container section .cardContent .formData.updatePass form{
+    grid-template-columns: 30% 1fr;
+}
 /*---------SOTRE JO--------------*/
 img.pequeña{
    width: 1519px;

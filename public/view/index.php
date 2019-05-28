@@ -30,6 +30,57 @@
                 <h2>Ultimos productos</h2>
             </a>
             <div class="contentCards">
+
+
+
+                <article>
+                    <?php
+                    include '../../config/configDB.php';
+                    $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion
+                            FROM producto pro, imagen img, rating rat 
+                            WHERE pro.pro_id = img.PRODUCTO_pro_id AND
+                                pro.pro_id = rat.PRODUCTO_pro_id AND
+                                pro.pro_estado=1 
+                            ORDER BY 1 DESC limit 8;";
+
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            ?>
+
+                    <div class="contentImg">
+                        <div class="cardImg">
+                            <a href="product.php?producto=<?php echo $row['pro_id']; ?>"><img
+                                    src="../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>"
+                                    alt="<?php echo $row['img_nombre']; ?>"></a>
+                        </div>
+                        <span>Nuevo</span>
+                        <div class="ranking">
+                            <i class="fas fa-star"></i>
+                            <span><?php echo $row['rat_calificacion']; ?></span>
+                        </div>
+                    </div>
+                    <div class="contentDescription">
+                        <div class="descripProduct">
+                            <a href="product.php?producto=<?php echo $row['pro_id']; ?>">
+                                <h2><?php echo $row['pro_nombre']; ?></h2>
+                            </a>
+                            <p><?php echo $row['pro_descripcion']; ?></p>
+                        </div>
+                        <span>$<?php echo $row['pro_precio']; ?></span>
+                    </div>
+
+                    <?php
+                    }
+                }
+                $conn->close();
+                ?>
+                </article>
+
+
+
+
+
                 <article>
                     <div class="contentImg">
                         <div class="cardImg">
@@ -53,6 +104,7 @@
                         <span>$1.599</span>
                     </div>
                 </article>
+
                 <article>
                     <div class="contentImg">
                         <div class="cardImg">
@@ -115,6 +167,54 @@
                 <h2>En descuento</h2>
             </a>
             <div class="contentCards">
+
+                <article>
+                    <?php
+                    include '../../config/configDB.php';
+                    $sql = "SELECT pro.pro_descuento, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion
+                            FROM producto pro, imagen img, rating rat 
+                            WHERE pro.pro_id = img.PRODUCTO_pro_id AND
+                                pro.pro_id = rat.PRODUCTO_pro_id AND
+                                pro.pro_estado=1 
+                            ORDER BY 1 DESC limit 8;";
+
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            ?>
+
+                    <div class="contentImg">
+                        <div class="cardImg">
+                            <a href="product.php"><img
+                                    src="../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>"
+                                    alt="<?php echo $row['img_nombre']; ?>"></a>
+                        </div>
+                        <span><?php echo $row['pro_descuento']; ?>%</span>
+                        <div class="ranking">
+                            <i class="fas fa-star"></i>
+                            <span><?php echo $row['rat_calificacion']; ?></span>
+                        </div>
+                    </div>
+                    <div class="contentDescription">
+                        <div class="descripProduct">
+                            <a href="product.php">
+                                <h2><?php echo $row['pro_nombre']; ?></h2>
+                            </a>
+                            <p><?php echo $row['pro_descripcion']; ?></p>
+                        </div>
+                        <span>$<?php echo $row['pro_precio']; ?></span>
+                    </div>
+
+                    <?php
+                    }
+                }
+                $conn->close();
+                ?>
+                </article>
+
+
+
+
                 <article>
                     <div class="contentImg">
                         <div class="cardImg">
@@ -140,6 +240,33 @@
                         <span>$1.599</span>
                     </div>
                 </article>
+
+                <article>
+                    <div class="contentImg">
+                        <div class="cardImg">
+                            <a href="#"><img src="../../img/product/producto.jpg" alt="producto"></a>
+                        </div>
+                        <span>10%</span>
+                        <i class="far fa-heart"></i>
+                    </div>
+                    <div class="contentDescription">
+                        <div class="descripProduct">
+                            <a href="#">
+                                <h2>iPhone X</h2>
+                            </a>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam cupiditate harum,
+                                possimus repudiandae vitae voluptas et amet perspiciatis rerum fugiat, commodi beatae
+                                corporis fuga laudantium ducimus excepturi iste nobis magnam!
+                                Esse eveniet exercitationem reprehenderit aut alias doloremque enim debitis officiis
+                                quis libero velit reiciendis earum deserunt, laudantium accusamus dolore praesentium
+                                laborum consequatur aliquam, recusandae officia eos! Asperiores consectetur aliquid
+                                dolorem.
+                            </p>
+                        </div>
+                        <span>$1.599</span>
+                    </div>
+                </article>
+
                 <article>
                     <div class="contentImg">
                         <div class="cardImg">

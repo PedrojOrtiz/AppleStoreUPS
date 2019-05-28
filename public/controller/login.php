@@ -18,6 +18,7 @@ if ($result->num_rows > 0) {
 
     header("Location: ../view/successful.php?login=true");
 } else {
+
     header("Location: ../view/successful.php?login=false");
 }
 $conn->close();

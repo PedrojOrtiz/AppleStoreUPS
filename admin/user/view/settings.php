@@ -32,7 +32,7 @@
             <div class="cardContent settings">
                 <div class="updatePass">
                     <h2>Cambiar contraseña</h2>
-                    <div class="formData">
+                    <div class="formData updatePass">
                         <form action="">
                             <label for="oldpass">Contraseña antigua</label>
                             <input type="password" name="oldpass" id="oldpass">
