@@ -23,6 +23,33 @@
 
 
     <div class="content">
+        <?php
+        include '../../config/configDB.php';
+        $sql = "SELECT pro_nombre, pro_descripcion, pro_precio, pro_descuento
+                FROM producto
+                WHERE pro_id=" . $_GET['producto'] . ";";
+        $result = $conn->query($sql);
+        if (isset($_GET['producto']) && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $nombre = $row['pro_nombre'];
+            $descripcion = $row['pro_descripcion'];
+            $precio = $row['pro_precio'];
+            $descuento = $row['pro_descuento'];
+        } else {
+            echo 'Error';
+        }
+
+        $sqlStock = "SELECT ps.pro_suc_stock FROM producto p, producto_sucursal ps, sucursal s
+                                WHERE p.pro_id= ps.PRODUCTO_pro_id AND
+                                s.suc_id= ps.SUCURSAL_suc_id AND 
+                                s.suc_id=1;";
+
+        $resultStock = $conn->query($sqlStock);
+        $rowStock = $resultStock->fetch_assoc();
+        $stok = $rowStock['pro_suc_stock'];
+
+        ?>
+
         <section class="product">
             <div class="productSlide">
                 <div class="productSlideImg">
@@ -33,26 +60,28 @@
                 <a href="">Next</a>
             </div>
             <div class="productInfo">
-                <h2>iPhone X</h2>
+                <h2><?php echo $nombre; ?></h2>
                 <h3>Descripcion</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio mollitia eius voluptate fugit ducimus
-                    qui dolor cumque animi at. Error.</p>
-                <span>$749.00</span>
+                <p><?php echo $descripcion; ?></p>
+                <span>$<?php echo $precio; ?></span>
                 <div class="dataStore">
                     <div>
                         <label for="selectStore">Seleccionar tienda:</label>
-                        <select id="selectStore">
-                            <option value="quito">Quito</option>
-                            <option value="guayaquil">Guayaquil</option>
+                        <select id="selectStore" onchange="stock(this)">
+                            <option value="quito">Guayaquil</option>
+                            <option value="guayaquil">Quito</option>
                             <option value="cuenca">Cuenca</option>
                         </select>
                     </div>
-                    <p><span>Stock:</span> 10</p>
+
+                    <p><span>Stock:</span> <span id="stok"><?php echo $stok; ?></span></p>
                 </div>
                 <div class="productPrice">
-                    <p><span>Sub-Total: </span>$749.00</p>
-                    <p><span>Descuento: </span>0%</p>
-                    <p><span>Total: </span>$749.00</p>
+                    <p><span>Sub-Total: </span>$<?php echo $precio; ?></p>
+                    <p><span>Descuento: </span><?php echo $descuento; ?>%</p>
+                    <p><span>IVA: </span>12%</p>
+                    <p><span>Total: </span>$<?php $iva = (($precio * 0.12) + $precio);
+                                            echo ($iva - ($iva * ($descuento / 100))); ?></p>
                 </div>
                 <div class="productBtns">
                     <div class="valoration" id="valoration" onmousemove="elemento(event)">
@@ -70,7 +99,6 @@
                             <i class="fas fa-cart-plus"></i>
                             Agregar al carrito
                         </button>
-                        <i class="far fa-heart"></i>
                     </div>
                 </div>
             </div>
