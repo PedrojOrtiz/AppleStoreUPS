@@ -45,7 +45,7 @@
                     <li><a href="orders.php"><i class="fas fa-chart-bar"></i> Ordenes</a></li>
                     <li><a href="inbox.php"><i class="far fa-envelope"></i> Mensajes</a></li>
                     <li><a href="products.php"><i class="fa fa-barcode"></i> Productos</a></li>
-                    <li><a href="clientes.php"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li><a href="clients.php"><i class="fas fa-users"></i> Clientes</a></li>
                     <li><a href="settings.php"><i class="fas fa-cog"></i> Configuracion</a></li>
                 </ul>
             </nav>
