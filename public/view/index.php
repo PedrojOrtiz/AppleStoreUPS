@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (isset($_SESSION['isLogin'])) {
+    //header("Location: ../admin/index.php");
+    if ($_SESSION['rol'] == 'admin') {
+        //header("Location: ../admin/index.php");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -15,54 +24,14 @@
 
 <body>
     <header>
-        <div class="content">
-            <a href="#"><i class="fab fa-apple"></i></a>
-            <nav class="menu">
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li> <span>Productos</span>
-                        <ul>
-                            <li><a href="#">Mac</a></li>
-                            <li><a href="#">iPad</a></li>
-                            <li><a href="#">iPhone</a></li>
-                            <li><a href="#">Watch</a></li>
-                            <li><a href="#">TV</a></li>
-                            <li><a href="#">Musica</a></li>
-                            <li><a href="#">Accesorios</a></li>
-                        </ul>
-                    </li>
-                    <li> <span>Donde Comprar</span>
-                        <ul>
-                            <li><a href="#">Quito</a></li>
-                            <li><a href="#">Guayaquil</a></li>
-                            <li><a href="#">Cuenca</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <div class="search">
-                <div class="barSearch">
-                    <input type="search" name="search" id="search" placeholder="Buscar">
-                    <i class="fas fa-search"></i>
-                </div>
-                <a href="#">Buscar</a>
-            </div>
-            <div class="buyCar itemsUser">
-                <i class="fas fa-shopping-cart"></i>
-            </div>
-            <div class="sessionItems">
-                <!-- <a href="#">Iniciar Sesión</a>
-                <a href="#">Registrarse</a>-->
-                <i class="far fa-heart"></i>
-                <div class="imgUser">
-                    <img src="../../img/user/perfil.jpg" alt="user">
-                </div>
-                <span>Richard Torres</span>
-            </div>
-        </div>
+        <?php
+        include_once("../../global/php/headerPublic.php");
+        ?>
     </header>
-    <div class="slidshow">
-        <p>Apple Store EC</p>
+    <div class="headerImg storeImg storeGuayaqil storeIndex">
+        <div class="bg">
+            <h1>Apple store EC</h1>
+        </div>
     </div>
     <div class="content">
         <section>
@@ -70,31 +39,81 @@
                 <h2>Ultimos productos</h2>
             </a>
             <div class="contentCards">
+
+
+
                 <article>
+                    <?php
+                    include '../../config/configDB.php';
+                    $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion
+                            FROM producto pro, imagen img, rating rat 
+                            WHERE pro.pro_id = img.PRODUCTO_pro_id AND
+                                pro.pro_id = rat.PRODUCTO_pro_id AND
+                                pro.pro_estado=1 
+                            ORDER BY 1 DESC limit 8;";
+
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            ?>
+
                     <div class="contentImg">
                         <div class="cardImg">
-                            <a href="#"><img src="../../img/product/producto.jpg" alt="producto"></a>
+                            <a href="product.php?producto=<?php echo $row['pro_id']; ?>"><img
+                                    src="../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>"
+                                    alt="<?php echo $row['img_nombre']; ?>"></a>
                         </div>
                         <span>Nuevo</span>
-                        <i class="fas fa-heart"></i>
+                        <div class="ranking">
+                            <i class="fas fa-star"></i>
+                            <span><?php echo $row['rat_calificacion']; ?></span>
+                        </div>
                     </div>
                     <div class="contentDescription">
                         <div class="descripProduct">
-                            <a href="#">
-                                <h2>iPhone X</h2>
+                            <a href="product.php?producto=<?php echo $row['pro_id']; ?>">
+                                <h2><?php echo $row['pro_nombre']; ?></h2>
                             </a>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam cupiditate harum,
-                                possimus repudiandae vitae voluptas et amet perspiciatis rerum fugiat, commodi beatae
-                                corporis fuga laudantium ducimus excepturi iste nobis magnam!
-                                Esse eveniet exercitationem reprehenderit aut alias doloremque enim debitis officiis
-                                quis libero velit reiciendis earum deserunt, laudantium accusamus dolore praesentium
-                                laborum consequatur aliquam, recusandae officia eos! Asperiores consectetur aliquid
-                                dolorem.
+                            <p><?php echo $row['pro_descripcion']; ?></p>
+                        </div>
+                        <span>$<?php echo $row['pro_precio']; ?></span>
+                    </div>
+
+                    <?php
+                    }
+                }
+                $conn->close();
+                ?>
+                </article>
+
+
+
+
+
+                <article>
+                    <div class="contentImg">
+                        <div class="cardImg">
+                            <a href="product.php"><img src="../../img/product/xsmax.jpg" alt="producto"></a>
+                        </div>
+                        <span>Nuevo</span>
+                        <div class="ranking">
+                            <i class="fas fa-star"></i>
+                            <span>4.5</span>
+                        </div>
+                    </div>
+                    <div class="contentDescription">
+                        <div class="descripProduct">
+                            <a href="product.php">
+                                <h2>iPhone XS MAX</h2>
+                            </a>
+                            <p>Presentamos el iPhone XSMAX con dos tamaños de pantalla Super Retina,
+                                incluida la más grande que ha tenido nunca un iPhone. Face ID aún más rápido.
                             </p>
                         </div>
                         <span>$1.599</span>
                     </div>
                 </article>
+
                 <article>
                     <div class="contentImg">
                         <div class="cardImg">
@@ -157,6 +176,55 @@
                 <h2>En descuento</h2>
             </a>
             <div class="contentCards">
+
+                <article>
+                    <?php
+                    include '../../config/configDB.php';
+                    $sql = "SELECT pro.pro_descuento, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion
+                            FROM producto pro, imagen img, rating rat 
+                            WHERE pro.pro_id = img.PRODUCTO_pro_id AND
+                                pro.pro_id = rat.PRODUCTO_pro_id AND
+                                pro.pro_descuento > 0 AND
+                                pro.pro_estado=1 
+                            ORDER BY 1 DESC limit 8;";
+
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            ?>
+
+                    <div class="contentImg">
+                        <div class="cardImg">
+                            <a href="product.php"><img
+                                    src="../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>"
+                                    alt="<?php echo $row['img_nombre']; ?>"></a>
+                        </div>
+                        <span><?php echo $row['pro_descuento']; ?>%</span>
+                        <div class="ranking">
+                            <i class="fas fa-star"></i>
+                            <span><?php echo $row['rat_calificacion']; ?></span>
+                        </div>
+                    </div>
+                    <div class="contentDescription">
+                        <div class="descripProduct">
+                            <a href="product.php">
+                                <h2><?php echo $row['pro_nombre']; ?></h2>
+                            </a>
+                            <p><?php echo $row['pro_descripcion']; ?></p>
+                        </div>
+                        <span>$<?php echo $row['pro_precio']; ?></span>
+                    </div>
+
+                    <?php
+                    }
+                }
+                $conn->close();
+                ?>
+                </article>
+
+
+
+
                 <article>
                     <div class="contentImg">
                         <div class="cardImg">
@@ -182,6 +250,33 @@
                         <span>$1.599</span>
                     </div>
                 </article>
+
+                <article>
+                    <div class="contentImg">
+                        <div class="cardImg">
+                            <a href="#"><img src="../../img/product/producto.jpg" alt="producto"></a>
+                        </div>
+                        <span>10%</span>
+                        <i class="far fa-heart"></i>
+                    </div>
+                    <div class="contentDescription">
+                        <div class="descripProduct">
+                            <a href="#">
+                                <h2>iPhone X</h2>
+                            </a>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam cupiditate harum,
+                                possimus repudiandae vitae voluptas et amet perspiciatis rerum fugiat, commodi beatae
+                                corporis fuga laudantium ducimus excepturi iste nobis magnam!
+                                Esse eveniet exercitationem reprehenderit aut alias doloremque enim debitis officiis
+                                quis libero velit reiciendis earum deserunt, laudantium accusamus dolore praesentium
+                                laborum consequatur aliquam, recusandae officia eos! Asperiores consectetur aliquid
+                                dolorem.
+                            </p>
+                        </div>
+                        <span>$1.599</span>
+                    </div>
+                </article>
+
                 <article>
                     <div class="contentImg">
                         <div class="cardImg">
@@ -241,42 +336,9 @@
     </div>
 
     <footer>
-        <div class="content">
-            <div class="listFooter">
-                <h3>Productos</h3>
-                <ul>
-                    <li><a href="#">Mac</a></li>
-                    <li><a href="#">iPad</a></li>
-                    <li><a href="#">iPhone</a></li>
-                    <li><a href="#">Watch</a></li>
-                    <li><a href="#">TV</a></li>
-                    <li><a href="#">Musica</a></li>
-                    <li><a href="#">Accesorios</a></li>
-                </ul>
-            </div>
-            <div class="listFooter">
-                <h3>Tiendas</h3>
-                <ul>
-                    <li><a href="#">Quito</a></li>
-                    <li><a href="#">Guayaquil</a></li>
-                    <li><a href="#">Cuenca</a></li>
-                </ul>
-            </div>
-            <div class="listFooter">
-                <h3>Desarrolladores</h3>
-                <ul>
-                    <li><a href="#">Henry Guaman</a></li>
-                    <li><a href="#">Claudio Maldonado</a></li>
-                    <li><a href="#">Jonnathan Ochoa</a></li>
-                    <li><a href="#">Pedro Ortiz</a></li>
-                    <li><a href="#">Yandry Romero</a></li>
-                </ul>
-            </div>
-            <div class="infoFooter">
-                <p>Copyright &copy; 2019 Todos los derechos reservados</p>
-                <p>Designed by Group 5</p>
-            </div>
-        </div>
+        <?php
+        include("../../global/php/footerPublic.php");
+        ?>
     </footer>
 
 </body>

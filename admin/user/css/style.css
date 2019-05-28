@@ -13,13 +13,14 @@ footer{
 }
 .container{
     display: grid;
-    grid-template-columns: 25% 1fr;
+    grid-template-columns: 22% 1fr;
     height: 100%;
+    width: 100%;
     margin-bottom: -32px;
 }
 /*-----------HEADER----------------*/
 .container header{
-    background-color: var(--colorBlanco);
+    background-color: var(--colorBlanco);  
 }
 .container header .perfil{
     text-align: center;
@@ -99,17 +100,15 @@ footer{
     margin-bottom: 15px;
     font-weight: 600;
 }
-.container section .cardContent .formData{
-    display: flex;
-}
+
 .container section .cardContent .formData form{
     display: grid;
-    grid-template-columns: 35% 1fr;
+    grid-template-columns: 25% 1fr 1fr;
     grid-row-gap: 15px;
+    grid-column-gap: 10px;
     align-items: center;
-    width: 65%;
+    width: 100%;
     margin-right: 15px;
-
 }
 .container section .cardContent label{
     font-weight: 600;
@@ -131,14 +130,11 @@ footer{
     color: var(--colorBlanco);
     border: none;
 }
-.container section .cardContent .formData .perfilImg{
-    width: 35%;
+.container section .cardContent .formData form .perfilImg{
+    grid-column: 3/4;
+    grid-row: 1/13;
 }
-.container section .cardContent .formData .perfilImg .img{
-    width: 100%;
-    height: 40%;
-    margin-bottom: 15px;
-}
+
 .container section .cardContent .formData .perfilImg .img img{
     width: 100%;
     height: 100%;
@@ -151,6 +147,41 @@ footer{
 .container section .cardContent .formData .perfilImg input{
     width: 100%;
 }
+.container section .cardContent .formData.updatePass form{
+    grid-template-columns: 30% 1fr;
+}
+/*---------SOTRE JO--------------*/
+img.pequeña{
+   width: 1519px;
+   height: 700px;
+    }
+img.direccion{
+        width: 600px;
+        height: 500px;
+}
+h2.posicion{
+text-align: center;
+color: #A3A6B4;
+    }
+h1.posicion{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin-top: 300px;
+    font-size: 50px;
+    margin-bottom: 300px;
+    background-color: #3B3B53;
+}
+
+div.posicion{
+    width: 500px;
+    height: 100;
+    margin-left: 200px;
+}
+#color{
+    background-color: #3B86FF;
+
+}
+
 
 /*---------TABLE--------------*/
 .container section .cardContent article table {

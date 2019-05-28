@@ -24,7 +24,6 @@ body{
 body header{
     width: 100%;
     background-color: var(--color1);
-    padding: 6px 0;
 }body header li{
     list-style: none;
 }
@@ -65,54 +64,78 @@ body header i{
     color: var(--colorBlanco);
     font-size: 25px;
 }
-body header>.content{
+body header .content{
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-body header>.content>.menu ul{
-    display: flex;
+/*------------MENU-----------------*/
+body header .content .menu ul li i{
+    font-size: .7em;
+    margin-left: -4px;
 }
-body header>.content>.menu ul li{
+body header .content .menu ul{
+    display: flex;
+    
+}
+body header .content .menu>ul>li{
     position: relative;
     float: left;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
 }
-body header>.content>.menu ul ul{
+body header .content .menu ul ul{
     display: none;
     position: absolute;
     padding: 0;
     background-color: var(--colorBlanco);
-    box-shadow: 1px 1px 10px 0px #000;
-    border-radius: 10px;
-    width: 12.5em;   
+    /* box-shadow: 1px 1px 10px 0px #000; */
+    border-radius: 3px;
+    width: 12em;   
     z-index: 100;
+    top: 48px;
 }
-body header>.content>.menu ul ul li{ 
+body header .content .menu ul ul:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-width: 0 8px 13px;
+    border-style: solid;
+    border-color: transparent transparent var(--colorBlanco);
+}
+
+body header .content .menu ul ul li{ 
     float: none;
     border-bottom: 1px solid var(--bgColor);
 }
-body header>.content>.menu ul ul li:last-child{
+body header .content .menu ul ul li:last-child{
     border: none;
 }
-body header>.content>.menu ul li ul li a:hover{
+body header .content .menu ul li ul li a:hover{
     color: var(--color2);
 }
-body header>.content>.menu ul ul a{
+body header .content .menu ul ul a{
     line-height: 120%;
     padding: 10px 15px;
     color:#404040;
 }
-body header>.content>.menu ul ul a:hover{
+body header .content .menu ul ul a:hover{
     color: ver(--color2);
 }
-body header>.content>.menu ul li:hover>ul{
+body header .content .menu ul li:hover>ul{
     display: block;
 }
+/*-------------SEARCH BAR--------------------*/
 header .content .search{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 header .content .search .barSearch{
     position: relative;
 }
@@ -125,25 +148,27 @@ header .content .search .barSearch input{
 }
 header .content .search .barSearch i{
     color: var(--color1);
+    opacity: .5;
     position: absolute;
     left: 5px;
-    top: 0;
-    font-size: 1.5em;
+    top: 3px;
+    font-size: 1.3em;
 }
 header .content .sessionItems{
     display: flex;
     align-items: center;
 }
 header .content .sessionItems .imgUser{
-    width: 50px;
-    height: 50px;
-    margin: 0 10px;
+    margin: 0 5px 0 25px;
+    display: flex;
+    align-items: center;
 
 }
 header .content .sessionItems .imgUser img{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
+    margin-left: 20px;
 }
 header .content .sessionItems .imgUser img:hover{
     opacity: .7;
@@ -160,6 +185,10 @@ header .content .sessionItems .imgUser img:hover{
     margin: 1.5em 0;
     color: var(--colorDark);
     font-size: 2em;  
+}.content section>h2{
+    margin: 1.5em 0;
+    color: var(--colorDark);
+    font-size: 2em;  
 }
 .content .contentCards{
     display: grid;
@@ -167,8 +196,10 @@ header .content .sessionItems .imgUser img:hover{
     grid-column-gap: 15px;
 }
 .content section article{
-    background-color: var(--colorBlanco);
-    
+    background-color: var(--colorBlanco); 
+}
+.content .contentCards article{
+    margin-top: 20px;
 }
 article .contentImg{
     width: 100%;
@@ -181,7 +212,7 @@ article .contentImg img:hover{
     opacity: .7;
     cursor: pointer;
 }
-article .contentImg span{
+article .contentImg>span{
     background: var(--colorRojo);
     width: 5em;
     font-size: .6em;
@@ -192,17 +223,28 @@ article .contentImg span{
     top: 1em;
     left: 1em;
 }
-article .contentImg span:hover{
+article .contentImg>span:hover{
     color: var(--colorBlanco)
 }
-article .contentImg i{
-    color: var(--colorRojo);
-    font-size: 1.5em;
+article .contentImg .ranking{
     position: absolute;
-    top: .1em;
+    top: .5em;
     right: 1em;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, .5);
+    padding: 0px 5px;
+    border-radius: 20px;
 }
-article .contentImg i:hover{
+article .contentImg .ranking i{
+    color: #FFCA83;
+    font-size: 1.3em;
+}
+article .contentImg .ranking span{
+    color: var(--colorBlanco);
+    font-size: 1.1em;
+}
+article .contentImg .rankingi:hover{
     cursor: pointer;
 }
 article .contentDescription{
@@ -216,7 +258,7 @@ article .contentDescription .descripProduct{
 }
 article .contentDescription .descripProduct a{
     text-decoration: none;
-    color: var(--colorRojo);
+    color: var(--colorDark);
 }
 article .contentDescription .descripProduct a h2{
     font-size: 1.3em;
@@ -304,7 +346,7 @@ body button:active, input[type=button]:active, input[type=submit]:active{
 body select{
     background: var(--colorBlanco);
     border: 1px solid #D7DAE2;
-    padding: 10px 25px;
+    padding: 10px 40px 10px 15px;
     border-radius: 5px;
     font-size: 11pt;
     background-image: url(../../global/img/down.png); 
@@ -389,3 +431,151 @@ body select option {
     background: var(--colorAzul);
 }
 
+body .headerImg{
+    height: 6.5em;
+    background-color: var(--bgColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--colorBlanco);
+    font-size: 5em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+body .headerImg h1{
+    font-size: .9em;
+    text-transform: uppercase;
+}
+body .headerImg .bg{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body .headerImg.storeImg.storeGuayaqil{
+    background-image: url("../../img/store/tienda1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 90vh;
+}
+body .storeInf {
+    display: flex;
+    margin-top: 20px;
+}
+body .storeInf h3{
+    color: var(--colorDark);
+    margin: 15px 0;
+    font-size: 1.5em;
+}
+body .storeInf .storeDescription{
+    width: 50%;
+}
+body .storeInf .storeAbout p{
+    text-align: justify;
+    margin-top: 30px;
+}
+body .storeInf .storeContact{
+    margin-top: 50px;
+}
+body .storeInf .storeContact p{
+    opacity: .8;
+    margin: 5px 0;
+}
+body .storeInf .storeContact p a{
+    color: var(--colorAzul);
+    text-decoration: none;
+}
+body .storeInf .storeContact p i{
+    color: var(--color1);
+    opacity: 1;
+}
+body .storeInf .storeContact p:nth-child(2){
+    margin: 15px 0 40px 0;
+    font-size: 1.2em;
+    opacity: .7;
+}
+body .storeInf .storeMap{
+    margin-left: 50px;
+    width: 50%;
+    height: 450px;
+}
+body .storeInf .storeMap #map{
+    height: 100%;
+    width: 100%;
+}
+
+body .headerImg.storeImg.storeQuito{
+    background-image: url("../../img/store/tienda2.jpg");
+}
+body .headerImg.storeImg.storeCuenca{
+    background-image: url("../../img/store/tienda3.jpg");
+}
+body .headerImg.storeImg.storeIndex{
+    background-image: url("../../img/store/apple_logo_10-wallpaper-7680x4800.jpg");
+    background-attachment: scroll;
+}
+body .headerImg.pageError{
+    background-color: var(--bgColor);
+    flex-direction: column;
+}
+body .headerImg.pageError h2{
+    color: var(--colorRojo);
+    opacity: .4;
+    font-size: 3em;
+    font-weight: 900;
+}
+body .headerImg.pageError p{
+    color: var(--colorDark);
+    opacity: .5;
+    font-size: .3em;
+}
+#floatWindow{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all ease 1s;
+    z-index: 100;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#floatWindow .contentMap{
+    width: 80%;
+    height: 500px;
+}
+#floatWindow #map{
+    width: 100%;
+    height: 100%;
+    background-color: var(--bgColor);
+    
+}
+#floatWindow i {
+    color: var(--bgColor);
+    font-size: 1.6em;
+    float: right;
+    z-index: 300;
+}
+#floatWindow i:hover{
+    color: var(--colorRojo);
+    cursor: pointer;
+}
+
+#floatWindow .contentWindow{
+    background-color: var(--bgColor);
+    position: relative;
+}
+#floatWindow .contentWindow i{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--colorAzul);
+}
+#floatWindow .contentWindow i:hover{
+    color: var(--colorRojo);
+}
