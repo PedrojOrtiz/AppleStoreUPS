@@ -43,6 +43,8 @@
                     $result = $conn->query($sql);
                     if ($result->num_rows > 0) {
                         $row = $result->fetch_assoc();
+
+                        $codigo = $row["usu_id"];
                         $nombre = $row["usu_nombres"];
                         $apellido = $row["usu_apellidos"];
                         $cedula = $row["usu_cedula"];
@@ -54,6 +56,7 @@
                         $dirCS = $row["dir_calle_secundaria"];
                         $ciudad = $row["dir_ciudad"];
                         $provincia = $row["dir_provincia"];
+                        $codPost = $row["dir_codigo_postal"];
                         $img = $row["img_nombre"];
                     } else {
                         $sql = "SELECT * FROM usuario user, imagen img 
@@ -63,6 +66,7 @@
                         $result = $conn->query($sql);
                         $row = $result->fetch_assoc();
 
+                        $codigo = $row["usu_id"];
                         $nombre = $row["usu_nombres"];
                         $apellido = $row["usu_apellidos"];
                         $cedula = $row["usu_cedula"];
@@ -74,12 +78,14 @@
                         $dirCS = '';
                         $ciudad = '';
                         $provincia = '';
+                        $codPost = '';
                         $img = $row["img_nombre"];
                     }
 
                     $conn->close();
                     ?>
-                    <form action="" method="POST">
+                    <form enctype="multipart/form-data" action="../controller/updateUser.php" method="POST">
+                        <input type="hidden" name="codigo" value="<?php echo ($codigo); ?>">
                         <label for="nombre">Nombre:</label>
                         <input type="text" name="nombre" id="nombre" value="<?php echo ($nombre); ?>">
                         <label for="apellido">Apellido:</label>
@@ -95,20 +101,22 @@
                         <label for="derecNombre">Nombre de direccion</label>
                         <input type="text" name="derecNombre" id="derecNombre" value="<?php echo ($dirNombre); ?>">
                         <label for="derecCalle1">Calle principal</label>
-                        <input type="text" name="derecCalle1" id="derecCalle2" value="<?php echo ($dirCP); ?>">
+                        <input type="text" name="direcCalle1" id="direcCalle2" value="<?php echo ($dirCP); ?>">
                         <label for="derecCalle2">Calle secundaria</label>
-                        <input type="text" name="derecCalle2" id="derecCalle2" value="<?php echo ($dirCS); ?>">
+                        <input type="text" name="direcCalle2" id="direcCalle2" value="<?php echo ($dirCS); ?>">
                         <label for="ciudad">Ciudad</label>
                         <input type="text" name="ciudad" id="ciudad" value="<?php echo ($ciudad); ?>">
                         <label for="provincia">Provincia</label>
                         <input type="text" name="provincia" id="provincia" value="<?php echo ($provincia); ?>">
+                        <label for="codPost">Codigo postal</label>
+                        <input type="text" name="codPost" id="codPost" value="<?php echo ($codPost); ?>">
 
                         <div class="perfilImg">
                             <div class="img">
                                 <img src="../../../img/user/<?php echo (19); ?>/<?php echo ($img); ?>" alt="">
                             </div>
                             <label for="perfilImg">Cambiar foto de perfil...</label>
-                            <input type="file" name="perfilImg" id="perfilImg">
+                            <input type="file" name="foto" id="foto">
                         </div>
                         <label class="save" id="save">Guardar cambios...</label>
                         <input type="submit" value="Guardar cambios">
