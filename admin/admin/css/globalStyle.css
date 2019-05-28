@@ -1,0 +1,391 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --color1: #3B3B53;
+    --color2: #A3A0FB;
+    --colorBlanco:#FFFFFF;
+    --colorRojo: #FF6565;
+    --colorAzul:#3B86FF;
+    --bgColor:#F0F0F7;
+    --colorDark:#4D4F5C;
+    --colorBtns:#43425D;
+}
+.content{
+    width: 100%;
+    margin: auto;
+    color: var(--colorDark);
+}
+body{
+    background-color: var(--bgColor);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/*-----HEADER-----------*/
+body header{
+    width: 100%;
+    background-color: var(--colorBlanco);
+    padding: 6px 0;
+}body header li{
+    list-style: none;
+}
+body header a,i{
+    display: block;
+    text-decoration: none;
+    color: var(--colorBlanco);
+    font-size: .9em;
+    padding: 6.5px;
+}
+body header i.fa-apple{
+    font-size: 1.5em;
+}
+body header i.fa-apple:hover{
+    color: var(--color2);
+    cursor: pointer;
+}
+body header i.fa-shopping-cart{
+    font-size: 1.3em;
+}
+body header i.fa-shopping-cart:hover{
+    color: var(--color2);
+    cursor: pointer;
+}
+body header i.fa-heart{
+    font-size: 1.3em;
+}
+body header i.fa-heart:hover{
+    color: var(--colorRojo);
+    cursor: pointer;
+}
+
+body header a:hover,span:hover{
+    color: var(--color2);
+    cursor: pointer;
+}
+body header i{
+    color: var(--colorBlanco);
+    font-size: 25px;
+}
+body header>.content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+body header>.content>.menu ul{
+    display: flex;
+}
+body header>.content>.menu ul li{
+    position: relative;
+    float: left;
+}
+body header>.content>.menu ul ul{
+    display: none;
+    position: absolute;
+    padding: 0;
+    background-color: var(--colorBlanco);
+    box-shadow: 1px 1px 10px 0px #000;
+    border-radius: 10px;
+    width: 12.5em;   
+    z-index: 100;
+}
+body header>.content>.menu ul ul li{ 
+    float: none;
+    border-bottom: 1px solid var(--bgColor);
+}
+body header>.content>.menu ul ul li:last-child{
+    border: none;
+}
+body header>.content>.menu ul li ul li a:hover{
+    color: var(--color2);
+}
+body header>.content>.menu ul ul a{
+    line-height: 120%;
+    padding: 10px 15px;
+    color:#404040;
+}
+body header>.content>.menu ul ul a:hover{
+    color: ver(--color2);
+}
+body header>.content>.menu ul li:hover>ul{
+    display: block;
+}
+header .content .search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header .content .search .barSearch{
+    position: relative;
+}
+header .content .search .barSearch input{
+    padding: .7em 3.5em;
+    border-radius: 20px;
+    width: 25em;
+    border: none;
+    background-color: var(--colorBlanco);
+}
+header .content .search .barSearch i{
+    color: var(--color1);
+    position: absolute;
+    left: 5px;
+    top: 0;
+    font-size: 1.5em;
+}
+header .content .sessionItems{
+    display: flex;
+    align-items: center;
+    margin-left: 82%;
+}
+header .content .sessionItems .imgUser{
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+
+}
+header .content .sessionItems .imgUser img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/*-----CARDS-------*/
+.content section {
+    margin-top: 2em;
+}
+.content section>a{
+    text-decoration: none;
+    
+}
+.content section>a>h2{
+    margin: 1.5em 0;
+    color: var(--colorDark);
+    font-size: 2em;  
+}
+.content .contentCards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 15px;
+}
+.content section article{
+    background-color: var(--colorBlanco);
+    
+}
+article .contentImg{
+    width: 100%;
+    position: relative;
+}
+article .contentImg img{
+    width: 100%;
+}
+article .contentImg img:hover{
+    opacity: .7;
+    cursor: pointer;
+}
+article .contentImg span{
+    background: var(--colorRojo);
+    width: 5em;
+    font-size: .6em;
+    text-align: center;
+    border-radius: 20px;
+    padding: .5em 0;
+    position: absolute;
+    top: 1em;
+    left: 1em;
+}
+article .contentImg span:hover{
+    color: var(--colorBlanco)
+}
+article .contentImg i{
+    color: var(--colorRojo);
+    font-size: 1.5em;
+    position: absolute;
+    top: .1em;
+    right: 1em;
+}
+article .contentImg i:hover{
+    cursor: pointer;
+}
+article .contentDescription{
+    display: flex;
+    justify-content: space-between;
+    margin: 2em 1em;
+    
+}
+article .contentDescription .descripProduct{
+    margin: 0 1em;
+}
+article .contentDescription .descripProduct a{
+    text-decoration: none;
+    color: var(--colorRojo);
+}
+article .contentDescription .descripProduct a h2{
+    font-size: 1.3em;
+}
+article .contentDescription .descripProduct p{
+    overflow: hidden;
+    height: 1.5em;
+    font-size: .7em;
+    color: var(--color1);
+    opacity: .5;
+}
+article .contentDescription span{
+    color: var(--colorAzul);
+    font-size: 1.4em;
+}
+
+/*------FOOTER-----*/
+footer{
+    margin-top: 2em;
+    width: 100%;
+    background-color: var(--color1);
+}
+footer .content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 15em;;
+    padding: 15px 0;
+}
+/*footer .content .listFooter ul{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    background-color: #3B86FF;
+}*/
+
+footer .content .listFooter h3{
+    width: 100%;
+    color: var(--colorBlanco);
+    padding: 10px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--bgColor);
+    font-size: 1.2em;
+
+}
+footer .content .listFooter a{
+    display: block;
+    text-decoration: none;
+    color: var(--colorBlanco);
+    font-size: 1em;
+}
+footer .content .listFooter a:hover{
+    color: var(--color2);
+}
+footer .content .listFooter li{
+    list-style: none;  
+}
+footer .content .infoFooter{
+    grid-column: span 3;
+    margin-top: 15px;
+    border-top: 1px solid var(--bgColor);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    color: var(--colorBlanco);
+    font-size: .7em;
+}
+/*-----buttons------*/
+body button, input[type=button], input[type=submit]{
+    padding: 10px 30px;
+    border: none;
+    background-color: var(--colorBtns);
+    border-radius: 5px;
+    color: #F0F0F7;
+    font-size: 11pt;
+}
+body button:hover, input[type=button]:hover, input[type=submit]:hover{
+    background-color: #838296;
+    cursor: pointer;
+}
+body button:active, input[type=button]:active, input[type=submit]:active{
+    background-color: #2F2E50;
+}
+
+
+body select{
+    background: var(--colorBlanco);
+    border: 1px solid #D7DAE2;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-size: 11pt;
+    background-image: url(../../global/img/down.png); 
+    background-repeat: no-repeat;
+    background-position: right center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance:none;
+}
+body select::-ms-expand{
+    display: none;
+}
+body select option {
+    background-color: var(--colorBlanco);
+    border: none;
+}
+
+/*-------FORMS-------*/
+.form{
+    background-color: #FFFFFF;
+    text-align: center;
+    width: 55%;
+    margin: 25px auto;
+}
+.form form{
+    display: flex;
+    flex-direction: column;
+    
+    padding: 5em 10em;
+}
+.form form h2{
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--colorBtns);
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+.form form p{
+    color: #4D4F5C;
+    opacity: .5;
+    font-size: .9em;
+    margin-bottom: 50px;
+}
+.form form input{
+    margin-bottom: 25px;
+    padding: 10px 10px;
+    border: none;
+    border-bottom: 2px solid #E9E9F0; 
+}
+
+.form form input[type=checkbox]{
+    border-radius: 6px;
+}
+.form form .remember label{
+    margin-right: 16px;
+    color: var(--colorBtns);
+    font-size: .9em;
+}
+.form form .remember a{
+    text-decoration: none;
+    color: var(--colorAzul);
+    font-size: .9em;
+}
+.form form .btns input{
+    border: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+    margin-top: 15px;
+}
+.form form .btns input[type=button]{
+    background: var(--colorBlanco);
+    color: var(--colorBtns);
+    border: 1px solid var(--colorBtns);
+    margin-left: 15px;
+    padding: 9px 40px;
+    transition: all ease .5s;
+}
+.form form .btns input[type=button]:hover{
+    border: transparent;
+    color: var(--colorBlanco);
+    background: var(--colorAzul);
+}
+
