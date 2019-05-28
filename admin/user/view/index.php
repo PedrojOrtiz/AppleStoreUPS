@@ -48,7 +48,7 @@ if (isset($_SESSION['isLogin'])) {
                     $sql = "SELECT * FROM usuario user, imagen img, direccion dir 
                             WHERE user.usu_id = img.USUARIO_usu_id and 
                             user.usu_id = dir.USUARIO_usu_id and
-                            user.usu_id=19;";
+                            user.usu_id=" . $_SESSION['codigo'] . ";";
                     $result = $conn->query($sql);
                     if ($result->num_rows > 0) {
                         $row = $result->fetch_assoc();
@@ -70,7 +70,7 @@ if (isset($_SESSION['isLogin'])) {
                     } else {
                         $sql = "SELECT * FROM usuario user, imagen img 
                             WHERE user.usu_id = img.USUARIO_usu_id and
-                            user.usu_id=19;";
+                            user.usu_id=" . $_SESSION['codigo'] . ";";
 
                         $result = $conn->query($sql);
                         $row = $result->fetch_assoc();
@@ -122,7 +122,8 @@ if (isset($_SESSION['isLogin'])) {
 
                         <div class="perfilImg">
                             <div class="img">
-                                <img src="../../../img/user/<?php echo (19); ?>/<?php echo ($img); ?>" alt="">
+                                <img src="../../../img/user/<?php echo ($_SESSION['codigo']); ?>/<?php echo ($img); ?>"
+                                    alt="">
                             </div>
                             <label for="perfilImg">Cambiar foto de perfil...</label>
                             <input type="file" name="foto" id="foto">

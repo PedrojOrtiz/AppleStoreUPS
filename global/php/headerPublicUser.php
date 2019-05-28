@@ -54,7 +54,7 @@
                         <li><a href="shoppinghistory.php">Historial</a>
                         </li>
                         <li><a href="settings.php">Opciones</a></li>
-                        <li><a href="#">Salir</a></li>
+                        <li><a href="../../../config/signout.php">Salir</a></li>
                     </ul>
                 </li>
             </ul>
