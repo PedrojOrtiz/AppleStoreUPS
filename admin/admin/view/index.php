@@ -8,19 +8,29 @@
         $id=$_SESSION['codigo'];
 
     if($_SESSION["rol"] != "admin")
-        header("Location: ../../public/controladores/logout.php");
+        header("Location: ../controller/logout.php");
 
-    $sqlUsuario = "SELECT * FROM usuario user, imagen img, direccion dir 
-    WHERE user.usu_id = img.USUARIO_usu_id and 
-    user.usu_id = dir.USUARIO_usu_id and
-    user.usu_id=$id";
+    $sqlUsuario = "SELECT * FROM usuario user, imagen img WHERE user.usu_id = $id AND img.USUARIO_usu_id = $id";
 
-    $resultUsuario=$conn->query($sqlUsuario);
-    $rowUsuario= mysqli_fetch_assoc($resultUsuario);
+    $resultUsuario = $conn->query($sqlUsuario);
+    $rowUsuario = mysqli_fetch_assoc($resultUsuario);
 
-    $nombres=$rowUsuario['usu_nombres'];
-    $apellidos=$rowUsuario['usu_apellidos'];
-    $foto=$rowUsuario['usu_foto_perfil'];
+    $nombres = $rowUsuario['usu_nombres'];
+    $apellidos = $rowUsuario['usu_apellidos'];
+    $img = $rowUsuario['img_nombre'];
+
+    $sucId = $rowUsuario['SUCURSAL_suc_id'];
+
+    $sqlSucursal = "SELECT * FROM sucursal suc WHERE suc.suc_id = $sucId";
+
+    $resultSucursal = $conn->query($sqlSucursal);
+    $rowSucursal = mysqli_fetch_assoc($resultSucursal);
+
+    $sucNombre = $rowSucursal['suc_nombre'];
+    $sucTelefono = $rowSucursal['suc_telefono'];
+    $sucCelular = $rowSucursal['suc_celular'];
+    $sucUrl = $rowSucursal['suc_url'];
+    $sucEliminado = $rowSucursal['suc_eliminado'];
 
 ?>
 
@@ -45,16 +55,16 @@
             <div class="sessionItems">
                     <div class="header">
                         <ul class="nav">
-                            <li> <a>Nombre Apellido</a>
+                            <li> <a><?php echo strtoupper($nombres) ?> <?php echo strtoupper($apellidos) ?></a>
                                 <ul>
                                     <li><a href="#">Ajustes</a></li>
-                                    <li><a href="#">Cerrar Sesion</a></li>
+                                    <li><a href="../controller/logout.php">Cerrar Sesion</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </div>
                 <div class="imgUser">
-                    <img src="../../../img/user/perfil.jpg" alt="user">
+                    <img src="../../../img/user/<?php echo $id; ?>/<?php echo ($img); ?>" alt="">
                 </div>
             </div>
         </div>
@@ -82,6 +92,12 @@
                 <h2>Sucursal: "Nombre Sucursal"</h2>
                 <div class="formData">
                     
+                    <?php
+
+                        $sqlVentas = "SELECT * FROM ";
+
+                    ?>
+
                 </div>
             </div>
         </section>

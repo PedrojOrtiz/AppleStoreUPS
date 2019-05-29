@@ -7,10 +7,9 @@ include '../../config/configDB.php';
 $email = isset($_POST["email"]) ? trim($_POST["email"]) : null;
 $pass = isset($_POST["pass"]) ? trim($_POST["pass"]) : null;
 $sql = "SELECT * FROM usuario user, imagen img WHERE user.usu_id = img.USUARIO_usu_id AND user.usu_correo ='$email' AND user.usu_password = MD5('$pass')";
-$sql2 = "SELECT * FROM usuario user, imagen img WHERE user.usu_id = img.USUARIO_usu_id AND user.usu_correo ='$email' AND user.usu_password = MD5('$pass')";
 
 $result = $conn->query($sql);
-$result2 = $conn->query($sql2);
+$result2 = $conn->query($sql);
 $rowUsuario= mysqli_fetch_assoc($result2);
 
 $id = $rowUsuario['usu_id'];
