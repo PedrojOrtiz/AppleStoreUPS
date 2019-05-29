@@ -1,16 +1,19 @@
 ﻿<?php 
 
-    include '../../controller/connDB.php';
+    include '../../../config/configDB.php';
 
     session_start();
 
-    if (isset($_SESSION['id']))
-        $id=$_SESSION['id'];
+    if (isset($_SESSION['codigo']))
+        $id=$_SESSION['codigo'];
 
     if($_SESSION["rol"] != "admin")
         header("Location: ../../public/controladores/logout.php");
 
-    $sqlUsuario = "SELECT * FROM usuario WHERE usu_id=$id";
+    $sqlUsuario = "SELECT * FROM usuario user, imagen img, direccion dir 
+    WHERE user.usu_id = img.USUARIO_usu_id and 
+    user.usu_id = dir.USUARIO_usu_id and
+    user.usu_id=$id";
 
     $resultUsuario=$conn->query($sqlUsuario);
     $rowUsuario= mysqli_fetch_assoc($resultUsuario);
