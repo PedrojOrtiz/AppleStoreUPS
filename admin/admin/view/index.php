@@ -1,4 +1,27 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+
+    include '../../controller/connDB.php';
+
+    session_start();
+
+    if (isset($_SESSION['id']))
+        $id=$_SESSION['id'];
+
+    if($_SESSION["rol"] != "admin")
+        header("Location: ../../public/controladores/logout.php");
+
+    $sqlUsuario = "SELECT * FROM usuario WHERE usu_id=$id";
+
+    $resultUsuario=$conn->query($sqlUsuario);
+    $rowUsuario= mysqli_fetch_assoc($resultUsuario);
+
+    $nombres=$rowUsuario['usu_nombres'];
+    $apellidos=$rowUsuario['usu_apellidos'];
+    $foto=$rowUsuario['usu_foto_perfil'];
+
+?>
+
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
