@@ -34,11 +34,8 @@ if (isset($_SESSION['isLogin'])) {
                 <h2>Apple store EC</h2>
                 <p>Bienvenido! Por favor, ingrese sus datos.</p>
                 <div class="nombres">
-                    <input type="text" name="cedula" id="cedula" placeholder="Cedula" required>
                     <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
                     <input type="text" name="apellido" id="apellido" placeholder="Apellido" required>
-                    <input type="text" name="telefono" id="telefono" placeholder="Telefono" required>
-                    <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="" placeholder="Fecha de nacimiento" required>
                 </div>
                 <input type="email" name="email" id="email" placeholder="Correo" required>
                 <input type="password" name="pass" id="pass" placeholder="Contraseña" required>
