@@ -56,12 +56,9 @@
         </header>
         <section>
             <h2>Clientes</h2>
-            <input class="boton" type="submit" id="nuevoAdminitrador" name="nuevoAdminitrador" value="Nuevo Administrador">
-            <select name="roles">
-                <option value="clientes">Clientes</option>
-                <option value="administradores">Adminitradores</option>
-                <form id="buscar_nombres"><input type="text" id="Buscar" name="Buscar" value="" onkeyup="buscarC2(<?php echo $codigo ?>)" placeholder="Buscar nombre...">
-            </select>
+            
+            <form id="buscar_nombres"><input type="text" id="Buscar" name="Buscar" value="" onkeyup="buscarC2(<?php echo $codigo ?>)" placeholder="Buscar nombre...">
+           
             <div class="cardContent">
                 <table>
                 <tr>
