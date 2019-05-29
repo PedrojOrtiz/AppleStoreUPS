@@ -32,13 +32,17 @@ if ($eliminado == '1') {
         $_SESSION['isLogin'] = true;
         $_SESSION["rol"] = "admin";
         $_SESSION['img'] = $img;  
+        $_SESSION['nombre'] = $nombres;
+        $_SESSION['apellido'] = $apellidos;
         header("Location: ../../admin/admin/view/index.php"); 
     } else if ($result->num_rows > 0 && $rol == "user") {
         session_start();
         $_SESSION['codigo']= $id;             
         $_SESSION['isLogin'] = true;
         $_SESSION["rol"] = "user";
-        $_SESSION['img'] = $img;  
+        $_SESSION['img'] = $img; 
+        $_SESSION['nombre'] = $nombres;
+        $_SESSION['apellido'] = $apellidos;
         header("Location: ../view/successful.php?login=true");
     } else { 
         //header("Location: ../view/successful.php?login=false");

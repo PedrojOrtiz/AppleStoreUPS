@@ -89,10 +89,12 @@
         <section>
             <h2>Inicio</h2>
             <div class="cardContent">
-                <h2>Sucursal: "Nombre Sucursal"</h2>
+                <h2>Sucursal: <?php echo strtoupper($sucNombre) ?></h2>
                 <div class="formData">
                     
                     <?php
+
+
 
                         $sqlVentas = "SELECT * FROM ";
 

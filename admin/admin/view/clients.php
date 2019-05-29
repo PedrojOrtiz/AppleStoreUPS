@@ -1,3 +1,39 @@
+<?php 
+
+    include '../../../config/configDB.php';
+
+    session_start();
+
+    if (isset($_SESSION['codigo']))
+        $id=$_SESSION['codigo'];
+
+    if($_SESSION["rol"] != "admin")
+        header("Location: ../controller/logout.php");
+
+    $sqlUsuario = "SELECT * FROM usuario user, imagen img WHERE user.usu_id = $id AND img.USUARIO_usu_id = $id";
+
+    $resultUsuario = $conn->query($sqlUsuario);
+    $rowUsuario = mysqli_fetch_assoc($resultUsuario);
+
+    $nombres = $rowUsuario['usu_nombres'];
+    $apellidos = $rowUsuario['usu_apellidos'];
+    $img = $rowUsuario['img_nombre'];
+
+    $sucId = $rowUsuario['SUCURSAL_suc_id'];
+
+    $sqlSucursal = "SELECT * FROM sucursal suc WHERE suc.suc_id = $sucId";
+
+    $resultSucursal = $conn->query($sqlSucursal);
+    $rowSucursal = mysqli_fetch_assoc($resultSucursal);
+
+    $sucNombre = $rowSucursal['suc_nombre'];
+    $sucTelefono = $rowSucursal['suc_telefono'];
+    $sucCelular = $rowSucursal['suc_celular'];
+    $sucUrl = $rowSucursal['suc_url'];
+    $sucEliminado = $rowSucursal['suc_eliminado'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,7 +59,7 @@
             <div class="sessionItems">
                     <div class="header">
                         <ul class="nav">
-                            <li> <a>Nombre Apellido</a>
+                            <li> <a><?php echo strtoupper($nombres) ?> <?php echo strtoupper($apellidos) ?></a>
                                 <ul>
                                     <li><a href="modify.php">Ajustes</a></li>
                                     <li><a href="logout.php">Cerrar Sesion</a></li>
@@ -32,7 +68,7 @@
                         </ul>
                     </div>
                 <div class="imgUser">
-                    <img src="../../../img/user/perfil.jpg" alt="user">
+                    <img src="../../../img/user/<?php echo $id; ?>/<?php echo ($img); ?>" alt="">
                 </div>
             </div>
         </div>
