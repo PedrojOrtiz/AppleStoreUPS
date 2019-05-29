@@ -14,6 +14,10 @@
 </head>
 
 <body>
+    <?php
+        include '../../../config/configDB.php';
+        $codigo_admin = $_GET["codigo_admin"];
+    ?>
     <header>
         <div class="content">        
             <div class="sessionItems">
@@ -52,11 +56,53 @@
         </header>
         <section>
             <h2>Clientes</h2>
+            <input class="boton" type="submit" id="nuevoAdminitrador" name="nuevoAdminitrador" value="Nuevo Administrador">
+            <select name="roles">
+                <option value="clientes">Clientes</option>
+                <option value="administradores">Adminitradores</option>
+                <form id="buscar_nombres"><input type="text" id="Buscar" name="Buscar" value="" onkeyup="buscarC2(<?php echo $codigo ?>)" placeholder="Buscar nombre...">
+            </select>
             <div class="cardContent">
-                <h2>Sucursal: "Nombre Sucursal"</h2>
-                <div class="formData">
-                    
-                </div>
+                <table>
+                <tr>
+               
+               <th>Cedula</th>
+               <th>Nombres</th>
+               <th>Apellidos</th>
+               <th>Telefono</th>
+               <th>Fecha Nacimiento</th>
+               <th>Correo</th>
+               <th colspan="3">Administrar</th>
+                </tr>
+
+           <?php
+
+               $sql = "SELECT * FROM usuario";
+               $result = $conn->query($sql);
+
+               if ($result->num_rows > 0){
+                   while($row = $result->fetch_assoc()){
+                       if($row["usu_eliminado"]!='S'){
+                           echo "<tr>";
+                           echo "<td>" .$row["usu_cedula"]."</td>";
+                           echo "<td>" .$row["usu_nombres"]."</td>";
+                           echo "<td>" .$row["usu_apellidos"]."</td>";
+                           echo "<td>" .$row["usu_telefono"]."</td>";
+                           echo "<td>" .$row["usu_fecha_nacimiento"]."</td>";
+                           echo "<td>" .$row["usu_correo"]."</td>";
+                           echo "<td class='accion'><a href='eliminar.php?codigo=".$row['usu_id']."&codigo_admin=".$codigo_admin."'>Eliminar</a></td>";
+                           echo "<td class='accion'><a href='modificar.php?codigo=".$row['usu_id']."&codigo_admin=".$codigo_admin."'>Modificar</a></td>";
+                           echo "<td class='accion'><a href='cambiar_contrasena.php?codigo=".$row['usu_id']."&codigo_admin=".$codigo_admin."'>Cambiar contrasena</a></td>";
+                       }
+                   }
+               }else{
+                   echo "<tr>";
+                   echo "<td colspan='7'>No existen usuarios registrados en el sistema</td>";
+                   echo "</tr>";
+               }
+               $conn->close();
+           ?>
+       </table>
             </div>
         </section>
     </div>
