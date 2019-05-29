@@ -62,13 +62,10 @@
             <div class="cardContent">
                 <table>
                 <tr>
-               
-               <th>Cedula</th>
                <th>Nombres</th>
                <th>Apellidos</th>
-               <th>Telefono</th>
-               <th>Fecha Nacimiento</th>
                <th>Correo</th>
+               <th>Fecha de Modificacion</th>
                <th colspan="3">Administrar</th>
                 </tr>
 
@@ -79,15 +76,13 @@
 
                if ($result->num_rows > 0){
                    while($row = $result->fetch_assoc()){
-                       if($row["usu_eliminado"]!='S'){
+                       if($row["usu_eliminado"]!=1){
                            echo "<tr>";
-                           echo "<td>" .$row["usu_cedula"]."</td>";
                            echo "<td>" .$row["usu_nombres"]."</td>";
                            echo "<td>" .$row["usu_apellidos"]."</td>";
-                           echo "<td>" .$row["usu_telefono"]."</td>";
-                           echo "<td>" .$row["usu_fecha_nacimiento"]."</td>";
                            echo "<td>" .$row["usu_correo"]."</td>";
-                           echo "<td class='accion'><a href='../controller/eliminar.php?codigo=".$row['usu_id']."&codigo_admin=".$codigo_admin."'>Eliminar</a></td>";
+                           echo "<td>" .$row["usu_fecha_modificacion"]."</td>";
+                           echo "<td class='accion'><a href='eliminar.php?codigo=".$row['usu_id']."&codigo_admin=".$codigo_admin."'>Eliminar</a></td>";
                            echo "<td class='accion'><a href='modificar.php?codigo=".$row['usu_id']."&codigo_admin=".$codigo_admin."'>Modificar</a></td>";
                            echo "<td class='accion'><a href='cambiar_contrasena.php?codigo=".$row['usu_id']."&codigo_admin=".$codigo_admin."'>Cambiar contrasena</a></td>";
                        }
