@@ -1,4 +1,40 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+
+    include '../../../config/configDB.php';
+
+    session_start();
+
+    if (isset($_SESSION['codigo']))
+        $id=$_SESSION['codigo'];
+
+    if($_SESSION["rol"] != "admin")
+        header("Location: ../controller/logout.php");
+
+    $sqlUsuario = "SELECT * FROM usuario user, imagen img WHERE user.usu_id = $id AND img.USUARIO_usu_id = $id";
+
+    $resultUsuario = $conn->query($sqlUsuario);
+    $rowUsuario = mysqli_fetch_assoc($resultUsuario);
+
+    $nombres = $rowUsuario['usu_nombres'];
+    $apellidos = $rowUsuario['usu_apellidos'];
+    $img = $rowUsuario['img_nombre'];
+
+    $sucId = $rowUsuario['SUCURSAL_suc_id'];
+
+    $sqlSucursal = "SELECT * FROM sucursal suc WHERE suc.suc_id = $sucId";
+
+    $resultSucursal = $conn->query($sqlSucursal);
+    $rowSucursal = mysqli_fetch_assoc($resultSucursal);
+
+    $sucNombre = $rowSucursal['suc_nombre'];
+    $sucTelefono = $rowSucursal['suc_telefono'];
+    $sucCelular = $rowSucursal['suc_celular'];
+    $sucUrl = $rowSucursal['suc_url'];
+    $sucEliminado = $rowSucursal['suc_eliminado'];
+
+?>
+
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -17,6 +53,7 @@
     <header>
         <div class="content">
             <div class="sessionItems">
+<<<<<<< HEAD
                 <div class="header">
                     <ul class="nav">
                         <li> <a>Nombre Apellido</a>
@@ -27,8 +64,20 @@
                         </li>
                     </ul>
                 </div>
+=======
+                    <div class="header">
+                        <ul class="nav">
+                            <li> <a><?php echo strtoupper($nombres) ?> <?php echo strtoupper($apellidos) ?></a>
+                                <ul>
+                                    <li><a href="#">Ajustes</a></li>
+                                    <li><a href="../controller/logout.php">Cerrar Sesion</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+>>>>>>> 1f20d00bfa8bfe5200e93c0d255fc24ccc4e36d7
                 <div class="imgUser">
-                    <img src="../../../img/user/perfil.jpg" alt="user">
+                    <img src="../../../img/user/<?php echo $id; ?>/<?php echo ($img); ?>" alt="">
                 </div>
             </div>
         </div>
@@ -53,8 +102,19 @@
         <section>
             <h2>Inicio</h2>
             <div class="cardContent">
-                <h2>Sucursal: "Nombre Sucursal"</h2>
+                <h2>Sucursal: <?php echo strtoupper($sucNombre) ?></h2>
                 <div class="formData">
+<<<<<<< HEAD
+=======
+                    
+                    <?php
+
+
+
+                        $sqlVentas = "SELECT * FROM ";
+
+                    ?>
+>>>>>>> 1f20d00bfa8bfe5200e93c0d255fc24ccc4e36d7
 
                 </div>
             </div>

@@ -13,7 +13,7 @@
             $codigo = $_POST["codigo"];
             date_default_timezone_set("America/Guayaquil");
             $fecha = date("Y-m-d H:i:s",time());
-            $sql = "UPDATE usuario SET usu_eliminado = 'S', usu_fecha_modificacion = '$fecha' WHERE usu_id = '$codigo'";
+            $sql = "UPDATE usuario SET usu_eliminado = 1, usu_fecha_modificacion = '$fecha' WHERE usu_id = '$codigo'";
 
             if ($conn->query($sql) == TRUE){
                 echo "<p>Se ha eliminado los datos correctamente</p>";
