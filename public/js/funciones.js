@@ -65,11 +65,30 @@ function searchBox(elemnt) {
     xmlhttp.send()
 }
 
-function cartAdd(precioTotal) {
-    console.log('Hola')
-    console.log(precioTotal)
-    openWindowCart();
+function cartAdd(precioTotal, cod) {
+    console.log()
+    //console.log(precioTotal)
 
+
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest()
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            //openWindowCart();
+            //console.log(this.responseText)
+            if (document.getElementById("cartAdd") === null) {
+                document.body.innerHTML += this.responseText
+            } else {
+                openWindowCart()
+            }
+            //document.getElementById('body').innerHTML = this.responseText
+        }
+    };
+    xmlhttp.open("GET", "../controller/cartAdd.php?productPrice=" + precioTotal + "&codProd=" + cod, true)
+    xmlhttp.send()
 }
 
 function openWindowCart() {

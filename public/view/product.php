@@ -24,6 +24,8 @@ if (isset($_SESSION['isLogin'])) {
 </head>
 
 <body>
+
+
     <header>
         <?php
         include("../../global/php/headerPublic.php");
@@ -121,11 +123,6 @@ if (isset($_SESSION['isLogin'])) {
                 </div>
             </div>
         </section>
-
-        <div class="cartAdd" id="cartAdd">
-            <p>Producto agregado al carrito. </p>
-            <i class=" fas fa-times" onclick="cluseWindowCart()"></i>
-        </div>
 
         <section>
             <a href="#">
