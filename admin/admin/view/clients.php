@@ -50,10 +50,7 @@
 </head>
 
 <body>
-    <?php
-        include '../../../config/configDB.php';
-        $codigo_admin = $_GET["codigo_admin"];
-    ?>
+    
     <header>
         <div class="content">        
             <div class="sessionItems">
@@ -118,9 +115,9 @@
                            echo "<td>" .$row["usu_apellidos"]."</td>";
                            echo "<td>" .$row["usu_correo"]."</td>";
                            echo "<td>" .$row["usu_fecha_modificacion"]."</td>";
-                           echo "<td class='accion'><a href='eliminar.php?codigo=".$row['usu_id']."&codigo_admin=".$codigo_admin."'>Eliminar</a></td>";
-                           echo "<td class='accion'><a href='modificar.php?codigo=".$row['usu_id']."&codigo_admin=".$codigo_admin."'>Modificar</a></td>";
-                           echo "<td class='accion'><a href='cambiar_contrasena.php?codigo=".$row['usu_id']."&codigo_admin=".$codigo_admin."'>Cambiar contrasena</a></td>";
+                           echo "<td class='accion'><a href='eliminar.php?codigo=".$row['usu_id']."&id=".$id."'>Eliminar</a></td>";
+                           echo "<td class='accion'><a href='modificar.php?codigo=".$row['usu_id']."&id=".$id."'>Modificar</a></td>";
+                           echo "<td class='accion'><a href='cambiar_contrasena.php?codigo=".$row['usu_id']."&id=".$id."'>Cambiar contrasena</a></td>";
                        }
                    }
                }else{
