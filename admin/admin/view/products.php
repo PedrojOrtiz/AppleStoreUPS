@@ -32,6 +32,12 @@
     $sucUrl = $rowSucursal['suc_url'];
     $sucEliminado = $rowSucursal['suc_eliminado'];
 
+
+    $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion
+            FROM producto pro, imagen img, rating rat, producto_sucursal
+            WHERE pro.pro_id = img.PRODUCTO_pro_id ANDpro.pro_id = rat.PRODUCTO_pro_id ANDpro.pro_estado=1 
+            ORDER BY pro.pro_fecha_creacion DESC";
+
 ?>
 
 <!DOCTYPE html>
@@ -92,6 +98,8 @@
                 <h2>Sucursal: "Nombre Sucursal"</h2>
                 <div class="formData">
                     
+                    
+
                 </div>
             </div>
         </section>
