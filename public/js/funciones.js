@@ -118,3 +118,31 @@ function prodValoration(elemnt) {
     // xmlhttp.open("GET", "../controller/search.php?searchName=" + text, true)
     // xmlhttp.send()
 }
+<<<<<<< HEAD
+=======
+
+var imag=[]
+var indice = 0
+
+function galeria(img,i){
+    imag[i]=img
+}
+
+function cambiarImagen(int) {
+   
+    if (int == 1) {
+        if (indice < imag.length - 1) {
+            indice++
+        } else {
+           indice=0
+        }
+    } else {
+        if (indice > 0) {
+            indice--
+        } else {
+            indice = 0
+        }
+    }
+    document.getElementById("galeria").src = imag[indice]
+}
+>>>>>>> b40f3f399c3a84ee9300eae3fa76c18a65d21229
