@@ -146,17 +146,33 @@
     display: flex;
     align-items: center;
 }
-.content .product .productInfo .productBtns .valoration i{
-    font-size: 1em;
-    margin: 0;
-    pad: 0px;
-    color:#FFCA83;
-}
 .content .product .productInfo .productBtns .valoration span{
+    font-size: 1.5em;
     color: var(--colorFontGeneral);
-    font-size: 1.3em;
-
+    margin-left: 10px;
 }
+.content .product .productInfo .productBtns .valoration .clasificacion {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.5em;
+  }
+  
+  .content .product .productInfo .productBtns .valoration .clasificacion input {
+    position: absolute;
+    top: -100px;  
+  }
+  
+  .content .product .productInfo .productBtns .valoration .clasificacion label {
+    float: right;
+    color: rgb(119, 193, 236);
+  }
+  
+  .content .product .productInfo .productBtns .valoration .clasificacion label:hover,
+  .content .product .productInfo .productBtns .valoration .clasificacion label:hover ~ label,
+  .content .product .productInfo .productBtns .valoration .clasificacion input:checked ~ label {
+    color: var(--colorAzul);
+    }
 /*------FORM-------*/
 
 .content .form form .nombres input{
@@ -375,4 +391,26 @@
 #floatWindow .contentWindow .confirmVtn .btns input:last-child:hover{
     background-color: var(--bgColor);
 }
+
+body .cartAdd{
+    width: 100%;
+    height: 50px;
+    background-color: #69E4A6;
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+body .cartAdd p{
+    color: var(--colorFontGeneral);
+}
+body .cartAdd i{
+    color: var(--colorRojo);
+    margin-left: 15px;
+    font-size: 1.3em;
+}
+
 

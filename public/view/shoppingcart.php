@@ -56,8 +56,10 @@ if (isset($_SESSION['isLogin'])) {
                 <h2>Gracias por su compra.</h2>
                 <p>Pago realizado con exito</p>
                 <i class="far fa-check-circle"></i>
+
                 <h2>No se pudo realizar el pago.</h2>
                 <i class="far fa-times-circle"></i>
+
                 <div class="btns">
                     <input type="button" value="Inicio" onclick="window.location.href = 'index.html'">
                     <input type="button" value="Ver Compras"

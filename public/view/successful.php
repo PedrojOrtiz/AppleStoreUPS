@@ -30,12 +30,16 @@ if (isset($_GET['register'])) {
     if ($_GET['login'] === 'true') {
         //exito
         echo 'Logeo exitoso<br>';
-        echo '<a href="index.php">Inicio</a>';
-        // if ($_SESSION['rol'] == 'admin') {
-        //     //header("Refresh:2; url=../../admin/vista/admin/index.php");
-        // } else {
-        //     //header("Refresh:2; url=../../admin/vista/usuario/index.php");
-        // }
+
+        if ($_SESSION['rol'] == 'user') {
+            echo 'Ir al inicio<br>';
+            echo '<a href="index.php">Inicio</a>';
+            //header("Refresh:2; url=../../admin/vista/admin/index.php");
+        } else {
+            echo 'Ir a la administracion<br>';
+            echo '<a href="../../admin/admin/view/index.php">Inicio</a>';
+            //     //header("Refresh:2; url=../../admin/vista/usuario/index.php");
+        }
     } else {
         //fracaso
         echo 'Logeo incorrecto';

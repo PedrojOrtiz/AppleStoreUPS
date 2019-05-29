@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['isLogin'])) {
     //header("Location: ../admin/index.php");
     if ($_SESSION['rol'] == 'admin') {
-        //header("Location: ../admin/index.php");
+        header("Location: ../../admin/admin/view/index.php");
     }
 }
 ?>

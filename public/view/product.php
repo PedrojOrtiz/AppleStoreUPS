@@ -68,7 +68,7 @@ if (isset($_SESSION['isLogin'])) {
                     <img src="../../img/product/product2.png" alt="">
                     <i class="fas fa-angle-right"></i>
                 </div>
-                <a href="">Next</a>
+                <!-- <a href="">Next</a> -->
             </div>
             <div class="productInfo">
                 <h2><?php echo $nombre; ?></h2>
@@ -91,22 +91,29 @@ if (isset($_SESSION['isLogin'])) {
                     <p><span>Sub-Total: </span>$<?php echo $precio; ?></p>
                     <p><span>Descuento: </span><?php echo $descuento; ?>%</p>
                     <p><span>IVA: </span>12%</p>
-                    <p><span>Total: </span>$<?php $iva = (($precio * 0.12) + $precio);
-                                            echo ($iva - ($iva * ($descuento / 100))); ?></p>
+                    <p><span id="shopTotal">Total: </span>$<?php $iva = (($precio * 0.12) + $precio);
+                                                            $precioTotalProd = ($iva - ($iva * ($descuento / 100)));
+                                                            echo $precioTotalProd; ?></p>
                 </div>
                 <div class="productBtns">
                     <div class="valoration" id="valoration" onmousemove="elemento(event)">
-                        <!--Cambiar por esta estrella -->
-                        <i class="fas fa-star"></i>
-                        <!--Fin-->
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <span>3.0</span>
+                        <p class="clasificacion">
+                            <input id="radio1" type="radio" name="estrellas" value="5" onclick="prodValoration(this) ">
+                            <label for="radio1">★</label>
+                            <input id="radio2" type="radio" name="estrellas" value="4" onclick="prodValoration(this) ">
+                            <label for="radio2">★</label>
+                            <input id="radio3" type="radio" name="estrellas" value="3" onclick="prodValoration(this) ">
+                            <label for="radio3">★</label>
+                            <input id="radio4" type="radio" name="estrellas" value="2" onclick="prodValoration(this) ">
+                            <label for="radio4">★</label>
+                            <input id="radio5" type="radio" name="estrellas" value="1" onclick="prodValoration(this) ">
+                            <label for="radio5">★</label>
+                        </p>
+
+                        <span id="clasificacion">3.0</span>
                     </div>
                     <div class="btns">
-                        <button>
+                        <button onclick="cartAdd(<?php echo $precioTotalProd; ?>)">
                             <i class="fas fa-cart-plus"></i>
                             Agregar al carrito
                         </button>
@@ -114,6 +121,11 @@ if (isset($_SESSION['isLogin'])) {
                 </div>
             </div>
         </section>
+
+        <div class="cartAdd" id="cartAdd">
+            <p>Producto agregado al carrito. </p>
+            <i class=" fas fa-times" onclick="cluseWindowCart()"></i>
+        </div>
 
         <section>
             <a href="#">

@@ -40,16 +40,16 @@ function stock(elemnt) {
     xmlhttp.send()
 }
 
-function searchBtn(){
+function searchBtn() {
     console.log('hola')
-    let txtSearch= document.getElementById('search').value
-    txtSearch=
-    window.location.href = 'search.php?searchName='+txtSearch
+    let txtSearch = document.getElementById('search').value
+    txtSearch =
+        window.location.href = 'search.php?searchName=' + txtSearch
 }
 
-function searchBox(elemnt){
+function searchBox(elemnt) {
     let text = elemnt.value.trim()
-    text=text.toLowerCase()
+    text = text.toLowerCase()
     //console.log(text)
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest()
@@ -61,6 +61,41 @@ function searchBox(elemnt){
             document.getElementById("contentCards").innerHTML = this.responseText
         }
     };
-        xmlhttp.open("GET", "../controller/search.php?searchName=" + text, true)
-        xmlhttp.send()
+    xmlhttp.open("GET", "../controller/search.php?searchName=" + text, true)
+    xmlhttp.send()
+}
+
+function cartAdd(precioTotal) {
+    console.log('Hola')
+    console.log(precioTotal)
+    openWindowCart();
+
+}
+
+function openWindowCart() {
+    let windowFloat = document.getElementById("cartAdd")
+    windowFloat.style.display = "flex"
+}
+
+function cluseWindowCart() {
+    let windowFloat = document.getElementById("cartAdd")
+    windowFloat.style.display = "none"
+}
+
+function prodValoration(elemnt) {
+    let rat = elemnt.value
+    console.log(rat)
+    //console.log(text)
+    // if (window.XMLHttpRequest) {
+    //     xmlhttp = new XMLHttpRequest()
+    // } else {
+    //     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+    // }
+    // xmlhttp.onreadystatechange = function () {
+    //     if (this.readyState == 4 && this.status == 200) {
+    //         document.getElementById("contentCards").innerHTML = this.responseText
+    //     }
+    // };
+    // xmlhttp.open("GET", "../controller/search.php?searchName=" + text, true)
+    // xmlhttp.send()
 }

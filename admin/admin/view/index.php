@@ -15,18 +15,18 @@
 
 <body>
     <header>
-        <div class="content">        
+        <div class="content">
             <div class="sessionItems">
-                    <div class="header">
-                        <ul class="nav">
-                            <li> <a>Nombre Apellido</a>
-                                <ul>
-                                    <li><a href="#">Ajustes</a></li>
-                                    <li><a href="#">Cerrar Sesion</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="header">
+                    <ul class="nav">
+                        <li> <a>Nombre Apellido</a>
+                            <ul>
+                                <li><a href="#">Ajustes</a></li>
+                                <li><a href="#">Cerrar Sesion</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
                 <div class="imgUser">
                     <img src="../../../img/user/perfil.jpg" alt="user">
                 </div>
@@ -55,13 +55,13 @@
             <div class="cardContent">
                 <h2>Sucursal: "Nombre Sucursal"</h2>
                 <div class="formData">
-                    
+
                 </div>
             </div>
         </section>
     </div>
 
-    
+
 
 </body>
 
