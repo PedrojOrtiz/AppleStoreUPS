@@ -1,17 +1,21 @@
 <?php
-
+session_start();
+if (isset($_SESSION['isLogin'])) {
+    header("Location: ../../index.php");
+}
 include '../../config/configDB.php';
 $email = isset($_POST["email"]) ? trim($_POST["email"]) : null;
 $pass = isset($_POST["pass"]) ? trim($_POST["pass"]) : null;
-$sql = "SELECT * FROM usuario user, imagen img WHERE user.usu_id = img.USUARIO_usu_id and user.usu_correo ='$email' AND user.usu_password = MD5('$pass')";
+$sql = "SELECT * FROM usuario user, imagen img WHERE user.usu_id = img.USUARIO_usu_id AND user.usu_correo ='$email' AND user.usu_password = MD5('$pass')";
+$sql2 = "SELECT * FROM usuario user, imagen img WHERE user.usu_id = img.USUARIO_usu_id AND user.usu_correo ='$email' AND user.usu_password = MD5('$pass')";
 
 $result = $conn->query($sql);
-$result2 = $conn->query($sql);
-$rowUsuario = mysqli_fetch_assoc($result2);
+$result2 = $conn->query($sql2);
+$rowUsuario= mysqli_fetch_assoc($result2);
 
 $id = $rowUsuario['usu_id'];
 $eliminado = $rowUsuario['usu_eliminado'];
-$rol = $rowUsuario['usu_eliminado'];
+$rol = $rowUsuario['usu_rol'];
 $img = $rowUsuario['img_nombre'];
 $nombres = $rowUsuario["usu_nombres"];
 $apellidos = $rowUsuario["usu_apellidos"];
@@ -23,14 +27,14 @@ if ($eliminado == '1') {
 
 } else {
 
-    if ($result->num_rows > 0 && $rol == 'admin') {  
+    if ($result->num_rows > 0 && $rol == "admin") {  
         session_start();
         $_SESSION['codigo']= $id;          
         $_SESSION['isLogin'] = true;
         $_SESSION["rol"] = "admin";
         $_SESSION['img'] = $img;  
         header("Location: ../../admin/admin/view/index.php"); 
-    } else if ($result->num_rows > 0 && $rol == 'user') {
+    } else if ($result->num_rows > 0 && $rol == "user") {
         session_start();
         $_SESSION['codigo']= $id;             
         $_SESSION['isLogin'] = true;
@@ -38,7 +42,8 @@ if ($eliminado == '1') {
         $_SESSION['img'] = $img;  
         header("Location: ../view/successful.php?login=true");
     } else { 
-        header("Location: ../view/successful.php?login=false");
+        //header("Location: ../view/successful.php?login=false");
+        echo $rol;
         echo "correo o contraseña incorrecta";
     } 
 
