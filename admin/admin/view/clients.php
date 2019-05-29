@@ -87,7 +87,7 @@
                            echo "<td>" .$row["usu_telefono"]."</td>";
                            echo "<td>" .$row["usu_fecha_nacimiento"]."</td>";
                            echo "<td>" .$row["usu_correo"]."</td>";
-                           echo "<td class='accion'><a href='eliminar.php?codigo=".$row['usu_id']."&codigo_admin=".$codigo_admin."'>Eliminar</a></td>";
+                           echo "<td class='accion'><a href='../controller/eliminar.php?codigo=".$row['usu_id']."&codigo_admin=".$codigo_admin."'>Eliminar</a></td>";
                            echo "<td class='accion'><a href='modificar.php?codigo=".$row['usu_id']."&codigo_admin=".$codigo_admin."'>Modificar</a></td>";
                            echo "<td class='accion'><a href='cambiar_contrasena.php?codigo=".$row['usu_id']."&codigo_admin=".$codigo_admin."'>Cambiar contrasena</a></td>";
                        }
