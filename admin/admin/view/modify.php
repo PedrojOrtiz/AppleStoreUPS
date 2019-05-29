@@ -53,10 +53,22 @@
         <section>
             <h2>Modificar Datos Administrador</h2>
             <div class="cardContent">
-                <h2>Sucursal: "Nombre Sucursal"</h2>
-                <div class="formData">
+            <h2>Cambiar Contraseña</h2>
+                    <form class="box" method="POST" action="../../controladores/admin/cambiar_contrasena.php?codigo_admin=<?php echo $codigo_admin ?>">
+                        <input type="hidden" id="codigo" name="codigo" value="<?php echo $codigo ?>">
                     
-                </div>
+                        <label class="contrasena" for="contrasenaActual">Contraseña Antigua</label>
+                        <input type="password" id="contrasena1" name="contrasena1" value="" required placeholder="">
+                        <br>
+                        <label class="contrasena" for="contrasenaNueva">Contraseña Nueva</label>
+                        <input type="password" id="contrasena2" name="contrasena2" value="" required placeholder="">
+                        <br>
+                        <label class="contrasena" for="contrasenaNueva">Confirmar Contraseña</label>
+                        <input type="password" id="contrasena3" name="contrasena3" value="" required placeholder="">
+                        <br>
+
+                        <input class="boton" type="submit" id="confirmar" name="confirmar" value="Confirmar">
+                    </form>
             </div>
         </section>
     </div>

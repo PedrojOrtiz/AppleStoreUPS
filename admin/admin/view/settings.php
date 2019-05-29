@@ -53,7 +53,6 @@
         <section>
             <h2>Configuracion</h2>
             <div class="cardContent">
-                <h2>Sucursal: "Nombre Sucursal"</h2>
                 <div class="formData">
                     
                 </div>
