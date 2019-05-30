@@ -48,21 +48,21 @@ if (isset($_SESSION['isLogin'])) {
                         pro.pro_id = rat.PRODUCTO_pro_id AND
                         cat.cat_id = pro.CATEGORIA_cat_id AND
                         cat.cat_nombre = '" . $_GET['searchCat'] . "' AND
-                        pro.pro_estado=1;";
+                        pro.pro_estado=0;";
                 } elseif (isset($_GET['searchName'])) {
                     $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion, cat.cat_nombre
                     FROM producto pro, imagen img, rating rat, categoria cat
                     WHERE pro.pro_id = img.PRODUCTO_pro_id AND
                         pro.pro_id = rat.PRODUCTO_pro_id AND
                         cat.cat_id = pro.CATEGORIA_cat_id AND
-                        pro.pro_nombre LIKE '" . $_GET['searchName'] . "%' AND
-                        pro.pro_estado=1;";
+                        pro.pro_nombre LIKE '%" . $_GET['searchName'] . "%' AND
+                        pro.pro_estado=0;";
                 } else {
                     $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, pro_descuento, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion
                                 FROM producto pro, imagen img, rating rat
                                 WHERE pro.pro_id = img.PRODUCTO_pro_id AND
                                     pro.pro_id = rat.PRODUCTO_pro_id AND
-                                    pro.pro_estado=1;";
+                                    pro.pro_estado=0;";
                 }
 
 

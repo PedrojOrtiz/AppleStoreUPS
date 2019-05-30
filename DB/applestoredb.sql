@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-05-2019 a las 19:52:21
+-- Tiempo de generación: 30-05-2019 a las 01:24:22
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -30,7 +30,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `carrito` (
   `car_id` int(11) NOT NULL,
-  `car_subtotal` float NOT NULL,
   `USUARIO_usu_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -96,7 +95,7 @@ CREATE TABLE `factura_cabecera` (
   `fac_cab_id` int(11) NOT NULL,
   `fac_cab_metodo_pago` varchar(10) NOT NULL,
   `fac_cab_subtotal` float NOT NULL,
-  `fac_cab_iva` tinyint(4) DEFAULT NULL,
+  `fac_cab_iva` float NOT NULL DEFAULT '1.12',
   `fac_cab_total` float NOT NULL,
   `TARJETA_tar_id` int(11) DEFAULT NULL,
   `USUARIO_usu_id` int(11) NOT NULL
@@ -152,7 +151,8 @@ INSERT INTO `imagen` (`img_id`, `img_nombre`, `USUARIO_usu_id`, `PRODUCTO_pro_id
 (2, 'perfil.jpg', 1, NULL),
 (3, 'Screenshot_5.png', 4, NULL),
 (4, 'xs.jpg', NULL, 1),
-(5, 'xsmax.jpg', NULL, 1);
+(5, 'xsmax.jpg', NULL, 1),
+(8, 'Web 1920 – 1.jpg', 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -166,7 +166,7 @@ CREATE TABLE `producto` (
   `pro_descripcion` varchar(100) NOT NULL,
   `pro_precio` float NOT NULL,
   `pro_descuento` float DEFAULT '0',
-  `pro_estado` tinyint(1) NOT NULL DEFAULT '1',
+  `pro_estado` tinyint(1) NOT NULL DEFAULT '0',
   `pro_fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `pro_fecha_modificacion` timestamp NULL DEFAULT NULL,
   `CATEGORIA_cat_id` int(11) DEFAULT NULL
@@ -177,7 +177,7 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`pro_id`, `pro_nombre`, `pro_descripcion`, `pro_precio`, `pro_descuento`, `pro_estado`, `pro_fecha_creacion`, `pro_fecha_modificacion`, `CATEGORIA_cat_id`) VALUES
-(1, 'iPhone XS MAX', 'El mejor celular del mundo mundial', 1599, 10, 1, '2019-05-28 01:32:42', NULL, 3);
+(1, 'iPhone XS MAX', 'El mejor celular del mundo mundial', 1599, 10, 0, '2019-05-28 01:32:42', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -281,7 +281,7 @@ CREATE TABLE `usuario` (
   `usu_correo` varchar(45) NOT NULL,
   `usu_password` varchar(255) NOT NULL,
   `usu_eliminado` tinyint(4) NOT NULL DEFAULT '0',
-  `usu_rol` varchar(45) NOT NULL,
+  `usu_rol` varchar(45) NOT NULL DEFAULT 'user',
   `usu_fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `usu_fecha_modificacion` timestamp NULL DEFAULT NULL,
   `SUCURSAL_suc_id` int(11) DEFAULT NULL
@@ -292,9 +292,10 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`usu_id`, `usu_cedula`, `usu_nombres`, `usu_apellidos`, `usu_telefono`, `usu_fecha_nacimiento`, `usu_correo`, `usu_password`, `usu_eliminado`, `usu_rol`, `usu_fecha_creacion`, `usu_fecha_modificacion`, `SUCURSAL_suc_id`) VALUES
-(1, '', 'claudio', 'maldonado', '', '0000-00-00', 'claudio@mail.com', '81dc9bdb52d04dc20036dbd8313ed055', 0, '', '2019-05-28 01:05:02', NULL, NULL),
-(3, NULL, 'christian', 'mocha', '', '0000-00-00', 'christian@mail.com', '202cb962ac59075b964b07152d234b70', 0, '', '2019-05-28 01:08:40', NULL, NULL),
-(4, NULL, 'maria', 'cajamarca', '', '0000-00-00', 'maria@mail.com', '202cb962ac59075b964b07152d234b70', 0, '', '2019-05-28 01:14:21', NULL, NULL);
+(1, '0106464456', 'claudio', 'maldonado', '', '0000-00-00', 'claudio@mail.com', '81dc9bdb52d04dc20036dbd8313ed055', 0, 'user', '2019-05-28 01:05:02', NULL, NULL),
+(3, NULL, 'christian', 'mocha', '', '0000-00-00', 'christian@mail.com', '202cb962ac59075b964b07152d234b70', 0, 'user', '2019-05-28 01:08:40', NULL, NULL),
+(4, NULL, 'maria', 'cajamarca', '', '0000-00-00', 'maria@mail.com', '202cb962ac59075b964b07152d234b70', 0, 'admin', '2019-05-28 01:14:21', NULL, 1),
+(5, NULL, 'jonnathan', 'ochoa', '', '0000-00-00', 'jonnathan@mail.com', '202cb962ac59075b964b07152d234b70', 0, 'user', '2019-05-29 22:52:22', NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -341,9 +342,9 @@ ALTER TABLE `factura_cabecera`
 --
 ALTER TABLE `factura_detalle`
   ADD PRIMARY KEY (`fac_det_id`),
-  ADD KEY `fk_FACTURA_DETALLE_PRODUCTO1_idx` (`PRODUCTO_pro_id`),
   ADD KEY `fk_FACTURA_DETALLE_CARRITO1_idx` (`CARRITO_car_id`),
-  ADD KEY `fk_FACTURA_DETALLE_FACTURA_CABECERA1_idx` (`FACTURA_CABECERA_fac_cab_id`);
+  ADD KEY `fk_FACTURA_DETALLE_FACTURA_CABECERA1_idx` (`FACTURA_CABECERA_fac_cab_id`),
+  ADD KEY `fk_CARRITO_PRODUCTO_idx` (`PRODUCTO_pro_id`);
 
 --
 -- Indices de la tabla `hoja_contacto`
@@ -456,7 +457,7 @@ ALTER TABLE `hoja_contacto`
 -- AUTO_INCREMENT de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  MODIFY `img_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `img_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -492,7 +493,7 @@ ALTER TABLE `tarjeta`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas

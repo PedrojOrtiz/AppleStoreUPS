@@ -14,7 +14,8 @@ if (isset($_SESSION['isLogin'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/globalStyle.css">
     <link rel="stylesheet" href="../css/generalStyle.css">
@@ -70,23 +71,27 @@ if (isset($_SESSION['isLogin'])) {
                     $sqlimagen = 'SELECT  img_nombre FROM imagen WHERE PRODUCTO_pro_id=1;';
                     $resultimagen = $conn->query($sqlimagen);
                     $i = 0;
-                    
+
                     if ($resultimagen->num_rows > 0) {
                         while ($rowimagen = $resultimagen->fetch_assoc()) {
-                            $imagenunica= $rowimagen['img_nombre'];
+                            $imagenunica = $rowimagen['img_nombre'];
                             ?>
-                            <script>
-                                galeria('../../img/product/<?php echo $_GET['producto'].'/'.$rowimagen['img_nombre'] ?>', <?php echo $i,''?>)
-                            </script>
-                            <?php
+                    <script>
+                    galeria('../../img/product/<?php echo $_GET['producto'] . '/' . $rowimagen['img_nombre'] ?>',
+                        <?php echo $i, '' ?>)
+                    </script>
+                    <?php
                             $i = $i + 1;
                         }
                     }
                     ?>
 
-                    <i class="fas fa-angle-left"   onclick="cambiarImagen(0)" ></i>
-                    <img id="galeria" src="../../img/product/<?php echo $_GET['producto'].'/'.$imagenunica ?>" alt="">
-                    <i class="fas fa-angle-right"  onclick="cambiarImagen(1)" ></i>
+                    <i class="fas fa-angle-left" onclick="cambiarImagen(0)"></i>
+                    <div class="contetImg">
+                        <img id="galeria" src="../../img/product/<?php echo $_GET['producto'] . '/' . $imagenunica ?>"
+                            alt="">
+                    </div>
+                    <i class="fas fa-angle-right" onclick="cambiarImagen(1)"></i>
                 </div>
                 <!-- <a href="">Next</a> -->
             </div>
@@ -133,7 +138,7 @@ if (isset($_SESSION['isLogin'])) {
                         <span id="clasificacion">3.0</span>
                     </div>
                     <div class="btns">
-                        <button onclick="cartAdd(<?php echo $precioTotalProd; ?>)">
+                        <button onclick="cartAdd(<?php echo $_GET['producto']; ?>)">
                             <i class="fas fa-cart-plus"></i>
                             Agregar al carrito
                         </button>
@@ -163,26 +168,28 @@ if (isset($_SESSION['isLogin'])) {
                         while ($row = $result->fetch_assoc()) {
                             ?>
 
-                            <div class="contentImg">
-                                <div class="cardImg">
-                                    <a href="product.php?producto=<?php echo $row['pro_id']; ?>"><img src="../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>" alt="<?php echo $row['img_nombre']; ?>"></a>
-                                </div>
-                                <div class="ranking">
-                                    <i class="fas fa-star"></i>
-                                    <span><?php echo $row['rat_calificacion']; ?></span>
-                                </div>
-                            </div>
-                            <div class="contentDescription">
-                                <div class="descripProduct">
-                                    <a href="product.php?producto=<?php echo $row['pro_id']; ?>">
-                                        <h2><?php echo $row['pro_nombre']; ?></h2>
-                                    </a>
-                                    <p><?php echo $row['pro_descripcion']; ?></p>
-                                </div>
-                                <span>$<?php echo $row['pro_precio']; ?></span>
-                            </div>
+                    <div class="contentImg">
+                        <div class="cardImg">
+                            <a href="product.php?producto=<?php echo $row['pro_id']; ?>"><img
+                                    src="../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>"
+                                    alt="<?php echo $row['img_nombre']; ?>"></a>
+                        </div>
+                        <div class="ranking">
+                            <i class="fas fa-star"></i>
+                            <span><?php echo $row['rat_calificacion']; ?></span>
+                        </div>
+                    </div>
+                    <div class="contentDescription">
+                        <div class="descripProduct">
+                            <a href="product.php?producto=<?php echo $row['pro_id']; ?>">
+                                <h2><?php echo $row['pro_nombre']; ?></h2>
+                            </a>
+                            <p><?php echo $row['pro_descripcion']; ?></p>
+                        </div>
+                        <span>$<?php echo $row['pro_precio']; ?></span>
+                    </div>
 
-                        <?php
+                    <?php
                     }
                 }
                 $conn->close();

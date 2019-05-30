@@ -74,6 +74,58 @@ if (isset($_SESSION['isLogin'])) {
     <div class="content">
         <section class="product">
             <div class="productSlide cart">
+
+                <?php
+                //Pendiente query para la tienda 
+                include '../../config/configDB.php';
+                $sql = "SELECT * FROM carrito WHERE
+                        USUARIO_usu_id=" . $_SESSION['codigo'] . ";";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $sqlP = "SELECT * FROM carrito c, producto p, imagen i WHERE
+                        p.pro_id = i.PRODUCTO_pro_id AND
+                        c.USUARIO_usu_id=" . $_SESSION['codigo'] . " AND
+                        p.pro_id=" . $row['PRODUCTO_pro_id'] . "
+                        GROUP BY 1;";
+
+                        $resultP = $conn->query($sqlP);
+                        $rowP = $resultP->fetch_assoc();
+                        ?>
+
+                <article>
+                    <div class="cartImg">
+                        <img src="../../img/product/<?php echo $rowP['pro_id'] . '/' . $rowP['img_nombre'] ?>"
+                            alt="<?php echo $rowP['img_nombre'] ?>">
+                    </div>
+                    <div class="cartDescription">
+                        <h2><?php echo $rowP['pro_nombre'] ?></h2>
+                        <h3>Descripcion</h3>
+                        <p><?php echo $rowP['pro_descripcion'] ?></p>
+                        <div class="inf">
+                            <div>
+                                <h3>Tienda:</h3>
+                                <span>Guayaquil</span>
+                            </div>
+                            <div>
+                                <h3>Cantidad:</h3>
+                                <span><?php echo $rowP['car_cantidad'] ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span>$<?php echo $rowP['pro_precio'] ?></span>
+                    <!--Parametro para eliminar -->
+                    <i class="fas fa-times"></i>
+                </article>
+
+                <?php
+
+                }
+                //echo '<h2>Si hay productos.</h2>';
+            } else {
+                echo '<h2>No hay productos.</h2>';
+            }
+            ?>
                 <article>
                     <div class="cartImg">
                         <img src="../../img/product/product2.png" alt="imagen">
@@ -88,12 +140,21 @@ if (isset($_SESSION['isLogin'])) {
                             perferendis, nulla enim ea unde cum sequi animi dignissimos voluptas et iusto
                             delectus modi
                             at pariatur vel amet sit quod aliquid! Asperiores, magni vel.</p>
-                        <h3>Tienda</h3>
-                        <span>Guayaquil</span>
+                        <div class="inf">
+                            <div>
+                                <h3>Tienda:</h3>
+                                <span>Guayaquil</span>
+                            </div>
+                            <div>
+                                <h3>Cantidad:</h3>
+                                <span>5</span>
+                            </div>
+                        </div>
                     </div>
                     <span>$749</span>
                     <i class="fas fa-times"></i>
                 </article>
+
 
                 <article>
                     <div class="cartImg">

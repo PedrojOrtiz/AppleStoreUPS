@@ -23,17 +23,33 @@
 .content .product .productSlide .productSlideImg{
     width: 100%;
     margin-bottom: 10px;
-    position: relative;
+    position: relative;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--colorBlanco);
+}
+.content .product .productSlide .productSlideImg .contetImg{
+    width: 70%;
+    height: 500px;    
 }
 .content .product .productSlide .productSlideImg img{
-    width: 70%;
+    width: 100%;
+    height: 100%;
 }
 .content .product .productSlide .productSlideImg i{
-    color: var(--colorBlanco);
+    color: var(--color1);
+    opacity: .5;
     font-size: 5em;
     position: absolute;
-    top: 50%;
-    transition: all ease .5s;
+    top: 45%;
+    transition: all ease .25s;
+}
+.content .product .productSlide .productSlideImg i.fa-angle-left{
+    left: 0;
+}
+.content .product .productSlide .productSlideImg i.fa-angle-right{
+    right: 0;
 }
 .content .product .productSlide .productSlideImg i:hover{
     cursor: pointer;
@@ -240,7 +256,7 @@
 .content .product .cart article .cartDescription h3{
     opacity: .7;
     font-weight: normal;
-    font-size: 1em;
+    font-size: 1.2em;
 }
 .content .product .cart article .cartDescription p{
     opacity: .5;
@@ -250,7 +266,15 @@
 }
 .content .product .cart article .cartDescription span{
     color: var(--colorAzul);
-    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+.content .product .cart article .cartDescription .inf{
+    display: flex;
+    justify-content: space-between;
+}
+.content .product .cart article .cartDescription .inf div{
+    display: flex;
+    align-items: center;
 }
 .content .product .cart article>span{
     color: var(--colorFontGeneral);

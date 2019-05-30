@@ -65,10 +65,10 @@ function searchBox(elemnt) {
     xmlhttp.send()
 }
 
-function cartAdd(precioTotal, cod) {
-    console.log()
+function cartAdd(cod) {
+    console.log(cod)
     //console.log(precioTotal)
-
+    let storeId = (getElementById('selectStore').selectedIndex + 1)
 
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest()
@@ -87,7 +87,7 @@ function cartAdd(precioTotal, cod) {
             //document.getElementById('body').innerHTML = this.responseText
         }
     };
-    xmlhttp.open("GET", "../controller/cartAdd.php?productPrice=" + precioTotal + "&codProd=" + cod, true)
+    xmlhttp.open("GET", "../controller/cartAdd.php?codProd=" + cod + "&storeId=" + storeId, true)
     xmlhttp.send()
 }
 
@@ -118,23 +118,21 @@ function prodValoration(elemnt) {
     // xmlhttp.open("GET", "../controller/search.php?searchName=" + text, true)
     // xmlhttp.send()
 }
-<<<<<<< HEAD
-=======
 
-var imag=[]
+var imag = []
 var indice = 0
 
-function galeria(img,i){
-    imag[i]=img
+function galeria(img, i) {
+    imag[i] = img
 }
 
 function cambiarImagen(int) {
-   
+
     if (int == 1) {
         if (indice < imag.length - 1) {
             indice++
         } else {
-           indice=0
+            indice = 0
         }
     } else {
         if (indice > 0) {
@@ -145,4 +143,4 @@ function cambiarImagen(int) {
     }
     document.getElementById("galeria").src = imag[indice]
 }
->>>>>>> b40f3f399c3a84ee9300eae3fa76c18a65d21229
+
