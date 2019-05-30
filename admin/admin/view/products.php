@@ -66,7 +66,7 @@
                             <li> <a><?php echo strtoupper($nombres) ?> <?php echo strtoupper($apellidos) ?></a>
                                 <ul>
                                     <li><a href="modify.php">Ajustes</a></li>
-                                    <li><a href="logout.php">Cerrar Sesion</a></li>
+                                    <li><a href="../controller/logout.php">Cerrar Sesion</a></li>
                                 </ul>
                             </li>
                         </ul>
