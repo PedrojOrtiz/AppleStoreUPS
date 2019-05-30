@@ -414,3 +414,31 @@ body .cartAdd i{
 }
 
 
+h1{
+	text-align: center;
+	color:black;
+}
+
+td {
+	padding-top: 10px;
+	padding-right: 15px;
+}
+
+#crear, #cancelar {
+	width: 150px;
+	margin: 20px;
+
+}
+
+#btn {
+	text-align: center;
+
+}
+.error {
+	border: 0.5px solid red;
+}
+
+.p {
+	display: block !important;
+	color: red;
+}
