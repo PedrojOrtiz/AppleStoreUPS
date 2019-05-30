@@ -1,0 +1,72 @@
+*{
+    --color1: #3B3B53;
+    --color2: #A3A0FB;
+    --colorBlanco:#FFFFFF;
+    --colorRojo: #FF6565;
+    --colorAzul:#3B86FF;
+    --bgColor:#F0F0F7;
+    --colorDark:#4D4F5C;
+    --colorBtns:#43425D;
+}
+th {
+    background-color: var(--color1);
+    color: white;
+}
+
+table, th, td {
+    padding: 2px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+#dato, td {
+    text-align: center !important;
+}
+
+table{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+#button {
+    background-color: var(--color1);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    /*display: inline-block;*/
+    font-size: 14px;
+}
+
+#button:hover {
+    background-color: var(--color2);
+    border: none;
+    color: white;
+}
+
+#sbutton {
+    background-color: var(--color1);
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+#sbutton:hover {
+    background-color: var(--color2);
+    border: none;
+    color: white;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+

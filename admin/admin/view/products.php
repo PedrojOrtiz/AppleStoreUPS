@@ -26,6 +26,7 @@
     $resultSucursal = $conn->query($sqlSucursal);
     $rowSucursal = mysqli_fetch_assoc($resultSucursal);
 
+    $sucId = $rowSucursal['suc_id'];
     $sucNombre = $rowSucursal['suc_nombre'];
     $sucTelefono = $rowSucursal['suc_telefono'];
     $sucCelular = $rowSucursal['suc_celular'];
@@ -33,10 +34,10 @@
     $sucEliminado = $rowSucursal['suc_eliminado'];
 
 
-    $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion
-            FROM producto pro, imagen img, rating rat, producto_sucursal
-            WHERE pro.pro_id = img.PRODUCTO_pro_id ANDpro.pro_id = rat.PRODUCTO_pro_id ANDpro.pro_estado=1 
-            ORDER BY pro.pro_fecha_creacion DESC";
+    $sqlPro =  "SELECT pro.pro_fecha_creacion, pro.pro_nombre, pro.pro_estado, pro.pro_precio, img.img_nombre, ps.pro_suc_stock
+                FROM producto pro, imagen img, rating rat, producto_sucursal ps
+                WHERE pro.pro_id = img.PRODUCTO_pro_id AND pro.pro_id = rat.PRODUCTO_pro_id AND pro.pro_id = ps.PRODUCTO_pro_id AND ps.SUCURSAL_suc_id = $sucId
+                ORDER BY pro.pro_fecha_creacion DESC";
 
 ?>
 
@@ -52,6 +53,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/globalStyle.css">
+    <link rel="stylesheet" href="../css/style2.css">
     <title>Perfil</title>
 </head>
 
@@ -95,10 +97,85 @@
         <section>
             <h2>Productos</h2>
             <div class="cardContent">
-                <h2>Sucursal: "Nombre Sucursal"</h2>
+                <h2>Sucursal: <?php echo strtoupper($sucNombre) ?></h2>
+                <a href="crear_producto.php" class="center" id="button"> Crear Producto </a>
                 <div class="formData">
-                    
-                    
+                                
+                <table> 
+
+                    <colgroup>
+                        <col style='width: 5%'>
+                        <col style='width: 5%'>
+                        <col style='width: 5%'>
+                        <col style='width: 5%'>
+                        <col style='width: 5%'>
+                        <col style='width: 5%'>
+                    </colgroup>
+
+                    <thead>
+                        <tr>
+                            <th>Creado</th>
+                            <th>Imagen</th>  
+                            <th>Nombre</th>
+                            <th>Precio</th> 
+                            <th>Stock</th>
+                            <th>Acciones</th>        
+                        </tr>
+                    </thead>
+
+                    <tr>
+
+
+<?php  
+
+    
+
+    $sqlPro =  "SELECT pro.pro_id, pro.pro_fecha_creacion, pro.pro_nombre, pro.pro_estado, pro.pro_precio, img.img_nombre, ps.pro_suc_stock
+                FROM producto pro, imagen img, producto_sucursal ps
+                WHERE pro.pro_id = img.PRODUCTO_pro_id AND pro.pro_id = ps.PRODUCTO_pro_id AND ps.SUCURSAL_suc_id = $sucId
+                GROUP BY img.PRODUCTO_pro_id
+                ORDER BY pro.pro_fecha_creacion DESC";
+
+    $resultPro = $conn->query($sqlPro);
+
+    if ($resultPro->num_rows > 0) { 
+
+        $resultPro = $conn->query($sqlPro);
+
+        
+        while($row = $resultPro->fetch_assoc()) {  
+            
+
+
+            echo "<tr>";   
+                echo "<td>" . $row['pro_fecha_creacion'] . "</td>";
+                echo "  <div class='cardImg'> 
+                            <td> <img src='../../../img/product/".$row['pro_id']."/".$row['img_nombre']."' alt='".$row['img_nombre']."' height='80' width='80' > </td> 
+                        </div> ";
+                echo "<td>" . $row['pro_nombre'] ."</td>";
+                echo "<td>" . $row['pro_precio'] ."</td>";
+                echo "<td>" . $row['pro_suc_stock'] ."</td>";
+                echo "  <td> 
+                            <a href='modificar_producto.php?id=".$row['pro_id']."' id='sbutton'> Modificar </a>
+                            <a href='eliminar_producto.php?id=".$row['pro_id']."' id='sbutton'> Eliminar </a>
+                        </td>";                                            
+            echo "</tr>";
+        }
+
+    } else { 
+
+        echo "<tr>";                 
+        echo "<td colspan='4'> No hay productos en esta sucursal </td>";                 
+        echo "</tr>"; 
+
+    }
+
+    $conn->close();
+
+?>
+
+                </table>
+
 
                 </div>
             </div>
