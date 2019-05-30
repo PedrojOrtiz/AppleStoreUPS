@@ -420,14 +420,8 @@ h1{
 }
 
 td {
-	padding-top: 10px;
-	padding-right: 15px;
-}
-
-#crear, #cancelar {
-	width: 150px;
-	margin: 20px;
-
+	padding-top: 50px;
+	padding-right: 50px;
 }
 
 #btn {
