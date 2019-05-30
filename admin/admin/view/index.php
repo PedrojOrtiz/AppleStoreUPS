@@ -22,7 +22,6 @@
     $sucId = $rowUsuario['SUCURSAL_suc_id'];
 
     $sqlSucursal = "SELECT * FROM sucursal suc WHERE suc.suc_id = $sucId";
-
     $resultSucursal = $conn->query($sqlSucursal);
     $rowSucursal = mysqli_fetch_assoc($resultSucursal);
 

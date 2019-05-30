@@ -33,12 +33,6 @@
     $sucUrl = $rowSucursal['suc_url'];
     $sucEliminado = $rowSucursal['suc_eliminado'];
 
-
-    $sqlPro =  "SELECT pro.pro_fecha_creacion, pro.pro_nombre, pro.pro_estado, pro.pro_precio, img.img_nombre, ps.pro_suc_stock
-                FROM producto pro, imagen img, rating rat, producto_sucursal ps
-                WHERE pro.pro_id = img.PRODUCTO_pro_id AND pro.pro_id = rat.PRODUCTO_pro_id AND pro.pro_id = ps.PRODUCTO_pro_id AND ps.SUCURSAL_suc_id = $sucId
-                ORDER BY pro.pro_fecha_creacion DESC";
-
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +48,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/globalStyle.css">
     <link rel="stylesheet" href="../css/style2.css">
-    <title>Perfil</title>
+    <title>Productos</title>
 </head>
 
 <body>
@@ -98,12 +92,13 @@
             <h2>Productos</h2>
             <div class="cardContent">
                 <h2>Sucursal: <?php echo strtoupper($sucNombre) ?></h2>
-                <a href="crear_producto.php" class="center" id="button"> Crear Producto </a>
+                <a href="../controller/crear_producto.php" class="center" id="button"> Crear Producto </a>
                 <div class="formData">
                                 
                 <table> 
 
                     <colgroup>
+                        <col style='width: 5%'>
                         <col style='width: 5%'>
                         <col style='width: 5%'>
                         <col style='width: 5%'>
@@ -119,6 +114,7 @@
                             <th>Nombre</th>
                             <th>Precio</th> 
                             <th>Stock</th>
+                            <th>Estado</th>
                             <th>Acciones</th>        
                         </tr>
                     </thead>
@@ -153,12 +149,19 @@
                             <td> <img src='../../../img/product/".$row['pro_id']."/".$row['img_nombre']."' alt='".$row['img_nombre']."' height='80' width='80' > </td> 
                         </div> ";
                 echo "<td>" . $row['pro_nombre'] ."</td>";
-                echo "<td>" . $row['pro_precio'] ."</td>";
-                echo "<td>" . $row['pro_suc_stock'] ."</td>";
+                echo "<td> $" . $row['pro_precio'] ."</td>";
+                echo "<td>" . $row['pro_suc_stock'] ."u.</td>";
+                if ($row['pro_estado'] == 0) {
+                    echo "<td>Activo</td>";
+                } else if ($row['pro_estado'] == 1) {
+                    echo "<td>Inactivo</td>";
+                }
                 echo "  <td> 
-                            <a href='modificar_producto.php?id=".$row['pro_id']."' id='sbutton'> Modificar </a>
-                            <a href='eliminar_producto.php?id=".$row['pro_id']."' id='sbutton'> Eliminar </a>
-                        </td>";                                            
+                            <a href='../controller/modificar_producto.php?id=".$row['pro_id']."' id='sbutton'> Modificar </a>";
+                            if ($row['pro_estado'] == 0) {
+                echo       "<a href='../controller/eliminar_producto.php?id=".$row['pro_id']."' id='sbutton'> Eliminar </a>";  
+                            }                          
+                echo       "</td>";                                            
             echo "</tr>";
         }
 
