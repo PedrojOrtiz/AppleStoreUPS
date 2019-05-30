@@ -46,6 +46,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/globalStyle.css">
+    <link rel="stylesheet" href="../css/style2.css">
     <title>Perfil</title>
 </head>
 
@@ -104,7 +105,7 @@
 
            <?php
 
-               $sql = "SELECT * FROM usuario";
+               $sql = "SELECT * FROM usuario WHERE usu_rol LIKE 'user'";
                $result = $conn->query($sql);
 
                if ($result->num_rows > 0){
