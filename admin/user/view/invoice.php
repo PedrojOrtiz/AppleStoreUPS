@@ -79,6 +79,7 @@ if (isset($_SESSION['isLogin'])) {
                                     <td>Producto</td>
                                     <td>Descripcion</td>
                                     <td>Tienda</td>
+                                    <td>Cantidad</td>
                                     <td>Precio</td>
                                     <td>Rutas</td>
                                 </tr>
@@ -119,6 +120,7 @@ if (isset($_SESSION['isLogin'])) {
                                     </td>
                                     <td>Este es el de la prueba de mapa.</td>
                                     <td><a href="">Guayaquil</a></td>
+                                    <td>4</td>
                                     <td>$700.00</td>
                                     <td><a onclick="openWindow()">Ver ruta</a>
                                     </td>

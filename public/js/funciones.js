@@ -68,7 +68,7 @@ function searchBox(elemnt) {
 function cartAdd(cod) {
     console.log(cod)
     //console.log(precioTotal)
-    let storeId = (getElementById('selectStore').selectedIndex + 1)
+    //let storeId = (getElementById('selectStore').selectedIndex + 1)
 
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest()
@@ -87,7 +87,7 @@ function cartAdd(cod) {
             //document.getElementById('body').innerHTML = this.responseText
         }
     };
-    xmlhttp.open("GET", "../controller/cartAdd.php?codProd=" + cod + "&storeId=" + storeId, true)
+    xmlhttp.open("GET", "../controller/cartAdd.php?codProd=" + cod, true)
     xmlhttp.send()
 }
 
