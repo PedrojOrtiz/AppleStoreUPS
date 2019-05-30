@@ -13,6 +13,6 @@
         <!-- <li><a href="favorites.php"><i class="far fa-heart"></i> Favoritos</a></li> -->
         <li><a href="settings.php"><i class="fas fa-cog"></i> Opciones</a></li>
         <!-- <li><a href="messages.php"><i class="fas fa-envelope-open-text"></i> Mensajes</a></li> -->
-        <li><a href="#"><i class="far fa-life-ring"></i> Ayuda</a></li>
+        <li><a href="contactos.php"><i class="far fa-life-ring"></i> Ayuda</a></li>
     </ul>
 </nav>

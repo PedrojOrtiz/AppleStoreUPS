@@ -58,7 +58,7 @@ if (isset($_SESSION['isLogin'])) {
                     <h2>Desactivar cuenta</h2>
                     <div class="formData">
                         <form action="">
-                            <label for="deleteAccount">Introdisca su contraseña</label>
+                            <label for="deleteAccount">Introdusca su contraseña</label>
                             <input type="password" name="deleteAccount" id="deleteAccount">
                             <input type="submit" value="Desactivar">
                         </form>
