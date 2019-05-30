@@ -53,18 +53,6 @@
     <header>
         <div class="content">
             <div class="sessionItems">
-<<<<<<< HEAD
-                <div class="header">
-                    <ul class="nav">
-                        <li> <a>Nombre Apellido</a>
-                            <ul>
-                                <li><a href="#">Ajustes</a></li>
-                                <li><a href="#">Cerrar Sesion</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-=======
                     <div class="header">
                         <ul class="nav">
                             <li> <a><?php echo strtoupper($nombres) ?> <?php echo strtoupper($apellidos) ?></a>
@@ -75,7 +63,6 @@
                             </li>
                         </ul>
                     </div>
->>>>>>> 1f20d00bfa8bfe5200e93c0d255fc24ccc4e36d7
                 <div class="imgUser">
                     <img src="../../../img/user/<?php echo $id; ?>/<?php echo ($img); ?>" alt="">
                 </div>
@@ -104,8 +91,6 @@
             <div class="cardContent">
                 <h2>Sucursal: <?php echo strtoupper($sucNombre) ?></h2>
                 <div class="formData">
-<<<<<<< HEAD
-=======
                     
                     <?php
 
@@ -114,7 +99,6 @@
                         $sqlVentas = "SELECT * FROM ";
 
                     ?>
->>>>>>> 1f20d00bfa8bfe5200e93c0d255fc24ccc4e36d7
 
                 </div>
             </div>
