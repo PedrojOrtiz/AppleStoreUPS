@@ -90,8 +90,6 @@
         </header>
         <section>
             <h2>Clientes</h2>
-            
-            <form id="buscar_nombres"><input type="text" id="Buscar" name="Buscar" value="" onkeyup="buscarC2(<?php echo $codigo ?>)" placeholder="Buscar nombre...">
            
             <div class="cardContent">
                 <table>
@@ -116,7 +114,11 @@
                            echo "<td>" .$row["usu_apellidos"]."</td>";
                            echo "<td>" .$row["usu_correo"]."</td>";
                            echo "<td>" .$row["usu_fecha_modificacion"]."</td>";
-                           echo "<td class='accion'><a href='eliminar.php?codigo=".$row['usu_id']."&id=".$id."'>Eliminar</a></td>";
+                           if ($row['usu_eliminado'] == 0) {                             
+                            echo "<td> <a href='../controller/eliminar.php?id=$row[usu_id]'> Eliminar </a>  </td> ";                                                                  
+                            } else {
+                            echo "<td>  </td> ";
+                            }
                            echo "<td class='accion'><a href='modificar.php?codigo=".$row['usu_id']."&id=".$id."'>Modificar</a></td>";
                            echo "<td class='accion'><a href='cambiar_contrasena.php?codigo=".$row['usu_id']."&id=".$id."'>Cambiar contrasena</a></td>";
                        }
