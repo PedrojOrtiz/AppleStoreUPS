@@ -413,26 +413,25 @@ body .cartAdd i{
     font-size: 1.3em;
 }
 
+td {
+	padding-top: 10px;
+	padding-right: 15px;
+}
 
 h1{
 	text-align: center;
 	color:black;
 }
-
-td {
-	padding-top: 50px;
-	padding-right: 50px;
-}
-
 #btn {
-	text-align: center;
+	display: inline-block;
+    text-align: center;
 
 }
-.error {
-	border: 0.5px solid red;
+#form {
+    display: inline-block;
+    text-align: center;
 }
-
-.p {
-	display: block !important;
-	color: red;
+body {
+    
+    text-align: center;
 }

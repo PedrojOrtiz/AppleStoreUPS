@@ -31,7 +31,8 @@ if (isset($_SESSION['isLogin'])) {
     <section>
     <div id="form">
         <h1>Contactos</h1>
-            <table>
+        
+            <table >
                 <tr>
                     <td><label>Asunto</label></td>
                     <td><input type="text" id="asu" name="asu" placeholder=""></td>
@@ -39,17 +40,19 @@ if (isset($_SESSION['isLogin'])) {
 
                 <tr>
                     <td><label>Mensaje</label></td>
-                    <td><input type="text" name="men" placeholder="Escribir mensaje" ></td>
+                    <td><input type="text"  style="WIDTH: 228px; HEIGHT: 98px" size=32 name=mens placeholder="Escribir mensaje" ></td>
                 </tr>
 
                 <tr>
-                    <td colspan="1">
+                <td colspan="3">
                         <div id="btn">
+                            
                             <input type="submit" id="crear" name="crear" value="Aceptar">
+                            
                         </div>
-                    </td>
-                </tr>
+                </td>
             </table>
+        
         </form>
     </div>
     </section>
