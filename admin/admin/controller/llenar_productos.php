@@ -52,11 +52,7 @@
 
         $resultPro = $conn->query($sqlPro);
 
-        
-        while($row = $resultPro->fetch_assoc()) {  
-            
-
-            echo    "
+        echo    "
                     <colgroup>
                         <col style='width: 5%'>
                         <col style='width: 5%'>
@@ -84,6 +80,8 @@
                     <tr>
                     ";
 
+        
+        while($row = $resultPro->fetch_assoc()) {  
 
             echo "<tr>";   
                 echo "<td>" . $row['pro_fecha_creacion'] . "</td>";
