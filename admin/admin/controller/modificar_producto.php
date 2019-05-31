@@ -10,6 +10,8 @@
     if($_SESSION["rol"] != "admin")
         header("Location: ../controller/logout.php");
 
+    $idProducto = $_REQUEST['id'];
+
     $sqlUsuario = "SELECT * FROM usuario user, imagen img WHERE user.usu_id = $id AND img.USUARIO_usu_id = $id";
 
     $resultUsuario = $conn->query($sqlUsuario);
@@ -39,11 +41,19 @@
                 WHERE pro.pro_id = img.PRODUCTO_pro_id AND pro.pro_id = rat.PRODUCTO_pro_id AND pro.pro_id = ps.PRODUCTO_pro_id AND ps.SUCURSAL_suc_id = $sucId
                 ORDER BY pro.pro_fecha_creacion DESC";*/
 
-    $sqlPro =  "SELECT pro.pro_id, pro.pro_fecha_creacion, pro.pro_nombre, pro.pro_estado, pro.pro_precio, img.img_nombre, ps.pro_suc_stock
+    $sqlPro =  "SELECT pro.pro_id, pro.pro_fecha_creacion, pro.pro_nombre, pro.pro_estado, pro.pro_precio, img.img_nombre, ps.pro_suc_stock, pro.pro_descripcion, pro.pro_descuento
     FROM producto pro, imagen img, producto_sucursal ps
-    WHERE pro. pro_id = img.PRODUCTO_pro_id AND pro.pro_id = ps.PRODUCTO_pro_id AND ps.SUCURSAL_suc_id = $sucId
-    GROUP BY img.PRODUCTO_pro_id
-    ORDER BY pro.pro_fecha_creacion DESC";
+    WHERE pro.pro_id = img.PRODUCTO_pro_id AND pro.pro_id = ps.PRODUCTO_pro_id AND ps.SUCURSAL_suc_id = $sucId AND pro.pro_id = $idProducto
+    GROUP BY img.PRODUCTO_pro_id";
+
+    $resultPro=$conn->query($sqlPro);
+    $rowPro= mysqli_fetch_assoc($resultPro);
+
+    $nombreAnterior = $rowPro['pro_nombre'];
+    $descripcionAnterior = $rowPro['pro_descripcion'];
+    $precioAnterior = $rowPro['pro_precio'];
+    $descuentoAnterior = $rowPro['pro_descuento'];
+    $stockAnterior = $rowPro['pro_suc_stock'];
 
     if (!empty($_POST)) {
 
@@ -53,21 +63,12 @@
         $proDescuento = isset($_POST["descuento"]) ? mb_strtoupper(trim($_POST["descuento"]), 'UTF-8') : null;
         $proCategoria = $_POST['categoria'];
 
-        $foto = $_FILES['foto']['name'];
-        $temp = $_FILES['foto']['tmp_name'];
-        $type = $_FILES['foto']['type'];
-
         $proStock = isset($_POST["stock"]) ? mb_strtoupper(trim($_POST["stock"]), 'UTF-8') : null;
 
         $sql = "SELECT MAX(pro_id) AS codigo  FROM producto;";
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
         $codigoNewProduct = ($row['codigo'] + 1);
-
-        $directorio = "../../../img/product/" . $codigoNewProduct . "/";
-        mkdir($directorio, 0777, true);
-
-        move_uploaded_file($temp, "../../../img/product/" . $codigoNewProduct . "/$foto");
 
         $sqlProducto = "INSERT INTO producto (
             pro_nombre, 
@@ -81,11 +82,11 @@
             $proDescuento,
             $proCategoria)";
         
-        $sqlImg = "INSERT INTO imagen (
+        /*$sqlImg = "INSERT INTO imagen (
             img_nombre, 
             PRODUCTO_pro_id) VALUES (
             '$foto',
-            '$codigoNewProduct')";
+            '$codigoNewProduct')";*/
 
         $sqlProSuc = "INSERT INTO producto_sucursal (
             pro_suc_stock, 
@@ -162,7 +163,7 @@
             </nav>
         </header>
         <section>
-            <h2>Nuevo Producto</h2>
+            <h2>Modificar Producto</h2>
             <div class="content">
                 <h2>Sucursal: <?php echo strtoupper($sucNombre) ?></h2>
                 <div class="form">
@@ -170,19 +171,19 @@
                     <form method="POST" enctype="multipart/form-data" action=""> 
  
                         <label for="nombres">Nombre:</label> 
-                        <input type="text" id="nombre" name="nombre" value="" placeholder="Nombre del producto..." required>
+                        <input type="text" id="nombre" name="nombre" value="<?php echo $nombreAnterior; ?>" placeholder="Nombre del producto..." required>
 
                         <label for="descripcion">Descripcion:</label> 
-                        <input type="text" id="descripcion" name="descripcion" value="" placeholder="Descripcion del producto..." required>            
+                        <input type="text" id="descripcion" name="descripcion" value="<?php echo $descripcionAnterior; ?>" placeholder="Descripcion del producto..." required>            
 
                         <label for="precio">Precio:</label> 
-                        <input type="number" id="precio" name="precio" value="" placeholder="$ Precio del producto..." required>
+                        <input type="number" id="precio" name="precio" value="<?php echo $precioAnterior; ?>" placeholder="$ Precio del producto..." required>
 
                         <label for="stock">Cantidad:</label> 
-                        <input type="number" id="stock" name="stock" value="" placeholder=" Cantidad del producto..." required>
+                        <input type="number" id="stock" name="stock" value="<?php echo $stockAnterior; ?>" placeholder=" Cantidad del producto..." required>
 
                         <label for="descuento">Descuento:</label> 
-                        <input type="number" id="descuento" name="descuento" value="" placeholder="% Descuento..."> 
+                        <input type="number" id="descuento" name="descuento" value="<?php echo $descuentoAnterior; ?>" placeholder="% Descuento..."> 
 
                         <label for="categoria">Seleccionar Categoria:</label>
                         <select name="categoria" id="categoria" type="number" onchange="stock(this)" required>
@@ -194,12 +195,9 @@
                             <option value="6">Accesorios</option>
                         </select>
                         <br>
-
-                        <label for="fotos">Seleccione una o varias fotos del producto.</label>
-                        <input type="file" name="foto" id="foto" required>
-
+                        
                         <div class="btns">
-                            <input type="submit" value="Crear">
+                            <input type="submit" value="Modificar">
                         </div>
 
                     </form>   
