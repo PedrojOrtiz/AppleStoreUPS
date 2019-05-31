@@ -46,6 +46,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/globalStyle.css">
+    <link rel="stylesheet" href="../css/style2.css">
     <title>Perfil</title>
 </head>
 
@@ -89,9 +90,43 @@
         <section>
             <h2>Mensajes</h2>
             <div class="cardContent">
-                <h2>Sucursal: "Nombre Sucursal"</h2>
                 <div class="formData">
-                    
+                <table id="buzon">
+                    <tr>
+                        <th>De</th>
+                        <th>Asunto</th>
+                        <th>Contenido</th>
+                        <th>Fecha y hora</th>
+                    </tr>
+                    <?php
+                        include '../../../config/configDB.php';
+
+
+                        $sql = "SELECT usuario.usu_nombres, hoja.con_asunto, hoja.con_contenido, hoja.con_fecha
+                        FROM hoja_contacto hoja, usuario usuario 
+                        WHERE Usuario_usu_id = usuario.usu_id ORDER BY con_fecha";
+                        $result = $conn->query($sql);
+                        
+
+                        if ($result->num_rows > 0){
+                            while($row = $result->fetch_assoc()){
+                                    echo "<tr>";
+                                    echo "<td>" .$row["usu_nombres"]."</td>";
+                                    echo "<td>" .$row["con_asunto"]."</td>";
+                                    echo "<td>" .$row["con_contenido"]."</td>";
+                                    echo "<td>" .$row["con_fecha"]."</td>";
+                            }
+                        }else{
+                            echo "<td colspan=4>No tiene mensajes</td>";
+                        }
+
+
+                        
+
+                        $conn->close();
+                    ?>
+                </table>
+                </div>
                 </div>
             </div>
         </section>
