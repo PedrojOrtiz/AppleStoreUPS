@@ -93,7 +93,9 @@
                 <div class="formData">
                 <table id="buzon">
                     <tr>
-                        <th>De</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo Electronico</th>
                         <th>Asunto</th>
                         <th>Contenido</th>
                         <th>Fecha y hora</th>
@@ -102,7 +104,7 @@
                         include '../../../config/configDB.php';
 
 
-                        $sql = "SELECT usuario.usu_nombres, hoja.con_asunto, hoja.con_contenido, hoja.con_fecha
+                        $sql = "SELECT usuario.usu_nombres, usuario.usu_apellidos, usuario.usu_correo, hoja.con_asunto, hoja.con_contenido, hoja.con_fecha
                         FROM hoja_contacto hoja, usuario usuario 
                         WHERE Usuario_usu_id = usuario.usu_id ORDER BY con_fecha";
                         $result = $conn->query($sql);
@@ -112,6 +114,8 @@
                             while($row = $result->fetch_assoc()){
                                     echo "<tr>";
                                     echo "<td>" .$row["usu_nombres"]."</td>";
+                                    echo "<td>" .$row["usu_apellidos"]."</td>";
+                                    echo "<td>" .$row["usu_correo"]. "</td>";
                                     echo "<td>" .$row["con_asunto"]."</td>";
                                     echo "<td>" .$row["con_contenido"]."</td>";
                                     echo "<td>" .$row["con_fecha"]."</td>";
