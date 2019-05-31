@@ -105,11 +105,13 @@
                         <col style='width: 5%'>
                         <col style='width: 5%'>
                         <col style='width: 5%'>
+                        <col style='width: 5%'>
                     </colgroup>
 
                     <thead>
                         <tr>
                             <th>Creado</th>
+                            <th>Modificado</th>
                             <th>Imagen</th>  
                             <th>Nombre</th>
                             <th>Precio</th> 
@@ -126,7 +128,7 @@
 
     
 
-    $sqlPro =  "SELECT pro.pro_id, pro.pro_fecha_creacion, pro.pro_nombre, pro.pro_estado, pro.pro_precio, img.img_nombre, ps.pro_suc_stock
+    $sqlPro =  "SELECT pro.pro_id, pro.pro_fecha_creacion, pro.pro_nombre, pro.pro_estado, pro.pro_precio, img.img_nombre, ps.pro_suc_stock, pro.pro_fecha_modificacion
                 FROM producto pro, imagen img, producto_sucursal ps
                 WHERE pro.pro_id = img.PRODUCTO_pro_id AND pro.pro_id = ps.PRODUCTO_pro_id AND ps.SUCURSAL_suc_id = $sucId
                 GROUP BY img.PRODUCTO_pro_id
@@ -145,6 +147,12 @@
 
             echo "<tr>";   
                 echo "<td>" . $row['pro_fecha_creacion'] . "</td>";
+
+                if ($row['pro_fecha_modificacion'] == "") {
+                    echo "<td>-</td>";
+                } else {
+                    echo "<td>" . $row['pro_fecha_modificacion'] . "</td>";
+                }   
                 echo "  <div class='cardImg'> 
                             <td> <img src='../../../img/product/".$row['pro_id']."/".$row['img_nombre']."' alt='".$row['img_nombre']."' height='80' width='80' > </td> 
                         </div> ";
@@ -157,7 +165,7 @@
                     echo "<td>Inactivo</td>";
                 }
                 echo "  <td> 
-                            <a href='../controller/modificar_producto.php?id=".$row['pro_id']."' id='sbutton'> Modificar </a>";
+                            <a href='../controller/modificar_producto.php?id=".$row['pro_id']."' id='sbutton'> Modificar </a><br><br>";
                             if ($row['pro_estado'] == 0) {
                 echo       "<a href='../controller/eliminar_producto.php?id=".$row['pro_id']."' id='sbutton'> Eliminar </a>";  
                             }                          
