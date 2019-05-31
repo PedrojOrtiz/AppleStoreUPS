@@ -31,10 +31,10 @@ if (isset($_SESSION['isLogin'])) {
     </header>
 
     <div id="floatWindow">
-        <div class="contentWindow">
+        <div class="contentWindow" id="payWindow">
             <!-- FORMULARIO  -->
             <div class="form">
-                <form action="">
+                <form action="../controller/payments.php">
                     <h2>Pagar con tarjeta</h2>
                     <p>Introdisca los datos de su tarjeta</p>
                     <input type="text" name="numbreCard" id="numbreCard" placeholder="1234 1234 1234 1234" required>
@@ -105,11 +105,17 @@ if (isset($_SESSION['isLogin'])) {
                         <div class="inf">
                             <div>
                                 <h3>Tienda:</h3>
-                                <span>Guayaquil</span>
+                                <?php
+                                        $sqlSuc = 'SELECT suc_nombre FROM sucursal WHERE suc_id=' . $row['SUCURSAL_suc_id'] . ';';
+                                        $resultSuc = $conn->query($sqlSuc);
+                                        $rowSuc = $resultSuc->fetch_assoc();
+                                        echo '<span>' . $rowSuc['suc_nombre'] . '</span>';
+                                        ?>
+
                             </div>
                             <div>
                                 <h3>Cantidad:</h3>
-                                <span><?php echo $rowP['car_cantidad'] ?></span>
+                                <span><?php echo $row['car_cantidad'] ?></span>
                             </div>
                         </div>
                     </div>
@@ -212,6 +218,7 @@ if (isset($_SESSION['isLogin'])) {
                     <h2>Detalle</h2>
                     <div class="price">
                         <p><span>Sub-Total: </span>$749.00</p>
+                        <p><span>IVA: </span>12%</p>
                         <p><span>Total: </span>$749.00</p>
                     </div>
                     <div class="btns">

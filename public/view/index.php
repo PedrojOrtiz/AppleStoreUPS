@@ -14,7 +14,8 @@ if (isset($_SESSION['isLogin'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/globalStyle.css">
     <link rel="stylesheet" href="../css/generalStyle.css">
@@ -56,27 +57,29 @@ if (isset($_SESSION['isLogin'])) {
                         while ($row = $result->fetch_assoc()) {
                             ?>
 
-                            <div class="contentImg">
-                                <div class="cardImg">
-                                    <a href="product.php?producto=<?php echo $row['pro_id']; ?>"><img src="../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>" alt="<?php echo $row['img_nombre']; ?>"></a>
-                                </div>
-                                <span>Nuevo</span>
-                                <div class="ranking">
-                                    <i class="fas fa-star"></i>
-                                    <span><?php echo $row['rat_calificacion']; ?></span>
-                                </div>
-                            </div>
-                            <div class="contentDescription">
-                                <div class="descripProduct">
-                                    <a href="product.php?producto=<?php echo $row['pro_id']; ?>">
-                                        <h2><?php echo $row['pro_nombre']; ?></h2>
-                                    </a>
-                                    <p><?php echo $row['pro_descripcion']; ?></p>
-                                </div>
-                                <span>$<?php echo $row['pro_precio']; ?></span>
-                            </div>
+                    <div class="contentImg">
+                        <div class="cardImg">
+                            <a href="product.php?producto=<?php echo $row['pro_id']; ?>"><img
+                                    src="../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>"
+                                    alt="<?php echo $row['img_nombre']; ?>"></a>
+                        </div>
+                        <span>Nuevo</span>
+                        <div class="ranking">
+                            <i class="fas fa-star"></i>
+                            <span><?php echo $row['rat_calificacion']; ?></span>
+                        </div>
+                    </div>
+                    <div class="contentDescription">
+                        <div class="descripProduct">
+                            <a href="product.php?producto=<?php echo $row['pro_id']; ?>">
+                                <h2><?php echo $row['pro_nombre']; ?></h2>
+                            </a>
+                            <p><?php echo $row['pro_descripcion']; ?></p>
+                        </div>
+                        <span>$<?php echo $row['pro_precio']; ?></span>
+                    </div>
 
-                        <?php
+                    <?php
                     }
                 }
                 $conn->close();
@@ -190,27 +193,29 @@ if (isset($_SESSION['isLogin'])) {
                         while ($row = $result->fetch_assoc()) {
                             ?>
 
-                            <div class="contentImg">
-                                <div class="cardImg">
-                                    <a href="product.php"><img src="../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>" alt="<?php echo $row['img_nombre']; ?>"></a>
-                                </div>
-                                <span><?php echo $row['pro_descuento']; ?>%</span>
-                                <div class="ranking">
-                                    <i class="fas fa-star"></i>
-                                    <span><?php echo $row['rat_calificacion']; ?></span>
-                                </div>
-                            </div>
-                            <div class="contentDescription">
-                                <div class="descripProduct">
-                                    <a href="product.php">
-                                        <h2><?php echo $row['pro_nombre']; ?></h2>
-                                    </a>
-                                    <p><?php echo $row['pro_descripcion']; ?></p>
-                                </div>
-                                <span>$<?php echo $row['pro_precio']; ?></span>
-                            </div>
+                    <div class="contentImg">
+                        <div class="cardImg">
+                            <a href="product.php"><img
+                                    src="../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>"
+                                    alt="<?php echo $row['img_nombre']; ?>"></a>
+                        </div>
+                        <span><?php echo $row['pro_descuento']; ?>%</span>
+                        <div class="ranking">
+                            <i class="fas fa-star"></i>
+                            <span><?php echo $row['rat_calificacion']; ?></span>
+                        </div>
+                    </div>
+                    <div class="contentDescription">
+                        <div class="descripProduct">
+                            <a href="product.php">
+                                <h2><?php echo $row['pro_nombre']; ?></h2>
+                            </a>
+                            <p><?php echo $row['pro_descripcion']; ?></p>
+                        </div>
+                        <span>$<?php echo $row['pro_precio']; ?></span>
+                    </div>
 
-                        <?php
+                    <?php
                     }
                 }
                 $conn->close();
@@ -315,7 +320,6 @@ if (isset($_SESSION['isLogin'])) {
                         </div>
                         <span>10%</span>
                         <i class="far fa-heart"></i>
-                        <input type="number" name="" id="" min="">
                     </div>
                     <div class="contentDescription">
                         <div class="descripProduct">

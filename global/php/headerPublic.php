@@ -22,7 +22,6 @@
                     <li><a href="storecuenca.php">Cuenca</a></li>
                 </ul>
             </li>
-            <li><a href="help.php">Contactos</a></li>
         </ul>
     </nav>
     <div class="search">

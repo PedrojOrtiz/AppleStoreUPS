@@ -66,9 +66,10 @@ function searchBox(elemnt) {
 }
 
 function cartAdd(cod) {
-    console.log(cod)
+    //console.log(cod)
     //console.log(precioTotal)
-    //let storeId = (getElementById('selectStore').selectedIndex + 1)
+    let storeId = (document.getElementById('selectStore').selectedIndex + 1)
+    //console.log("IDX STORE" + storeId)
 
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest()
@@ -87,7 +88,7 @@ function cartAdd(cod) {
             //document.getElementById('body').innerHTML = this.responseText
         }
     };
-    xmlhttp.open("GET", "../controller/cartAdd.php?codProd=" + cod, true)
+    xmlhttp.open("GET", "../controller/cartAdd.php?codProd=" + cod + "&storeID=" + storeId, true)
     xmlhttp.send()
 }
 
@@ -144,3 +145,19 @@ function cambiarImagen(int) {
     document.getElementById("galeria").src = imag[indice]
 }
 
+function pay() {
+    console.log("HOLA")
+
+    // if (window.XMLHttpRequest) {
+    //     xmlhttp = new XMLHttpRequest()
+    // } else {
+    //     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+    // }
+    // xmlhttp.onreadystatechange = function () {
+    //     if (this.readyState == 4 && this.status == 200) {
+    //         document.getElementById("payWindow").innerHTML = this.responseText
+    //     }
+    // };
+    // xmlhttp.open("GET", "../controller/cartAdd.php?codProd=" + cod + "&storeID=" + storeId, true)
+    // xmlhttp.send()
+}

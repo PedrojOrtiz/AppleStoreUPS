@@ -5,7 +5,9 @@ if (isset($_GET['codProd'])) {
     include '../../config/configDB.php';
     $sql = "SELECT * FROM carrito WHERE 
     PRODUCTO_pro_id=" . $_GET['codProd'] . " AND
-    USUARIO_usu_id=" . $_SESSION['codigo'] . ";";
+    USUARIO_usu_id=" . $_SESSION['codigo'] . " AND
+    SUCURSAL_suc_id=" . $_GET['storeID'] . ";";
+
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
@@ -32,10 +34,12 @@ if (isset($_GET['codProd'])) {
     $sql = "INSERT INTO carrito (
         car_cantidad, 
         USUARIO_usu_id,  
-        PRODUCTO_PRO_ID) VALUES (  
+        PRODUCTO_PRO_ID,
+        SUCURSAL_suc_id) VALUES (  
         1, 
         " . $_SESSION['codigo'] . ", 
-        " . $_GET['codProd'] . "
+        " . $_GET['codProd'] . ",
+        " . $_GET['storeID'] . "
     );";
     if ($conn->query($sql)) {
         ?>
