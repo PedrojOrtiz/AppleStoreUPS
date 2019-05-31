@@ -48,6 +48,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/globalStyle.css">
     <link rel="stylesheet" href="../css/style2.css">
+    <script type="text/javascript" src="../js/funciones.js"></script>
     <title>Productos</title>
 </head>
 
@@ -92,10 +93,11 @@
             <h2>Productos</h2>
             <div class="cardContent">
                 <h2>Sucursal: <?php echo strtoupper($sucNombre) ?></h2>
+                <input type="text" id="nombre" name="nombre" value="" placeholder="Buscar..." onkeyup="return buscarPorNombre()"/> 
                 <a href="../controller/crear_producto.php" class="center" id="button"> Crear Producto </a>
                 <div class="formData">
                                 
-                <table> 
+                <table id="productos"> 
 
                     <colgroup>
                         <col style='width: 5%'>
