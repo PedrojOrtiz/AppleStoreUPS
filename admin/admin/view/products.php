@@ -164,11 +164,13 @@
                 } else if ($row['pro_estado'] == 1) {
                     echo "<td>Inactivo</td>";
                 }
+                if ($row['pro_estado'] == 0) {
                 echo "  <td> 
                             <a href='../controller/modificar_producto.php?id=".$row['pro_id']."' id='sbutton'> Modificar </a><br><br>";
-                            if ($row['pro_estado'] == 0) {
+                            
                 echo       "<a href='../controller/eliminar_producto.php?id=".$row['pro_id']."' id='sbutton'> Eliminar </a>";  
-                            }                          
+                }
+                                          
                 echo       "</td>";                                            
             echo "</tr>";
         }
