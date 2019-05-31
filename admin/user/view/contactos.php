@@ -19,7 +19,7 @@ if (isset($_SESSION['isLogin'])) {
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../../../public/css/globalStyle.css">
-    <title>Perfil</title>
+    <title>Contactos</title>
 </head>
 
 <body>
@@ -28,7 +28,6 @@ if (isset($_SESSION['isLogin'])) {
         include("../../../global/php/headerPublicUser.php");
         ?>
     </header>
-
     <div class="container">
         <header>
             <?php
@@ -37,26 +36,44 @@ if (isset($_SESSION['isLogin'])) {
         </header>
         
         <section>
-            <h2>Contactos</h2>                    
-                <table >
-                <tr>
-                    <td><label>Asunto</label></td>
-                    <td><input type="text" id="asu" name="asu" placeholder=""></td>
-                </tr> 
-                <tr>
-                    <td><label>Mensaje</label></td>
-                    <td><input type="text"  style="WIDTH: 228px; HEIGHT: 98px" size=32 name=mens placeholder="Escribir mensaje" ></td>
-                </tr>
-                <tr>
-                <td colspan="3">
-                        <div id="btn">
-                            <input type="submit" id="crear" name="crear" value="Enviar">
-                        </div>
-                </td>
-                </table>
-        </section>
-        
+            <h2>Contactos</h2>
+            <div class="cardContent settings">
+                <div class="updatePass">
+                    <h2>INFORMACION</h2>
+                    <div class="formData updatePass">
+                        <table >
+                            <tr>
+                                <td><label>Asunto</label></td>
+                                <td><input type="text" id="asu" name="asu" placeholder=""></td>
+                            </tr> 
+                            <tr>
+                                <td><label>Mensaje</label></td>
+                                <td><input type="text"  style="WIDTH: 228px; HEIGHT: 98px" size=32 name=mens placeholder="Escribir mensaje" ></td>
+                            </tr>
+                            <tr>
+                            <td colspan="3">
+                                    <div id="btn">      
+                                        <input type="submit" id="crear" name="crear" value="Enviar">
+                                    </div>
+                            </td>
+                        </table>
+                    </div>
+                </div>
+                <div class="updatePass">
+                    <h2>APPLE STORE</h2>
+                    <div class="formData updatePass">
+                        <form action="">
+                            <label>TELEFONO: </label>
+                            <input type="text" name="tel" id="tel" value="0987456321">
+                            <label>DIRECCION: </label>
+                            <input type="text" name="dir" id="dir" value="Av.Juan Tamariz y 3 de Octubre">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>    
     </div>
+  
     
     <footer>
         <script src="../js/funciones.js"></script>
