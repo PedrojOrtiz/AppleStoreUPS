@@ -120,7 +120,7 @@
                         <br>
 
                         <input class="boton" type="submit" id="modificar" name="modificar" value="Modificar">
-                        <input type="button" id="cancelar" name="cancelar" value="Cancelar" onclick="location.href='usuarios.php?codigo_admin=<?php echo $codigo_admin ?>'" class="boton">
+                        <input type="button" id="cancelar" name="cancelar" value="Cancelar" onclick="location.href='clients.php'">
                     </form>
         <?php            
                 }
