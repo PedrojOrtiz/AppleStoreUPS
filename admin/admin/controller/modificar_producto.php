@@ -70,17 +70,14 @@
         $row = $result->fetch_assoc();
         $codigoNewProduct = ($row['codigo'] + 1);
 
-        $sqlProducto = "INSERT INTO producto (
-            pro_nombre, 
-            pro_descripcion,  
-            pro_precio, 
-            pro_descuento,
-            CATEGORIA_cat_id) VALUES (  
-            '$proNombre', 
-            '$proDescripcion', 
-            $proPrecio, 
-            $proDescuento,
-            $proCategoria)";
+        $sqlProducto = "UPDATE producto SET
+            pro_nombre = '$proNombre', 
+            pro_descripcion = '$proDescripcion',  
+            pro_precio = $proPrecio, 
+            pro_descuento = $proDescuento,
+            CATEGORIA_cat_id = $proCategoria,
+            pro_fecha_modificacion = SYSDATE()
+            WHERE pro_id = $idProducto";
         
         /*$sqlImg = "INSERT INTO imagen (
             img_nombre, 
@@ -88,15 +85,11 @@
             '$foto',
             '$codigoNewProduct')";*/
 
-        $sqlProSuc = "INSERT INTO producto_sucursal (
-            pro_suc_stock, 
-            PRODUCTO_pro_id,
-            SUCURSAL_suc_id) VALUES (
-            $proStock,
-            '$codigoNewProduct',
-            $sucId)";
+        $sqlProSuc = "UPDATE producto_sucursal SET
+            pro_suc_stock = $proStock
+            WHERE PRODUCTO_pro_id = $idProducto AND SUCURSAL_suc_id = $sucId";
 
-        if ($conn->query($sqlProducto) === TRUE && $conn->query($sqlImg) === TRUE && $conn->query($sqlProSuc) === TRUE) {             
+        if ($conn->query($sqlProducto) === TRUE && $conn->query($sqlProSuc) === TRUE) {             
             header("Location: ../view/products.php");                 
         } else {             
             echo "Error al crear nuevo producto";
