@@ -92,7 +92,7 @@
         if ($conn->query($sqlProducto) === TRUE && $conn->query($sqlProSuc) === TRUE) {             
             header("Location: ../view/products.php");                 
         } else {             
-            echo "Error al crear nuevo producto";
+            echo "Error al modificar producto";
             echo "<p class='error'>Error: " . mysqli_error($conn) . "</p>";           
         }
         $conn->close();
