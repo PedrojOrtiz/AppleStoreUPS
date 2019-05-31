@@ -89,7 +89,7 @@
         <section>
             <h2>Ordenes</h2>
             <div class="cardContent">
-                <h2>Sucursal: "Nombre Sucursal"</h2>
+                <h2>Sucursal: <?php echo strtoupper($sucNombre) ?></h2>
                 <div class="formData">
                     
                 </div>
