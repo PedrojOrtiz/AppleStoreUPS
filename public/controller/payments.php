@@ -116,6 +116,11 @@ if ($conn->query($sqlCard)) {
                                 pro_suc_stock='$rowStok'
                                 WHERE PRODUCTO_pro_id=" . $rowCart['PRODUCTO_pro_id'] . " AND
                                 SUCURSAL_suc_id=" . $rowCart['SUCURSAL_suc_id'] . ";";
+                    $conn->query($sqlStok);
+
+                    $sqlDropCart = "DELETE FROM carrito WHERE USUARIO_usu_id =" . $_SESSION['codigo'] . ";";
+                    $conn->query($sqlDropCart);
+
 
                     echo 'Detalle agregado stok en: ' . $rowStok . '<br>';
                 } else {
@@ -124,7 +129,7 @@ if ($conn->query($sqlCard)) {
                 }
             }
 
-
+            $conn->close();
             echo 'Pago realizado con exito <br>';
         } else {
             echo 'error al introducir la cabecera';
@@ -137,21 +142,3 @@ if ($conn->query($sqlCard)) {
     echo 'La tarjeta no pudo ser agregada';
     echo mysqli_error($conn);
 }
-
-
-
-
-
-
-// if ($conn->query($sql) == true && $conn->query($sqlImg) == true) {
-//     header("Location: ../view/successful.php?register=true");
-// } else {
-//     if ($conn->errno == 1062) {
-//         header("Location: ../view/successful.php?register=false&error=1062");
-//     } else {
-//         echo mysqli_error($conn);
-//         header("Location: ../view/successful.php?register=false&error=" . mysqli_error($conn));
-//     }
-// }
-
-$conn->close();

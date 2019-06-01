@@ -114,7 +114,7 @@ if (isset($_SESSION['isLogin'])) {
                 <article>
                     <div class="contentImg">
                         <div class="cardImg">
-                            <a href="product.php"><img
+                            <a href="product.php?producto=<?php echo $row['pro_id']; ?>"><img
                                     src="../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>"
                                     alt="<?php echo $row['img_nombre']; ?>"></a>
                         </div>

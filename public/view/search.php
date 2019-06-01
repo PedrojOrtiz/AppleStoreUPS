@@ -73,8 +73,6 @@ if (isset($_SESSION['isLogin'])) {
                     while ($row = $result->fetch_assoc()) {
                         ?>
                 <article>
-
-
                     <div class="contentImg">
                         <div class="cardImg">
                             <a href="product.php?producto=<?php echo $row['pro_id']; ?>"><img

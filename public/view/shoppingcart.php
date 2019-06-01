@@ -73,7 +73,7 @@ if (isset($_SESSION['isLogin'])) {
 
     <div class="content">
         <section class="product">
-            <div class="productSlide cart">
+            <div class="productSlide cart" id="cart">
 
                 <?php
                 //Pendiente query para la tienda 
@@ -111,7 +111,6 @@ if (isset($_SESSION['isLogin'])) {
                                         $rowSuc = $resultSuc->fetch_assoc();
                                         echo '<span>' . $rowSuc['suc_nombre'] . '</span>';
                                         ?>
-
                             </div>
                             <div>
                                 <h3>Cantidad:</h3>
@@ -121,7 +120,7 @@ if (isset($_SESSION['isLogin'])) {
                     </div>
                     <span>$<?php echo $rowP['pro_precio'] ?></span>
                     <!--Parametro para eliminar -->
-                    <i class="fas fa-times"></i>
+                    <i class="fas fa-times" onclick="cartDelete(<?php echo $row['car_id'] ?>)"></i>
                 </article>
 
                 <?php

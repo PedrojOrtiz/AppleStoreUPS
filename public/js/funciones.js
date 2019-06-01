@@ -145,19 +145,19 @@ function cambiarImagen(int) {
     document.getElementById("galeria").src = imag[indice]
 }
 
-function pay() {
-    console.log("HOLA")
+function cartDelete(carId) {
+    console.log("HOLA" + carId)
 
-    // if (window.XMLHttpRequest) {
-    //     xmlhttp = new XMLHttpRequest()
-    // } else {
-    //     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
-    // }
-    // xmlhttp.onreadystatechange = function () {
-    //     if (this.readyState == 4 && this.status == 200) {
-    //         document.getElementById("payWindow").innerHTML = this.responseText
-    //     }
-    // };
-    // xmlhttp.open("GET", "../controller/cartAdd.php?codProd=" + cod + "&storeID=" + storeId, true)
-    // xmlhttp.send()
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest()
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("cart").innerHTML = this.responseText
+        }
+    };
+    xmlhttp.open("GET", "../controller/cartRemove.php?carId=" + carId, true)
+    xmlhttp.send()
 }

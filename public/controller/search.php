@@ -6,14 +6,17 @@ $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descr
                         pro.pro_id = rat.PRODUCTO_pro_id AND
                         cat.cat_id = pro.CATEGORIA_cat_id AND
                         pro.pro_nombre LIKE '" . $_GET['searchName'] . "%' AND
-                        pro.pro_estado=1;";
+                        pro.pro_estado=0
+                        GROUP BY pro.pro_id;";
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        ?>
+    ?>
 <h2>Resultados para "<?php echo $_GET['searchName']; ?>"</h2>
 <div class="contentCards">
+    <?php
+        while ($row = $result->fetch_assoc()) {
+            ?>
     <article>
         <div class="contentImg">
             <div class="cardImg">
@@ -37,9 +40,11 @@ if ($result->num_rows > 0) {
             <span>$<?php echo $row['pro_precio']; ?></span>
         </div>
     </article>
+    <?php
+    }
+    ?>
 </div>
 <?php
-}
 } else {
     echo '<h1>No hay resultados</h1>';
 }
