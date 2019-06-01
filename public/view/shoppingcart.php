@@ -34,7 +34,7 @@ if (isset($_SESSION['isLogin'])) {
         <div class="contentWindow" id="payWindow">
             <!-- FORMULARIO  -->
             <div class="form">
-                <form action="../controller/payments.php">
+                <form action="../controller/payments.php" method="post">
                     <h2>Pagar con tarjeta</h2>
                     <p>Introdisca los datos de su tarjeta</p>
                     <input type="text" name="numbreCard" id="numbreCard" placeholder="1234 1234 1234 1234" required>
