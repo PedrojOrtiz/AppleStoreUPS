@@ -95,7 +95,12 @@
             '$codigoNewProduct',
             $sucId)";
 
-        if ($conn->query($sqlProducto) === TRUE && $conn->query($sqlImg) === TRUE && $conn->query($sqlProSuc) === TRUE) {             
+        $sqlRat = "INSERT INTO rating (
+            PRODUCTO_pro_id VALUES  (
+                '$codigoNewProduct'
+            )";
+
+        if ($conn->query($sqlProducto) === TRUE && $conn->query($sqlImg) === TRUE && $conn->query($sqlProSuc) === TRUE && $conn->query($sqlRat) === TRUE) {             
             header("Location: ../view/products.php");                 
         } else {             
             echo "Error al crear nuevo producto";

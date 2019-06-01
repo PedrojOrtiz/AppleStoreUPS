@@ -93,7 +93,7 @@
             <h2>Productos</h2>
             <div class="cardContent">
                 <h2>Sucursal: <?php echo strtoupper($sucNombre) ?></h2>
-                <input type="text" id="nombre" name="nombre" value="" placeholder="Buscar..." onkeyup="return buscarPorNombre()"/> 
+                <input type="text" class="content" id="nombre" name="nombre" value="" placeholder="Buscar..." onkeyup="return buscarPorNombre()"/> 
                 <a href="../controller/crear_producto.php" class="center" id="button"> Crear Producto </a>
                 <div class="formData">
                                 
