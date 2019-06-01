@@ -32,6 +32,42 @@
     $sucUrl = $rowSucursal['suc_url'];
     $sucEliminado = $rowSucursal['suc_eliminado'];
 
+    $sqlSuc =  "SELECT suc_nombre, suc_telefono, suc_celular, suc_correo
+    FROM sucursal
+    WHERE suc_id = $sucId";
+
+    $resultSuc=$conn->query($sqlSuc);
+    $rowSuc= mysqli_fetch_assoc($resultSuc);
+
+    $nombreAnterior = $rowSuc['suc_nombre'];
+    $descripcionAnterior = $rowSuc['suc_telefono'];
+    $celularAnterior = $rowSuc['suc_celular'];
+    $correoAnterior = $rowSuc['suc_correo'];
+
+    if (!empty($_POST)) {
+
+        $sucNombre = isset($_POST["nombre"]) ? mb_strtoupper(trim($_POST["nombre"]), 'UTF-8') : null; 
+        $sucTelefono = isset($_POST["telefono"]) ? mb_strtoupper(trim($_POST["telefono"]), 'UTF-8') : null;        
+        $sucCelular = isset($_POST["celular"]) ? mb_strtoupper(trim($_POST["celular"]), 'UTF-8') : null; 
+        $sucCorreo = isset($_POST["correo"]) ? mb_strtoupper(trim($_POST["correo"]), 'UTF-8') : null;
+
+        $sqlProducto = "UPDATE sucursal SET
+            suc_nombre = '$sucNombre', 
+            suc_telefono = '$sucTelefono',
+            suc_celular = '$sucCelular',
+            suc_correo = '$sucCorreo'
+            WHERE suc_id = $sucId";
+
+        if ($conn->query($sqlProducto) === TRUE) {             
+            header("Location: index.php");                 
+        } else {             
+            echo "Error al modificar sucursal";
+            echo "<p class='error'>Error: " . mysqli_error($conn) . "</p>";           
+        }
+    }
+    $conn->close();
+    
+
 ?>
 
 <!DOCTYPE html>
@@ -87,11 +123,33 @@
             </nav>
         </header>
         <section>
-            <h2>Configuracion</h2>
-            <div class="cardContent">
+            <h2>Configuracion Sucursal</h2>
+            <div class="content">
                 <h2>Sucursal: <?php echo strtoupper($sucNombre) ?></h2>
-                <div class="formData">
-                    
+                <div class="form">
+                                
+                    <form method="POST" action=""> 
+ 
+                        <label for="nombre">Nombre:</label> 
+                        <input type="text" id="nombre" name="nombre" value="<?php echo $nombreAnterior; ?>" placeholder="Nombre..." required>
+
+                        <label for="telefono">Telefono:</label> 
+                        <input type="text" id="telefono" name="telefono" value="<?php echo $sucTelefono; ?>" placeholder="Telefono..." required>            
+
+                        <label for="celular">Celular::</label> 
+                        <input type="text" id="celular" name="celular" value="<?php echo $celularAnterior; ?>" placeholder="Celular..." required>
+
+                        <label for="correo">Correo:</label> 
+                        <input type="text" id="correo" name="correo" value="<?php echo $correoAnterior; ?>" placeholder="Correo..." required>
+
+                        <br>
+                        
+                        <div class="btns">
+                            <input type="submit" value="Modificar">
+                        </div>
+
+                    </form>   
+
                 </div>
             </div>
         </section>
