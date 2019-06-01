@@ -42,21 +42,22 @@ if (isset($_SESSION['isLogin'])) {
 
 
 
-                <article>
-                    <?php
-                    include '../../config/configDB.php';
-                    $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion
+
+                <?php
+                include '../../config/configDB.php';
+                $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion
                             FROM producto pro, imagen img, rating rat 
                             WHERE pro.pro_id = img.PRODUCTO_pro_id AND
                                 pro.pro_id = rat.PRODUCTO_pro_id AND
                                 pro.pro_estado=0 
+                            GROUP BY pro.pro_id
                             ORDER BY 1 DESC limit 8;";
 
-                    $result = $conn->query($sql);
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            ?>
-
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        ?>
+                <article>
                     <div class="contentImg">
                         <div class="cardImg">
                             <a href="product.php?producto=<?php echo $row['pro_id']; ?>"><img
@@ -78,96 +79,13 @@ if (isset($_SESSION['isLogin'])) {
                         </div>
                         <span>$<?php echo $row['pro_precio']; ?></span>
                     </div>
-
-                    <?php
-                    }
+                </article>
+                <?php
                 }
-                $conn->close();
-                ?>
-                </article>
+            }
+            $conn->close();
+            ?>
 
-
-
-
-
-                <article>
-                    <div class="contentImg">
-                        <div class="cardImg">
-                            <a href="product.php"><img src="../../img/product/xsmax.jpg" alt="producto"></a>
-                        </div>
-                        <span>Nuevo</span>
-                        <div class="ranking">
-                            <i class="fas fa-star"></i>
-                            <span>4.5</span>
-                        </div>
-                    </div>
-                    <div class="contentDescription">
-                        <div class="descripProduct">
-                            <a href="product.php">
-                                <h2>iPhone XS MAX</h2>
-                            </a>
-                            <p>Presentamos el iPhone XSMAX con dos tamaños de pantalla Super Retina,
-                                incluida la más grande que ha tenido nunca un iPhone. Face ID aún más rápido.
-                            </p>
-                        </div>
-                        <span>$1.599</span>
-                    </div>
-                </article>
-
-                <article>
-                    <div class="contentImg">
-                        <div class="cardImg">
-                            <a href="#"><img src="../../img/product/producto.jpg" alt="producto"></a>
-                        </div>
-                        <span>Nuevo</span>
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="contentDescription">
-                        <div class="descripProduct">
-                            <a href="#">
-                                <h2>iPhone X</h2>
-                            </a>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <span>$1.599</span>
-                    </div>
-                </article>
-                <article>
-                    <div class="contentImg">
-                        <div class="cardImg">
-                            <a href="#"><img src="../../img/product/producto.jpg" alt="producto"></a>
-                        </div>
-                        <span>Nuevo</span>
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="contentDescription">
-                        <div class="descripProduct">
-                            <a href="#">
-                                <h2>iPhone X</h2>
-                            </a>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <span>$1.599</span>
-                    </div>
-                </article>
-                <article>
-                    <div class="contentImg">
-                        <div class="cardImg">
-                            <a href="#"><img src="../../img/product/producto.jpg" alt="producto"></a>
-                        </div>
-                        <span>Nuevo</span>
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="contentDescription">
-                        <div class="descripProduct">
-                            <a href="#">
-                                <h2>iPhone X</h2>
-                            </a>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <span>$1.599</span>
-                    </div>
-                </article>
             </div>
         </section>
 
@@ -177,22 +95,23 @@ if (isset($_SESSION['isLogin'])) {
             </a>
             <div class="contentCards">
 
-                <article>
-                    <?php
-                    include '../../config/configDB.php';
-                    $sql = "SELECT pro.pro_descuento, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion
+
+                <?php
+                include '../../config/configDB.php';
+                $sql = "SELECT pro.pro_descuento, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion
                             FROM producto pro, imagen img, rating rat 
                             WHERE pro.pro_id = img.PRODUCTO_pro_id AND
                                 pro.pro_id = rat.PRODUCTO_pro_id AND
                                 pro.pro_descuento > 0 AND
                                 pro.pro_estado=0
+                            GROUP BY pro.pro_id
                             ORDER BY 1 DESC limit 8;";
 
-                    $result = $conn->query($sql);
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            ?>
-
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        ?>
+                <article>
                     <div class="contentImg">
                         <div class="cardImg">
                             <a href="product.php"><img
@@ -214,123 +133,13 @@ if (isset($_SESSION['isLogin'])) {
                         </div>
                         <span>$<?php echo $row['pro_precio']; ?></span>
                     </div>
-
-                    <?php
-                    }
+                </article>
+                <?php
                 }
-                $conn->close();
-                ?>
-                </article>
+            }
+            $conn->close();
+            ?>
 
-
-
-
-                <article>
-                    <div class="contentImg">
-                        <div class="cardImg">
-                            <a href="#"><img src="../../img/product/producto.jpg" alt="producto"></a>
-                        </div>
-                        <span>10%</span>
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="contentDescription">
-                        <div class="descripProduct">
-                            <a href="#">
-                                <h2>iPhone X</h2>
-                            </a>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam cupiditate harum,
-                                possimus repudiandae vitae voluptas et amet perspiciatis rerum fugiat, commodi beatae
-                                corporis fuga laudantium ducimus excepturi iste nobis magnam!
-                                Esse eveniet exercitationem reprehenderit aut alias doloremque enim debitis officiis
-                                quis libero velit reiciendis earum deserunt, laudantium accusamus dolore praesentium
-                                laborum consequatur aliquam, recusandae officia eos! Asperiores consectetur aliquid
-                                dolorem.
-                            </p>
-                        </div>
-                        <span>$1.599</span>
-                    </div>
-                </article>
-
-                <article>
-                    <div class="contentImg">
-                        <div class="cardImg">
-                            <a href="#"><img src="../../img/product/producto.jpg" alt="producto"></a>
-                        </div>
-                        <span>10%</span>
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="contentDescription">
-                        <div class="descripProduct">
-                            <a href="#">
-                                <h2>iPhone X</h2>
-                            </a>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam cupiditate harum,
-                                possimus repudiandae vitae voluptas et amet perspiciatis rerum fugiat, commodi beatae
-                                corporis fuga laudantium ducimus excepturi iste nobis magnam!
-                                Esse eveniet exercitationem reprehenderit aut alias doloremque enim debitis officiis
-                                quis libero velit reiciendis earum deserunt, laudantium accusamus dolore praesentium
-                                laborum consequatur aliquam, recusandae officia eos! Asperiores consectetur aliquid
-                                dolorem.
-                            </p>
-                        </div>
-                        <span>$1.599</span>
-                    </div>
-                </article>
-
-                <article>
-                    <div class="contentImg">
-                        <div class="cardImg">
-                            <a href="#"><img src="../../img/product/producto.jpg" alt="producto"></a>
-                        </div>
-                        <span>10%</span>
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="contentDescription">
-                        <div class="descripProduct">
-                            <a href="#">
-                                <h2>iPhone X</h2>
-                            </a>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <span>$1.599</span>
-                    </div>
-                </article>
-                <article>
-                    <div class="contentImg">
-                        <div class="cardImg">
-                            <a href="#"><img src="../../img/product/producto.jpg" alt="producto"></a>
-                        </div>
-                        <span>20%</span>
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="contentDescription">
-                        <div class="descripProduct">
-                            <a href="#">
-                                <h2>iPhone X</h2>
-                            </a>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <span>$1.599</span>
-                    </div>
-                </article>
-                <article>
-                    <div class="contentImg">
-                        <div class="cardImg">
-                            <a href="#"><img src="../../img/product/producto.jpg" alt="producto"></a>
-                        </div>
-                        <span>10%</span>
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="contentDescription">
-                        <div class="descripProduct">
-                            <a href="#">
-                                <h2>iPhone X</h2>
-                            </a>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <span>$1.599</span>
-                    </div>
-                </article>
             </div>
         </section>
     </div>

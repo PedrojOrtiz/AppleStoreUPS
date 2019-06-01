@@ -9,6 +9,8 @@ $nameCard = isset($_POST["nameCard"]) ? mb_strtolower(trim($_POST["nameCard"]), 
 $countryCard = isset($_POST["countryCard"]) ? mb_strtolower(trim($_POST["countryCard"]), 'UTF-8') : null;
 $date = date(date("Y-m-d H:i:s"));
 
+echo 'NUMERO DE TARJETA' . $cardNumber . '<br>';
+
 $sql = "SELECT * FROM tarjeta WHERE
             USUARIO_usu_id=" . $_SESSION['codigo'] . ";";
 $result = $conn->query($sql);
@@ -100,12 +102,29 @@ if ($conn->query($sqlCard)) {
                                 '$codigoNewFacCab');";
 
                 if ($conn->query($sqlDetFact)) {
+                    $sql = "SELECT pro_suc_stock  
+                            FROM producto_sucursal
+                            WHERE PRODUCTO_pro_id=" . $rowCart['PRODUCTO_pro_id'] . " AND
+                            SUCURSAL_suc_id=" . $rowCart['SUCURSAL_suc_id'] . ";";
+
+                    $result = $conn->query($sql);
+                    $rowStok = $result->fetch_assoc();
+                    $rowStok = $rowStok['pro_suc_stock'] - 1;
+
                     echo 'detalle agregado <br>';
+                    $sqlStok = "UPDATE producto_sucursal SET
+                                pro_suc_stock='$rowStok'
+                                WHERE PRODUCTO_pro_id=" . $rowCart['PRODUCTO_pro_id'] . " AND
+                                SUCURSAL_suc_id=" . $rowCart['SUCURSAL_suc_id'] . ";";
+
+                    echo 'Detalle agregado stok en: ' . $rowStok . '<br>';
                 } else {
                     echo 'ecrror al agregar el detalle';
                     echo mysqli_error($conn);
                 }
             }
+
+
             echo 'Pago realizado con exito <br>';
         } else {
             echo 'error al introducir la cabecera';

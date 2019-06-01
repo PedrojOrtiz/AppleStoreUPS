@@ -150,9 +150,9 @@ if (isset($_SESSION['isLogin'])) {
                 <h2>Productos relacionados</h2>
             </a>
             <div class="contentCards">
-                <article>
-                    <?php
-                    $sql = "SELECT pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion 
+
+                <?php
+                $sql = "SELECT pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion 
                             FROM producto pro, imagen img, rating rat, categoria cat
                             WHERE pro.pro_id = img.PRODUCTO_pro_id AND
                             pro.pro_id = rat.PRODUCTO_pro_id AND
@@ -161,11 +161,11 @@ if (isset($_SESSION['isLogin'])) {
                             cat.cat_id =3
                             limit 4;";
 
-                    $result = $conn->query($sql);
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            ?>
-
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        ?>
+                <article>
                     <div class="contentImg">
                         <div class="cardImg">
                             <a href="product.php?producto=<?php echo $row['pro_id']; ?>"><img
@@ -186,71 +186,13 @@ if (isset($_SESSION['isLogin'])) {
                         </div>
                         <span>$<?php echo $row['pro_precio']; ?></span>
                     </div>
-
-                    <?php
-                    }
+                </article>
+                <?php
                 }
-                $conn->close();
-                ?>
-                </article>
+            }
+            $conn->close();
+            ?>
 
-
-                <article>
-                    <div class="contentImg">
-                        <div class="cardImg">
-                            <a href="#"><img src="../../img/product/producto.jpg" alt="producto"></a>
-                        </div>
-                        <span>Nuevo</span>
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="contentDescription">
-                        <div class="descripProduct">
-                            <a href="#">
-                                <h2>iPhone X</h2>
-                            </a>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <span>$1.599</span>
-                    </div>
-                </article>
-
-
-                <article>
-                    <div class="contentImg">
-                        <div class="cardImg">
-                            <a href="#"><img src="../../img/product/producto.jpg" alt="producto"></a>
-                        </div>
-                        <span>Nuevo</span>
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="contentDescription">
-                        <div class="descripProduct">
-                            <a href="#">
-                                <h2>iPhone X</h2>
-                            </a>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <span>$1.599</span>
-                    </div>
-                </article>
-                <article>
-                    <div class="contentImg">
-                        <div class="cardImg">
-                            <a href="#"><img src="../../img/product/producto.jpg" alt="producto"></a>
-                        </div>
-                        <span>Nuevo</span>
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="contentDescription">
-                        <div class="descripProduct">
-                            <a href="#">
-                                <h2>iPhone X</h2>
-                            </a>
-                            <p>Lorem ipsum dolor sit.</p>
-                        </div>
-                        <span>$1.599</span>
-                    </div>
-                </article>
             </div>
         </section>
     </div>
