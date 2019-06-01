@@ -93,8 +93,6 @@
                     
                     <?php
 
-
-
                         $sqlVentas = "SELECT * FROM ";
 
                     ?>
