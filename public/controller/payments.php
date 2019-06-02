@@ -94,7 +94,7 @@ if (isset($_SESSION['isLogin'])) {
                         c.USUARIO_usu_id = " . $_SESSION['codigo'] . ";";
                 $sqlSubTot = $conn->query($sqlSubTot);
                 $subTot = $sqlSubTot->fetch_assoc();
-                $subTotal = $subTot['sub_total'];
+                $subTotal = round($subTot['sub_total'], 2);
 
                 // echo 'SUBTOTAL: ' . $subTotal . '<br>';
                 $total = ($subTotal * 1.12);
@@ -123,7 +123,7 @@ if (isset($_SESSION['isLogin'])) {
                     $codigoNewFacCab = ($row['codigo']);
 
                     while ($rowCart = $resultCart->fetch_assoc()) {
-                        echo $codigoNewFacCab;
+
                         $sqlDetFact = "INSERT INTO factura_detalle (
                                 fac_det_cantidad, 
                                 PRODUCTO_pro_id,  
@@ -143,7 +143,7 @@ if (isset($_SESSION['isLogin'])) {
 
                             $result = $conn->query($sql);
                             $rowStok = $result->fetch_assoc();
-                            $rowStok = $rowStok['pro_suc_stock'] - 1;
+                            $rowStok = ($rowStok['pro_suc_stock'] - 1);
 
                             //echo 'detalle agregado <br>';
                             $sqlStok = "UPDATE producto_sucursal SET
@@ -192,12 +192,12 @@ if (isset($_SESSION['isLogin'])) {
             }
         } else {
             ?>
-        <!-- <div class="contentSucce">
-                                                    <h2>Error al agregar los datos.</h2>
-                                                    <p>Intente de nuevo...</p>
-                                                    <i class="far fa-times-circle"></i>
-                                                    <button onclick="window.location.href = '../view/shoppingcart.php'">Inicio</button>
-                                                </div> -->
+        <div class="contentSucce">
+            <h2>Error al agregar los datos.</h2>
+            <p>Intente de nuevo...</p>
+            <i class="far fa-times-circle"></i>
+            <button onclick="window.location.href = '../view/shoppingcart.php'">Inicio</button>
+        </div>
         <?php
         }
     } else {

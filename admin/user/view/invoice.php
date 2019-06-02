@@ -131,13 +131,11 @@ if (isset($_SESSION['isLogin'])) {
 
                             <tbody>
                                 <?php
-                                $sql = "SELECT * FROM factura_detalle fd, factura_cabecera fc, producto pro, sucursal suc, imagen img
+                                $sql = "SELECT * FROM factura_detalle fd, factura_cabecera fc, producto pro, sucursal suc
                                         WHERE fd.FACTURA_CABECERA_fac_cab_id = fc.fac_cab_id AND
                                                 fd.PRODUCTO_pro_id=pro.pro_id AND
                                                 fd.SUCURSAL_suc_id = suc.suc_id AND
-                                                img.PRODUCTO_pro_id = pro.pro_id AND
-                                                fc.fac_cab_id=" . $_GET['fac_cab_id'] . "
-                                                GROUP BY suc.suc_id;";
+                                                fc.fac_cab_id=" . $_GET['fac_cab_id'] . ";";
 
                                 $resultDet = $conn->query($sql);
                                 $i = 1;
@@ -147,10 +145,18 @@ if (isset($_SESSION['isLogin'])) {
                                         ?>
                                 <tr>
                                     <td><?php echo $i ?></td>
-                                    <td><a
+                                    <td>
+                                        <?php
+                                                $sqlIMG = "SELECT * FROM imagen
+                                        WHERE PRODUCTO_pro_id=" . $row['pro_id'] . " LIMIT 1;";
+                                                $resultIMG = $conn->query($sqlIMG);
+                                                $resultIMG = $resultIMG->fetch_assoc();
+                                                ?>
+
+                                        <a
                                             href="../../../public/view/product.php?producto=<?php echo $row['pro_id']; ?>">
-                                            <img src="../../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>"
-                                                alt="<?php echo $row['img_nombre']; ?>">
+                                            <img src="../../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $resultIMG['img_nombre']; ?>"
+                                                alt="<?php echo $resultIMG['img_nombre']; ?>">
                                             <p><?php echo $row['pro_nombre']; ?></p>
                                         </a>
                                     </td>
@@ -161,18 +167,11 @@ if (isset($_SESSION['isLogin'])) {
                                     <td><?php echo $row['fac_det_cantidad']; ?></td>
 
                                     <?php
-                                            $sqlSubTot = "SELECT SUM(c.car_cantidad*(p.pro_precio-(p.pro_precio*(p.pro_descuento/100)))) AS sub_total 
-                                                            FROM carrito c, producto p WHERE 
-                                                            c.PRODUCTO_pro_id = p.pro_id AND 
-                                                            c.USUARIO_usu_id = " . $_SESSION['codigo'] . " AND
-                                                            p.pro_id=" . $row['PRODUCTO_pro_id'] . ";";
-
-                                            $sqlSubTot = $conn->query($sqlSubTot);
-                                            $subTot = $sqlSubTot->fetch_assoc();
+                                            $subTotal = $row['fac_det_cantidad'] * ($row['pro_precio'] * (1 - ($row['pro_descuento'] / 100)));
 
                                             ?>
 
-                                    <td>$ <?php echo round($subTot['sub_total'], 2); ?></td>
+                                    <td>$ <?php echo round($subTotal, 2); ?></td>
 
                                     <td><a onclick="mapDirection(<?php echo $row['suc_id'] ?>)">Ver ruta</a>
                                     </td>

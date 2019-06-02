@@ -81,7 +81,8 @@ if (isset($_SESSION['isLogin'])) {
                             include '../../../config/configDB.php';
                             $sql = "SELECT * FROM factura_cabecera
                                     WHERE USUARIO_usu_id=" . $_SESSION['codigo'] . " AND
-                                    fac_cab_eliminado=0;";
+                                    fac_cab_eliminado=0
+                                    ORDER BY 1 DESC;";
 
                             $result = $conn->query($sql);
                             $i = 1;
