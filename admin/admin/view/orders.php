@@ -46,6 +46,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/globalStyle.css">
+    <link rel="stylesheet" href="../css/style2.css">
     <title>Perfil</title>
 </head>
 
@@ -90,9 +91,64 @@
             <h2>Ordenes</h2>
             <div class="cardContent">
                 <h2>Sucursal: <?php echo strtoupper($sucNombre) ?></h2>
-                <div class="formData">
-                    
-                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>Codigo</td>
+                            <td>Nombre</td>
+                            <td>Metodo de pago</td>
+                            <td>Total</td>
+                            <td>Estado</td>
+                            <td>Fecha</td>
+                            <td></td>
+
+                        </tr>
+                    </thead>
+
+                    <tbody id="tableHistory">
+                        <?php
+
+                            $sqlOrd = "SELECT fc.fac_cab_id, fc.fac_cab_metodo_pago, fc.USUARIO_usu_id, fc.fac_cab_estado, fc.fac_cab_total, fc.fac_cab_fecha
+                                        FROM factura_detalle fd, factura_cabecera fc
+                                        WHERE fd.FACTURA_CABECERA_fac_cab_id = fc.fac_cab_id AND
+                                              fd.SUCURSAL_suc_id = $sucId
+                                        GROUP BY fc.fac_cab_id";
+
+                            $resultOrd = $conn->query($sqlOrd);
+                            $i = 1;
+                            if ($resultOrd->num_rows > 0) {
+
+                                while ($rowOrd = $resultOrd->fetch_assoc()) {
+                                    $usuId = $rowOrd['USUARIO_usu_id'];
+                                    $sqlU = "SELECT * FROM usuario WHERE usu_id = $usuId";
+                                    $resultU = $conn->query($sqlU);
+                                    $rowU = mysqli_fetch_assoc($resultU);
+
+                        ?>
+                        <tr>
+                            <td><?php echo $i ?></td>
+                            <td><?php echo $rowOrd['fac_cab_id'] ?></td>
+                            <td><?php echo $rowU['usu_nombres']?> <?php echo $rowU['usu_apellidos']?></td>
+                            <td><?php echo $rowOrd['fac_cab_metodo_pago'] ?></td>
+                            <td>$<?php echo $rowOrd['fac_cab_total'] ?></td>
+                            <td><?php echo $rowOrd['fac_cab_estado'] ?></td>
+                            <td><?php echo $rowOrd['fac_cab_fecha'] ?></td>
+                            <td><a href="invoice.php?fac_cab_id=<?php echo $rowOrd['fac_cab_id'] ?>">Ver orden</a></td>
+                        </tr>
+                        <?php
+                                    $i = $i + 1;
+                                    }
+                            } else {
+                                echo '<td colspan="7"><h2>No hay facturas que mostrar</h2></td>';
+                            }
+
+                            $conn->close();
+
+                        ?>
+
+                    </tbody>
+                </table>
             </div>
         </section>
     </div>
