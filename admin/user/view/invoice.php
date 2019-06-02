@@ -161,16 +161,18 @@ if (isset($_SESSION['isLogin'])) {
                                     <td><?php echo $row['fac_det_cantidad']; ?></td>
 
                                     <?php
-                                            $sqlSubTot = "SELECT SUM(c.car_cantidad*(p.pro_precio-(p.pro_precio*(p.pro_descuento/100)))) AS sub_total FROM carrito c, producto p WHERE 
+                                            $sqlSubTot = "SELECT SUM(c.car_cantidad*(p.pro_precio-(p.pro_precio*(p.pro_descuento/100)))) AS sub_total 
+                                                            FROM carrito c, producto p WHERE 
                                                             c.PRODUCTO_pro_id = p.pro_id AND 
-                                                            c.USUARIO_usu_id = " . $_SESSION['codigo'] . ";";
+                                                            c.USUARIO_usu_id = " . $_SESSION['codigo'] . " AND
+                                                            p.pro_id=" . $row['PRODUCTO_pro_id'] . ";";
 
                                             $sqlSubTot = $conn->query($sqlSubTot);
                                             $subTot = $sqlSubTot->fetch_assoc();
+
                                             ?>
 
                                     <td>$ <?php echo round($subTot['sub_total'], 2); ?></td>
-                                    <!--CAMBIAR LA DIRECCION START A UNA REAL-->
 
                                     <td><a onclick="mapDirection(<?php echo $row['suc_id'] ?>)">Ver ruta</a>
                                     </td>

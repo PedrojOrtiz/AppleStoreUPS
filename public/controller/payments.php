@@ -36,7 +36,7 @@ if (isset($_SESSION['isLogin'])) {
         include '../../config/configDB.php';
 
         $cardNumber = isset($_POST["numbreCard"]) ? trim($_POST["numbreCard"]) : null;
-        $dateCard = isset($_POST["email"]) ? trim($_POST["email"]) : null;
+        $dateCard = isset($_POST["dateCard"]) ? trim($_POST["dateCard"]) : null;
         $cvcCard = isset($_POST["cvcCard"]) ? trim($_POST["cvcCard"]) : null;
         $nameCard = isset($_POST["nameCard"]) ? mb_strtolower(trim($_POST["nameCard"]), 'UTF-8') : null;
         $countryCard = isset($_POST["countryCard"]) ? mb_strtolower(trim($_POST["countryCard"]), 'UTF-8') : null;
@@ -113,16 +113,17 @@ if (isset($_SESSION['isLogin'])) {
                         '$total', 
                         '$cardUser',
                         " . $_SESSION['codigo'] . ");";
-
-                $sql = "SELECT MAX(fac_cab_id) AS codigo  
-                FROM factura_cabecera;";
-                $result = $conn->query($sql);
-                $row = $result->fetch_assoc();
-                $codigoNewFacCab = ($row['codigo']);
                 //echo 'Codigo de la cabecera.' . $codigoNewFacCab;
 
                 if ($conn->query($sqlCabFact)) {
+                    $sql = "SELECT MAX(fac_cab_id) AS codigo  
+                    FROM factura_cabecera;";
+                    $result = $conn->query($sql);
+                    $row = $result->fetch_assoc();
+                    $codigoNewFacCab = ($row['codigo']);
+
                     while ($rowCart = $resultCart->fetch_assoc()) {
+                        echo $codigoNewFacCab;
                         $sqlDetFact = "INSERT INTO factura_detalle (
                                 fac_det_cantidad, 
                                 PRODUCTO_pro_id,  
@@ -159,7 +160,7 @@ if (isset($_SESSION['isLogin'])) {
                         } else {
                             ?>
         <div class="contentSucce">
-            <h2>Error al agregar los datos.</h2>
+            <h2>Error al agregar los datos en el.</h2>
             <p>Intente de nuevo...</p>
             <i class="far fa-times-circle"></i>
             <button onclick="window.location.href = '../view/shoppingcart.php'">Inicio</button>
@@ -191,12 +192,12 @@ if (isset($_SESSION['isLogin'])) {
             }
         } else {
             ?>
-        <div class="contentSucce">
-            <h2>Error al agregar los datos.</h2>
-            <p>Intente de nuevo...</p>
-            <i class="far fa-times-circle"></i>
-            <button onclick="window.location.href = '../view/shoppingcart.php'">Inicio</button>
-        </div>
+        <!-- <div class="contentSucce">
+                                                    <h2>Error al agregar los datos.</h2>
+                                                    <p>Intente de nuevo...</p>
+                                                    <i class="far fa-times-circle"></i>
+                                                    <button onclick="window.location.href = '../view/shoppingcart.php'">Inicio</button>
+                                                </div> -->
         <?php
         }
     } else {
