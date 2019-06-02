@@ -619,3 +619,54 @@ div.posicion{
 .invoice .invoiceFooter button:last-child:active{
     background-color: #FF7285;
 }
+
+.container section .helpPage{
+    display: flex;
+}
+.container section .helpPage .formContact{
+    width: 50%;
+    padding: 10px;
+    padding-right: 30px;
+    margin-right: 10px;
+    border-right: 1px solid rgba(0, 0, 0, .2)
+}
+.container section .helpPage .formContact form{
+    display: flex;
+    flex-direction: column;
+}
+.container section .helpPage .formContact form input[type="text"]{
+    padding: 10px 5px;
+    border: none;
+    border-bottom: 1px solid var(--colorDark);
+}
+.container section .helpPage .formContact form textarea{
+    border: 1px solid var(--colorDark);
+    margin: 20px 0;
+    resize: none;
+    padding: 15px;
+    height: 300px;
+}
+.container section .helpPage .formContact form input[type="submit"]{
+    width: 20%;
+}
+.container section .helpPage .contactInfo{
+    width: 50%;
+    padding: 20px;
+}
+.container section .helpPage .contactInfo h2{
+    text-transform: uppercase;
+    font-size: 1.7em;
+}
+.container section .helpPage .contactInfo p{
+    opacity: .6;
+}
+.container section .helpPage .contactInfo p:nth-child(2){
+    margin: 30px 10px; 
+    text-align: justify;
+}
+.container section .helpPage .contactInfo p i{
+    color: var(--colorDark);
+}
+.container section .helpPage .contactInfo p a{
+    text-decoration: none;
+}

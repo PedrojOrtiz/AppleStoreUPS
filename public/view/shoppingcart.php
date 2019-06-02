@@ -175,7 +175,7 @@ if (isset($_SESSION['isLogin'])) {
                     $sqlSubTot = $conn->query($sqlSubTot);
                     $subTot = $sqlSubTot->fetch_assoc();
                     $subTotal = $subTot['sub_total'];
-                    $total = $subTotal + ($subTotal * 1.12);
+                    $total = ($subTotal * 1.12);
 
                     ?>
                     <h2>Detalle</h2>

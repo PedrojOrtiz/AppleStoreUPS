@@ -19,56 +19,48 @@ if (isset($_SESSION['isLogin'])) {
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../../../public/css/globalStyle.css">
-    <title>Opciones</title>
+    <title>Contactos</title>
 </head>
 
 <body>
     <header>
-        <div class="content">
-            <?php
-            include("../../../global/php/headerPublicUser.php");
-            ?>
+        <?php
+        include("../../../global/php/headerPublicUser.php");
+        ?>
     </header>
-
     <div class="container">
         <header>
             <?php
             include("../../../global/php/headerUser.php");
             ?>
         </header>
-        <section>
-            <h2>Opciones</h2>
-            <div class="cardContent settings ">
-                <div class="updatePass">
-                    <h2>Cambiar contraseña</h2>
-                    <div class="formData updatePass">
-                        <form action="">
-                            <label for="oldpass">Contraseña antigua</label>
-                            <input type="password" name="oldpass" id="oldpass">
-                            <label for="newpass">Contraseña nueva</label>
-                            <input type="password" name="newpass" id="newpass">
-                            <label for="repeatpass">Confirmar contraseña</label>
-                            <input type="password" name="repeatpass" id="repeatpass">
-                            <input type="submit" value="Confirmar cambios">
-                        </form>
-                    </div>
-                </div>
 
-                <div class="deleteAccount">
-                    <h2>Desactivar cuenta</h2>
-                    <div class="formData">
-                        <form action="">
-                            <label for="deleteAccount">Introdisca su contraseña</label>
-                            <input type="password" name="deleteAccount" id="deleteAccount">
-                            <input type="submit" value="Desactivar">
-                        </form>
-                    </div>
+        <section>
+            <h2>Contacto</h2>
+            <div class="cardContent helpPage">
+                <div class="formContact">
+                    <form action="../controller/sendMessage.php" method="post">
+                        <input type="text" name="asunto" id="asunto" placeholder="Asunto">
+                        <textarea name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Mensaje"></textarea>
+                        <button type="submit"><i class="fas fa-paper-plane"></i> Enviar</button>
+                    </form>
+                </div>
+                <div class="contactInfo">
+                    <h2>Apple Store EC</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui magnam dolorum in optio ut impedit a
+                        nesciunt corporis ad quo?</p>
+                    <p><i class="fas fa-phone"></i> 0989420495</p>
+                    <p><i class="fas fa-tty"></i> (07)2255887</p>
+                    <p><i class="fas fa-at"></i> <a href="mailto:applestoreec@apple.com">applestoreec@apple.com</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Av.Juan Tamariz y 3 de Octubre, Cuenca, Ecuador</p>
                 </div>
             </div>
         </section>
     </div>
 
+
     <footer>
+        <script src="../js/funciones.js"></script>
         <?php
         include("../../../global/php/footerPublic.php");
         ?>
