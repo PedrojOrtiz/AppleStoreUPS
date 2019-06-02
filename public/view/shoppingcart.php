@@ -128,7 +128,7 @@ if (isset($_SESSION['isLogin'])) {
                 }
                 //echo '<h2>Si hay productos.</h2>';
             } else {
-                echo '<h2>No hay productos.</h2>';
+                echo '<h2 style="color: #FF6565">No hay productos.</h2>';
             }
             ?>
 
@@ -137,27 +137,64 @@ if (isset($_SESSION['isLogin'])) {
             <div class="productInfo bill">
                 <div class="billInfo">
                     <div class="nameBill">
+                        <?php
+                        $sqlUser = "SELECT * FROM usuario, direccion 
+                        WHERE usuario.usu_id=direccion.USUARIO_usu_id AND 
+                        usuario.usu_id = " . $_SESSION['codigo'] . ";";
+
+                        $sqlUser = $conn->query($sqlUser);
+
+                        $sqlUser = $sqlUser->fetch_assoc();
+                        if ($sqlUser['usu_nombres'] != '' && $sqlUser['usu_apellidos'] != '' && $sqlUser['usu_cedula'] != '' && $sqlUser['dir_nombre'] != '' && $sqlUser['dir_calle_principal'] != '' && $sqlUser['dir_calle_secundaria'] != '' && $sqlUser['dir_ciudad'] != '' && $sqlUser['dir_provincia'] != '' && $sqlUser['dir_codigo_postal'] != '') {
+                            ?>
                         <h2>Factura</h2>
-                        <p>Richard Torres</p>
-                        <span>Av. Jaime Roldos y 3 de Noviembre</span>
-                        <span class="data">0106464456,Cuenca,Azuay</span>
+                        <p><?php echo $sqlUser['usu_nombres'] . ' ' . $sqlUser['usu_apellidos'] ?></p>
+                        <span><?php echo $sqlUser['dir_nombre'] . ', ' . $sqlUser['dir_calle_principal'] . ', ' . $sqlUser['dir_calle_secundaria'] ?></span>
+                        <span
+                            class="data"><?php echo $sqlUser['usu_cedula'] . ', ' . $sqlUser['dir_ciudad'] . ', ' . $sqlUser['dir_provincia'] ?></span>
+
+                        <?php
+                            $usuDates = true;
+                        } else {
+                            $usuDates = false;
+                            echo '<h3 style="color: #FF6565">Por favor complete la informacion de su perfil.</h3>';
+                            echo '<p>Para continuar con el pago...</p>';
+                        }
+                        ?>
                     </div>
                     <button onclick="window.location.href = '../../admin/user/view/index.php'">
                         <i class="far fa-edit"></i> Editar
                     </button>
                 </div>
-                <div class="buydetall">
+                <div class="buydetall" id="buydetall">
+                    <?php
+                    $sqlSubTot = "SELECT SUM(c.car_cantidad*(p.pro_precio-(p.pro_precio*(p.pro_descuento/100)))) AS sub_total FROM carrito c, producto p WHERE 
+                                        c.PRODUCTO_pro_id = p.pro_id AND 
+                                        c.USUARIO_usu_id = " . $_SESSION['codigo'] . ";";
+
+                    $sqlSubTot = $conn->query($sqlSubTot);
+                    $subTot = $sqlSubTot->fetch_assoc();
+                    $subTotal = $subTot['sub_total'];
+                    $total = $subTotal + ($subTotal * 1.12);
+
+                    ?>
                     <h2>Detalle</h2>
                     <div class="price">
-                        <p><span>Sub-Total: </span>$749.00</p>
+                        <p><span>Sub-Total: </span>$<?php echo round($subTotal, 2) ?></p>
                         <p><span>IVA: </span>12%</p>
-                        <p><span>Total: </span>$749.00</p>
+                        <p><span>Total: </span>$<?php echo round($total, 2) ?></p>
                     </div>
+                    <?php
+                    if ($subTotal > 0 && $usuDates) {
+                        ?>
                     <div class="btns">
                         <button onclick="openWindow()">
                             <i class="far fa-credit-card"></i> Tarjeta
                         </button>
                     </div>
+                    <?php
+                }
+                ?>
                 </div>
             </div>
         </section>

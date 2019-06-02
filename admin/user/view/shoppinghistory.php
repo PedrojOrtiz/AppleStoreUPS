@@ -16,6 +16,7 @@ if ($_SESSION['rol'] == 'admin') {
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../../../public/css/globalStyle.css">
+    <script src="../js/funciones.js"></script>
     <title>Historial</title>
 </head>
 
@@ -44,10 +45,10 @@ if ($_SESSION['rol'] == 'admin') {
                                 <td>Metodo de pago</td>
                                 <td>Total</td>
                                 <td>
-                                    <select id="selectStatus">
-                                        <option value="pendiente">Pendiente</option>
-                                        <option value="enviado">Enviador</option>
-                                        <option value="cancelado">Cancelado</option>
+                                    <select id="selectStatus" onchange="status(this)">
+                                        <option value="pendiente">todo</option>
+                                        <option value="pendiente">pendiente</option>
+                                        <option value="enviado">recibido</option>
                                     </select>
                                 </td>
                                 <td>Fecha</td>
@@ -71,52 +72,43 @@ if ($_SESSION['rol'] == 'admin') {
                             </tr>
                         </tfoot>
 
-                        <tbody>
+                        <tbody id="tableHistory">
+                            <?php
+                            include '../../../config/configDB.php';
+                            $sql = "SELECT * FROM factura_cabecera
+                                    WHERE USUARIO_usu_id=" . $_SESSION['codigo'] . " AND
+                                    fac_cab_eliminado=0;";
+
+                            $result = $conn->query($sql);
+                            $i = 1;
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    ?>
                             <tr>
-                                <td>1</td>
-                                <td>GBS5632</td>
-                                <td>Tarjeta Prueba link</td>
-                                <td>$800.00</td>
-                                <td><span>Pendiente</span></td>
-                                <td>25/01/2019 10:15</td>
-                                <td><a href="invoice.php">Ver orden</a></td>
+                                <td><?php echo $i ?></td>
+                                <td><?php echo $row['fac_cab_id'] ?></td>
+                                <td><?php echo $row['fac_cab_metodo_pago'] ?></td>
+                                <td>$<?php echo $row['fac_cab_total'] ?></td>
+                                <?php
+                                        if ($row['fac_cab_estado'] == 'pendiente') {
+                                            echo "<td><span>" . $row['fac_cab_estado'] . "</span></td>";
+                                        } else {
+                                            echo '<td><span style="background-color: #69E4A6" >' . $row['fac_cab_estado'] . '</span></td>';
+                                        }
+                                        ?>
+
+                                <td><?php echo $row['fac_cab_fecha'] ?></td>
+                                <td><a href="invoice.php?fac_cab_id=<?php echo $row['fac_cab_id'] ?>">Ver orden</a>
+                                </td>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>GBS5632</td>
-                                <td>Tarjeta</td>
-                                <td>$800.00</td>
-                                <td><span>Pendiente</span></td>
-                                <td>25/01/2019 10:15</td>
-                                <td><a href="">Ver orden</a></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>GBS5632</td>
-                                <td>Tarjeta</td>
-                                <td>$800.00</td>
-                                <td><span>Pendiente</span></td>
-                                <td>25/01/2019 10:15</td>
-                                <td><a href="">Ver orden</a></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>GBS5632</td>
-                                <td>Tarjeta</td>
-                                <td>$800.00</td>
-                                <td><span>Pendiente</span></td>
-                                <td>25/01/2019 10:15</td>
-                                <td><a href="">Ver orden</a></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>GBS5632</td>
-                                <td>Tarjeta</td>
-                                <td>$800.00</td>
-                                <td><span>Pendiente</span></td>
-                                <td>25/01/2019 10:15</td>
-                                <td><a href="">Ver orden</a></td>
-                            </tr>
+                            <?php
+                                    $i = $i + 1;
+                                }
+                            } else {
+                                echo '<td colspan="7"><h2>No hay facturas que mostrar</h2></td>';
+                            }
+                            ?>
+
                         </tbody>
                     </table>
                 </article>

@@ -40,9 +40,6 @@ if (isset($_SESSION['isLogin'])) {
             </a>
             <div class="contentCards">
 
-
-
-
                 <?php
                 include '../../config/configDB.php';
                 $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion

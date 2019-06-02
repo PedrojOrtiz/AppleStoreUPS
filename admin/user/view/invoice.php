@@ -5,6 +5,9 @@ if (isset($_SESSION['isLogin'])) {
     if ($_SESSION['rol'] == 'admin') {
         //header("Location: ../admin/index.php");
     }
+    if (!isset($_GET['fac_cab_id'])) {
+        //eroor redirigir 
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -19,11 +22,6 @@ if (isset($_SESSION['isLogin'])) {
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../../../public/css/globalStyle.css">
-
-    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
-    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script> -->
 
     <title>Factura</title>
 </head>
@@ -57,18 +55,41 @@ if (isset($_SESSION['isLogin'])) {
                 </div>
                 <div class="invoiceBody">
                     <div class="ivoiceBodyDetall">
+                        <?php
+                        include '../../../config/configDB.php';
+
+
+                        $sql = "SELECT * FROM factura_cabecera fc, usuario u, direccion d
+                        WHERE fc.USUARIO_usu_id=u.usu_id AND
+                        d.USUARIO_usu_id = u.usu_id AND
+                        fc.fac_cab_id=" . $_GET['fac_cab_id'] . ";";
+
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                            $result = $result->fetch_assoc();
+                            ?>
                         <div class="invoiceDetailTo">
                             <h3>Factura a:</h3>
-                            <p>Richard Torres</p>
-                            <p>Cl. 0106464456</p>
-                            <p>Dir. Av. Jaime Roldos y 3 de Noviembre</p>
-                            <p>Tel. 0992631254</p>
+                            <p><span><?php echo $result['usu_nombres'] ?></span>
+                                <span><?php echo $result['usu_apellidos'] ?></span></p>
+                            <p>Cl. <span><?php echo $result['usu_cedula'] ?></span></p>
+                            <p><?php echo $result['dir_nombre'] . ', ' . $result['dir_calle_principal'] . ', ' . $result['dir_calle_secundaria'] ?>
+                            </p>
+                            <p>Tel. <span><?php echo $result['usu_telefono'] ?></span></p>
                         </div>
                         <div class="invoiceDetailStatus">
-                            <p><span>Fecha: </span>25/01/2019</p>
-                            <p><span>Status: </span><span class="status">Pendiente</span></p>
-                            <p><span>Codigo de orden: </span>GBS5632</p>
+                            <p><span>Fecha: </span><?php echo $result['fac_cab_fecha'] ?></p>
+                            <p><span>Status: </span><span class="status"><?php echo $result['fac_cab_estado'] ?></span>
+                            </p>
+                            <p><span>Codigo de orden: </span><?php echo $result['fac_cab_id'] ?></p>
                         </div>
+                        <input id="start" type="hidden" name="" value="gualaceo">
+                        <input id="end" type="hidden" name="" value="Calle Vieja, Cuenca 010105">
+                        <?php
+                    } else {
+                        //redirigir
+                    }
+                    ?>
                     </div>
 
                     <article>
@@ -101,9 +122,6 @@ if (isset($_SESSION['isLogin'])) {
                             </tfoot>
 
                             <div id="floatWindow">
-                                <input id="start" type="hidden" name="" value="gualaceo">
-                                <input id="end" type="hidden" name="" value="Calle Vieja, Cuenca 010105">
-
                                 <div class="contentMap">
                                     <i class="fas fa-times" onclick="cluseWindow()"></i>
                                     <div id="map"></div>
@@ -111,7 +129,59 @@ if (isset($_SESSION['isLogin'])) {
                             </div>
 
                             <tbody>
+                                <?php
+                                $sql = "SELECT * FROM factura_detalle fd, factura_cabecera fc, producto pro, sucursal suc, imagen img
+                                        WHERE fd.FACTURA_CABECERA_fac_cab_id = fc.fac_cab_id AND
+                                                fd.PRODUCTO_pro_id=pro.pro_id AND
+                                                fd.SUCURSAL_suc_id = suc.suc_id AND
+                                                img.PRODUCTO_pro_id = pro.pro_id AND
+                                                fc.fac_cab_id=" . $_GET['fac_cab_id'] . "
+                                                GROUP BY suc.suc_id;";
+
+                                $resultDet = $conn->query($sql);
+                                $i = 1;
+                                if ($resultDet->num_rows > 0) {
+                                    while ($row = $resultDet->fetch_assoc()) {
+                                        ?>
                                 <tr>
+                                    <td><?php echo $i ?></td>
+                                    <td><a
+                                            href="../../../public/view/product.php?producto=<?php echo $row['pro_id']; ?>">
+                                            <img src="../../../img/product/<?php echo $row['pro_id']; ?>/<?php echo $row['img_nombre']; ?>"
+                                                alt="<?php echo $row['img_nombre']; ?>">
+                                            <p><?php echo $row['pro_nombre']; ?></p>
+                                        </a>
+                                    </td>
+                                    <td><?php echo $row['pro_descripcion']; ?></td>
+                                    <td><a
+                                            href="../../../public/view/<?php echo $row['suc_url']; ?>"><?php echo $row['suc_nombre']; ?></a>
+                                    </td>
+                                    <td><?php echo $row['fac_det_cantidad']; ?></td>
+
+                                    <?php
+                                            $sqlSubTot = "SELECT SUM(c.car_cantidad*(p.pro_precio-(p.pro_precio*(p.pro_descuento/100)))) AS sub_total FROM carrito c, producto p WHERE 
+                                                            c.PRODUCTO_pro_id = p.pro_id AND 
+                                                            c.USUARIO_usu_id = " . $_SESSION['codigo'] . ";";
+
+                                            $sqlSubTot = $conn->query($sqlSubTot);
+                                            $subTot = $sqlSubTot->fetch_assoc();
+                                            ?>
+
+                                    <td>$ <?php echo round($subTot['sub_total'], 2); ?></td>
+                                    <td><a onclick="openWindow()">Ver ruta</a>
+                                    </td>
+                                </tr>
+
+                                <?php
+                                        $i = $i + 1;
+                                    }
+                                } else {
+                                    //error redirigir
+                                }
+                                ?>
+
+
+                                <!-- <tr>
                                     <td>1</td>
                                     <td><a href="">
                                             <img src="../../../img/product/producto.jpg" alt="">
@@ -125,66 +195,17 @@ if (isset($_SESSION['isLogin'])) {
                                     <td><a onclick="openWindow()">Ver ruta</a>
                                     </td>
 
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="">
-                                            <img src="../../../img/product/product2.png" alt="">
-                                            <p>Lorem</p>
-                                        </a>
-                                    </td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex voluptatem harum
-                                        reiciendis sunt quam animi praesentium impedit pariatur, debitis quaerat velit
-                                        odit facere quos est maxime aspernatur vitae voluptatibus quas consequuntur cum
-                                        repellendus assumenda blanditiis temporibus? Eveniet id odio, facere culpa
-                                        fugiat placeat numquam tempora molestiae provident ipsum similique! Vel.</td>
-                                    <td><a href="">Guayaquil</a></td>
-                                    <td>$700.00</td>
-                                    <td><a namer onclick="openWindow()">Ver ruta</a></td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="">
-                                            <img src="../../../img/product/producto.jpg" alt="">
-                                            <p>Lorem</p>
-                                        </a>
-                                    </td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                                    <td><a href="">Guayaquil</a></td>
-                                    <td>$700.00</td>
-                                    <!-- <td><a href="">Ver ruta</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="">
-                                            <img src="../../../img/product/producto.jpg" alt="">
-                                            <p>Lorem</p>
-                                        </a>
-                                    </td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                                    <td><a href="">Guayaquil</a></td>
-                                    <td>$700.00</td>
-                                    <!-- <td><a href="">Ver ruta</a></td> -->
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="">
-                                            <img src="../../../img/product/producto.jpg" alt="">
-                                            <p>Lorem</p>
-                                        </a>
-                                    </td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                                    <td><a href="">Guayaquil</a></td>
-                                    <td>$700.00</td>
-                                    <!-- <td><a href="">Ver ruta</a></td> -->
-                                </tr>
+                                </tr> -->
+
                             </tbody>
                         </table>
                     </article>
                     <div class="invoiceFooter">
-                        <p><span>Sub-total: </span> $2930.00</p>
-                        <h2>USD 4930.00</h2>
-                        <button id="cancelar">Cancelar</button>
+                        <p><span>Sub-total: </span> $<?php echo round($result['fac_cab_subtotal'], 2) ?></p>
+                        <p><span>IVA: </span> 12%</p>
+                        <h2>USD <?php echo round($result['fac_cab_total'], 2) ?></h2>
+                        <button id="cancelar"
+                            onclick="window.location.href = '../controller/deleteInvoice.php?fac_cab_id=<?php echo $_GET['fac_cab_id'] ?>'">Eliminar</button>
                     </div>
                 </div>
             </div>

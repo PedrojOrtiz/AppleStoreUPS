@@ -77,6 +77,6 @@ function writeContent()
     }
     //echo '<h2>Si hay productos.</h2>';
 } else {
-    echo '<h2>No hay productos.</h2>';
+    echo '<h2 style="color: #FF6565">No hay productos.</h2>';
 }
 }

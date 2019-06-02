@@ -78,8 +78,7 @@ function cartAdd(cod) {
     }
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            //openWindowCart();
-            //console.log(this.responseText)
+            carNot()
             if (document.getElementById("cartAdd") === null) {
                 document.body.innerHTML += this.responseText
             } else {
@@ -146,7 +145,6 @@ function cambiarImagen(int) {
 }
 
 function cartDelete(carId) {
-    console.log("HOLA" + carId)
 
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest()
@@ -155,9 +153,42 @@ function cartDelete(carId) {
     }
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+            cartUpdatePrice()
+            carNot()
             document.getElementById("cart").innerHTML = this.responseText
         }
     };
     xmlhttp.open("GET", "../controller/cartRemove.php?carId=" + carId, true)
+    xmlhttp.send()
+}
+function cartUpdatePrice() {
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest()
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("buydetall").innerHTML = this.responseText
+        }
+    };
+    xmlhttp.open("GET", "../controller/updatePrice.php", true)
+    xmlhttp.send()
+}
+
+function carNot(url) {
+
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest()
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log('Notificacion')
+            document.getElementById("fa-shopping-cart").innerHTML = this.responseText
+        }
+    };
+    xmlhttp.open("GET", url, true)
     xmlhttp.send()
 }

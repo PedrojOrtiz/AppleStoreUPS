@@ -1,3 +1,4 @@
+<script src="../../../public/js/funciones.js"></script>
 <div class="content">
     <a href="../../../index.php"><i class="fab fa-apple"></i></a>
     <nav class="menu">
@@ -38,9 +39,12 @@
         <?php
         if (isset($_SESSION['isLogin'])) {
             ?>
-
+        <script>
+        carNot('../../../public/controller/updateNotCart.php')
+        </script>
         <div class="imgUser">
-            <a href="../../../public/view/shoppingcart.php"><i class="fas fa-shopping-cart"></i></a>
+            <a href="../../../public/view/shoppingcart.php"><i class="fas fa-shopping-cart"
+                    id="fa-shopping-cart"></i></a>
             <img src="../../../img/user/<?php echo $_SESSION['codigo']; ?>/<?php echo $_SESSION['img']; ?>"
                 alt="<?php echo $_SESSION['img']; ?>">
         </div>
@@ -67,4 +71,3 @@
     }
     ?>
     </div>
-    <script src="../js/funciones.js"></script>

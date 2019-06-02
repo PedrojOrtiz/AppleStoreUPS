@@ -8,17 +8,17 @@ move_uploaded_file($temp, "../../../img/user/" . $_POST["codigo"] . "/$foto");
 
 
 $codigo = isset($_POST["codigo"]) ? trim($_POST["codigo"]) : null;
-$nombre = isset($_POST["nombre"]) ? mb_strtoupper(trim($_POST["nombre"]), 'UTF-8') : null;
-$apellido = isset($_POST["apellido"]) ? mb_strtoupper(trim($_POST["apellido"]), 'UTF-8') : null;
+$nombre = isset($_POST["nombre"]) ? mb_strtolower(trim($_POST["nombre"]), 'UTF-8') : null;
+$apellido = isset($_POST["apellido"]) ? mb_strtolower(trim($_POST["apellido"]), 'UTF-8') : null;
 $cedula = isset($_POST["cedula"]) ? trim($_POST["cedula"]) : null;
 $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : null;
 $fecha = $_POST["fechaNacimiento"];
 $email = isset($_POST["email"]) ? trim($_POST["email"]) : null;
-$dirNombre = isset($_POST["derecNombre"]) ? trim($_POST["derecNombre"]) : null;
-$dirCP = isset($_POST["direcCalle1"]) ? mb_strtoupper(trim($_POST["direcCalle1"]), 'UTF-8') : null;
-$dirCS = isset($_POST["direcCalle2"]) ? mb_strtoupper(trim($_POST["direcCalle2"]), 'UTF-8') : null;
-$ciudad = isset($_POST["ciudad"]) ? mb_strtoupper(trim($_POST["ciudad"]), 'UTF-8') : null;
-$provincia = isset($_POST["provincia"]) ? mb_strtoupper(trim($_POST["provincia"]), 'UTF-8') : null;
+$dirNombre = isset($_POST["derecNombre"]) ? mb_strtolower(trim($_POST["direcCalle1"]), 'UTF-8') : null;
+$dirCP = isset($_POST["direcCalle1"]) ? mb_strtolower(trim($_POST["direcCalle1"]), 'UTF-8') : null;
+$dirCS = isset($_POST["direcCalle2"]) ? mb_strtolower(trim($_POST["direcCalle2"]), 'UTF-8') : null;
+$ciudad = isset($_POST["ciudad"]) ? mb_strtolower(trim($_POST["ciudad"]), 'UTF-8') : null;
+$provincia = isset($_POST["provincia"]) ? mb_strtolower(trim($_POST["provincia"]), 'UTF-8') : null;
 $codPost = isset($_POST["codPost"]) ? trim($_POST["codPost"]) : null;
 $date = date(date("Y-m-d H:i:s"));
 

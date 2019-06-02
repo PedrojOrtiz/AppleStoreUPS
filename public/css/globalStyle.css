@@ -162,7 +162,27 @@ header .content .sessionItems .imgUser{
     margin: 0 5px 0 25px;
     display: flex;
     align-items: center;
-
+}
+header .content .sessionItems .imgUser i{
+    position: relative;
+    padding: 10px;
+}
+header .content .sessionItems .imgUser i span{
+    background-color: var(--colorRojo);
+    color: #FFF;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .5em;
+    width: 19px;
+    height: 19px;
+    border: 2px solid var(--color1);
+    text-align: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 header .content .sessionItems .imgUser img{
     width: 40px;
