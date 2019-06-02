@@ -48,10 +48,15 @@ if (isset($_SESSION['isLogin'])) {
                 </div>
                 <div class="contactInfo">
                     <h2>Apple Store EC</h2>
-                    
-                    <p>Desde siempre, los productos Apple han sido diseñados pensando no sólo en cómo vivimos, sino también en cómo trabajamos.</p>
-                    <p>Hoy estos productos ayudan a los empleados a trabajar de forma más simple y productiva, resolver problemas de forma creativa y colaborar para alcanzar un objetivo común.</p>
-                    <p>Además, están pensados para trabajar juntos de una forma maravillosa. Cuando las personas tienen acceso a un iPhone, un iPad o una Mac, pueden dar lo mejor de sí y reinventar el futuro de sus empresas.</p>
+
+                    <p>
+                        Somos una empresa distribuidora de los porductos oficiales de apple estamos a su entera
+                        dispocicion para cualquier problema nuestras oficinas estan distribuidas a loa largo de todo el
+                        pais contamos con 3 sucurasales oficiales en las principales ciudades del pais Quito, Guayaquil
+                        y Cuenca.<br>
+                        Para ponerte en contacto con nosotros puedes marcar los siguientes telefonos o escribir un
+                        mensaje directo a los administradores. Gracias por preferinos
+                    </p>
                     <p><i class="fas fa-phone"></i> 0987654321</p>
                     <p><i class="fas fa-tty"></i> (07)3014329</p>
                     <p><i class="fas fa-at"></i> <a href="mailto:applestoreec@apple.com">applestoreec@apple.com</a></p>

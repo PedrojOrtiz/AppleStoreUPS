@@ -23,7 +23,7 @@ $total = $subTotal + ($subTotal * 1.12);
     <p><span>Total: </span>$<?php echo $total ?></p>
 </div>
 <?php
-if ($subTotal > 0 && $usuDates) {
+if ($subTotal > 0) {
     ?>
 <div class="btns">
     <button onclick="openWindow()">

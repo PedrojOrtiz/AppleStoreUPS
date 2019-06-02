@@ -48,7 +48,7 @@ if (isset($_SESSION['isLogin'])) {
             $descuento = $row['pro_descuento'];
             $categoria = $row['cat_id'];
         } else {
-            echo 'Error';
+            //echo 'Error';
         }
         //Stock
         $sqlStock = "SELECT ps.pro_suc_stock FROM producto p, producto_sucursal ps, sucursal s

@@ -8,8 +8,6 @@ if (isset($_SESSION['isLogin'])) {
     }
 }
 ?>
-
-?>
 <!DOCTYPE html>
 <html lang="es">
 
