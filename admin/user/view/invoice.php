@@ -83,8 +83,6 @@ if (isset($_SESSION['isLogin'])) {
                             </p>
                             <p><span>Codigo de orden: </span><?php echo $result['fac_cab_id'] ?></p>
                         </div>
-                        <input id="start" type="hidden" name="" value="gualaceo">
-                        <input id="end" type="hidden" name="" value="Calle Vieja, Cuenca 010105">
                         <?php
                     } else {
                         //redirigir
@@ -142,6 +140,7 @@ if (isset($_SESSION['isLogin'])) {
                                 $i = 1;
                                 if ($resultDet->num_rows > 0) {
                                     while ($row = $resultDet->fetch_assoc()) {
+
                                         ?>
                                 <tr>
                                     <td><?php echo $i ?></td>
@@ -168,7 +167,9 @@ if (isset($_SESSION['isLogin'])) {
                                             ?>
 
                                     <td>$ <?php echo round($subTot['sub_total'], 2); ?></td>
-                                    <td><a onclick="openWindow()">Ver ruta</a>
+                                    <!--CAMBIAR LA DIRECCION START A UNA REAL-->
+
+                                    <td><a onclick="mapDirection(<?php echo $row['suc_id'] ?>)">Ver ruta</a>
                                     </td>
                                 </tr>
 
@@ -179,7 +180,10 @@ if (isset($_SESSION['isLogin'])) {
                                     //error redirigir
                                 }
                                 ?>
-
+                                <div id="mapDir">
+                                    <input id="start" type="hidden" name="" value="Gualaceo">';
+                                    <input id="end" type="hidden" name="" value="Cuenca">';
+                                </div>
 
                                 <!-- <tr>
                                     <td>1</td>

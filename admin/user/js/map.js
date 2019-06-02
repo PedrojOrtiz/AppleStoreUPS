@@ -14,6 +14,9 @@ function initMap() {
 }
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+    //console.log(document.getElementById('start').value)
+    //console.log(document.getElementById('end').value)
+
     directionsService.route({
         origin: document.getElementById('start').value,
         destination: document.getElementById('end').value,
@@ -22,18 +25,30 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         if (status === 'OK') {
             directionsDisplay.setDirections(response);
         } else {
-            window.alert('Directions request failed due to ' + status);
+            window.alert('Direccion no encontrada. ' + status);
         }
     });
-}
-
-function openWindow() {
-    calculateAndDisplayRoute(directionsService, directionsDisplay);
-    let windowFloat = document.getElementById("floatWindow")
-    windowFloat.style.display = "flex"
 }
 
 function cluseWindow() {
     let windowFloat = document.getElementById("floatWindow")
     windowFloat.style.display = "none"
+}
+
+function mapDirection(storeID) {
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest()
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("mapDir").innerHTML = this.responseText
+            calculateAndDisplayRoute(directionsService, directionsDisplay);
+            let windowFloat = document.getElementById("floatWindow")
+            windowFloat.style.display = "flex"
+        }
+    };
+    xmlhttp.open("GET", "../controller/mapDirection.php?storeId=" + storeID, true)
+    xmlhttp.send()
 }
