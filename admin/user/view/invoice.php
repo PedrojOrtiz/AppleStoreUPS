@@ -1,15 +1,18 @@
 <?php
 session_start();
 if (isset($_SESSION['isLogin'])) {
-    //header("Location: ../admin/index.php");
     if ($_SESSION['rol'] == 'admin') {
-        //header("Location: ../admin/index.php");
+        header("Location: ../../admin/view/index.php");
     }
     if (!isset($_GET['fac_cab_id'])) {
-        //eroor redirigir 
+        header("Location: shoppinghistory.php");
     }
+} else {
+    header("Location: ../../../index.php");
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 

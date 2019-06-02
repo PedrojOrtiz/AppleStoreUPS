@@ -1,6 +1,10 @@
 <?php
 session_start();
-//Pendiente query para la tienda 
+if (isset($_SESSION['isLogin'])) {
+    if ($_SESSION['rol'] == 'admin') {
+        header("Location: ../../admin/admin/view/index.php");
+    }
+}
 if (isset($_GET['codProd'])) {
     include '../../config/configDB.php';
     $sql = "SELECT * FROM carrito WHERE 

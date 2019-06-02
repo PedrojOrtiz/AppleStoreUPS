@@ -1,10 +1,7 @@
 <?php
 session_start();
-if (isset($_SESSION['isLogin'])) {
-    //header("Location: ../admin/index.php");
-    if ($_SESSION['rol'] == 'admin') {
-        //header("Location: ../admin/index.php");
-    }
+if (!isset($_GET['register']) || !isset($_GET['login'])) {
+    header("Location:index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -19,13 +16,12 @@ if (isset($_SESSION['isLogin'])) {
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/globalStyle.css">
     <link rel="stylesheet" href="../css/generalStyle.css">
-    <title>Successful4</title>
+    <title>Successful</title>
 </head>
 
 <body>
     <header>
         <?php
-        //echo (getcwd());
         include("../../global/php/headerPublic.php");
         ?>
     </header>

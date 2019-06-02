@@ -1,9 +1,8 @@
 <?php
 session_start();
 if (isset($_SESSION['isLogin'])) {
-    //header("Location: ../admin/index.php");
     if ($_SESSION['rol'] == 'admin') {
-        //header("Location: ../admin/index.php");
+        header("Location: ../../admin/admin/view/index.php");
     }
 }
 ?>
@@ -49,7 +48,7 @@ if (isset($_SESSION['isLogin'])) {
             $descuento = $row['pro_descuento'];
             $categoria = $row['cat_id'];
         } else {
-            echo 'Error';
+            //echo 'Error';
         }
         //Stock
         $sqlStock = "SELECT ps.pro_suc_stock FROM producto p, producto_sucursal ps, sucursal s

@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (isset($_SESSION['isLogin'])) {
+    if ($_SESSION['rol'] == 'admin') {
+        header("Location: ../../admin/admin/view/index.php");
+    }
+}
 include '../../config/configDB.php';
 $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion, cat.cat_nombre
                     FROM producto pro, imagen img, rating rat, categoria cat

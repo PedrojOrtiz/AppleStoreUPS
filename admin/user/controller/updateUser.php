@@ -1,4 +1,12 @@
 <?php
+session_start();
+if (isset($_SESSION['isLogin'])) {
+    if ($_SESSION['rol'] == 'admin') {
+        header("Location: ../../admin/view/index.php");
+    }
+} else {
+    header("Location: ../../../index.php");
+}
 include '../../../config/configDB.php';
 
 $foto = $_FILES['foto']['name'];
@@ -72,7 +80,6 @@ if ($result->num_rows > 0) {
         '$codigo');";
     //echo 'No hay datos';
 }
-
 
 if ($conn->query($sql) == true && $conn->query($sqlImg) == true && $conn->query($sqlDir) == true) {
     //header("Location: ../view/index.php?update=true");

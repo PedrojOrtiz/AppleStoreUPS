@@ -1,10 +1,11 @@
 <?php
 session_start();
 if (isset($_SESSION['isLogin'])) {
-    //header("Location: ../admin/index.php");
     if ($_SESSION['rol'] == 'admin') {
-        //header("Location: ../admin/index.php");
+        header("Location: ../../admin/view/index.php");
     }
+} else {
+    header("Location: ../../../index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -14,7 +15,8 @@ if (isset($_SESSION['isLogin'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../../../public/css/globalStyle.css">
@@ -39,7 +41,7 @@ if (isset($_SESSION['isLogin'])) {
             <?php
             include '../../../config/configDB.php';
             $oldpass = isset($_POST["oldpass"]) ? trim($_POST["oldpass"]) : null;
-            $newpass= isset($_POST["newpass"]) ? trim($_POST["newpass"]) : null;
+            $newpass = isset($_POST["newpass"]) ? trim($_POST["newpass"]) : null;
             $repeatpass = isset($_POST["repeatpass"]) ? trim($_POST["repeatpass"]) : null;
             $cod = isset($_POST["cod"]) ? trim($_POST["cod"]) : null;
 
@@ -49,7 +51,7 @@ if (isset($_SESSION['isLogin'])) {
             $date = date(date("Y-m-d H:i:s"));
 
             if (MD5($oldpass) === $result["usu_password"]) {
-                if ($newpass === $repeatpass ) {
+                if ($newpass === $repeatpass) {
                     $sql = "UPDATE usuario u SET u.usu_password = MD5('$newpass'), u.usu_fecha_modificacion=null  WHERE  u.usu_id='$cod'";
                     if ($conn->query($sql) == true) {
                         noerro();
@@ -85,11 +87,11 @@ if (isset($_SESSION['isLogin'])) {
     </div>
 
 
-        <footer>
-            <?php
-            include("../../../global/php/footerPublic.php");
-            ?>
-        </footer>
+    <footer>
+        <?php
+        include("../../../global/php/footerPublic.php");
+        ?>
+    </footer>
 
 </body>
 

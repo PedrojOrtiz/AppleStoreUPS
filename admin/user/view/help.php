@@ -1,10 +1,11 @@
 <?php
 session_start();
 if (isset($_SESSION['isLogin'])) {
-    //header("Location: ../admin/index.php");
     if ($_SESSION['rol'] == 'admin') {
-        //header("Location: ../admin/index.php");
+        header("Location: ../../admin/view/index.php");
     }
+} else {
+    header("Location: ../../../index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -47,10 +48,17 @@ if (isset($_SESSION['isLogin'])) {
                 </div>
                 <div class="contactInfo">
                     <h2>Apple Store EC</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui magnam dolorum in optio ut impedit a
-                        nesciunt corporis ad quo?</p>
-                    <p><i class="fas fa-phone"></i> 0989420495</p>
-                    <p><i class="fas fa-tty"></i> (07)2255887</p>
+
+                    <p>
+                        Somos una empresa distribuidora de los porductos oficiales de apple estamos a su entera
+                        dispocicion para cualquier problema nuestras oficinas estan distribuidas a loa largo de todo el
+                        pais contamos con 3 sucurasales oficiales en las principales ciudades del pais Quito, Guayaquil
+                        y Cuenca.<br>
+                        Para ponerte en contacto con nosotros puedes marcar los siguientes telefonos o escribir un
+                        mensaje directo a los administradores. Gracias por preferinos
+                    </p>
+                    <p><i class="fas fa-phone"></i> 0987654321</p>
+                    <p><i class="fas fa-tty"></i> (07)3014329</p>
                     <p><i class="fas fa-at"></i> <a href="mailto:applestoreec@apple.com">applestoreec@apple.com</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> Av.Juan Tamariz y 3 de Octubre, Cuenca, Ecuador</p>
                 </div>

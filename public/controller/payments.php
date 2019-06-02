@@ -1,10 +1,11 @@
 <?php
 session_start();
 if (isset($_SESSION['isLogin'])) {
-    //header("Location: ../admin/index.php");
     if ($_SESSION['rol'] == 'admin') {
-        //header("Location: ../admin/index.php");
+        header("Location: ../../admin/admin/view/index.php");
     }
+} else {
+    header("Location: ../view/index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -96,7 +97,7 @@ if (isset($_SESSION['isLogin'])) {
                 $subTotal = $subTot['sub_total'];
 
                 // echo 'SUBTOTAL: ' . $subTotal . '<br>';
-                // $total = $subTotal + ($subTotal * 1.12);
+                $total = ($subTotal * 1.12);
                 // echo 'TOTAL: ' . $total . '<br>';
 
                 $sqlCabFact = "INSERT INTO factura_cabecera (
