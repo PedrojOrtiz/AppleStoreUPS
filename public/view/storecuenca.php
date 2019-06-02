@@ -59,7 +59,7 @@ if (isset($_SESSION['isLogin'])) {
                     <p><i class="fas fa-tty"></i> (07)32564</p>
                     <p><i class="fas fa-at"></i> <a
                             href="mailto:aplestoreguayaquil@aple.com">applestorecuenca@apple.com.ec</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i> Av.Juan Tamariz y 3 de Octubre</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Av.Felipe Segundo y Circunvalacion sur</p>
                 </div>
             </div>
             <div class="storeMap">

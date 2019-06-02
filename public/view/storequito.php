@@ -57,7 +57,7 @@ if (isset($_SESSION['isLogin'])) {
                     <p><i class="fas fa-tty"></i> (07)23125</p>
                     <p><i class="fas fa-at"></i> <a
                             href="mailto:aplestoreguayaquil@aple.com">applestorequito@apple.com.ec</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i> Av.Amazonas N32-152</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Av.Amazonas N32-152 y Naciones unidas</p>
                 </div>
             </div>
             <div class="storeMap">
