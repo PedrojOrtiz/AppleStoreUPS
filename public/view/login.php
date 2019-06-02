@@ -1,9 +1,13 @@
 <?php
 session_start();
 if (isset($_SESSION['isLogin'])) {
-    header("Location:index.php");
+    if ($_SESSION['rol'] == 'admin') {
+        header("Location: ../../admin/admin/view/index.php");
+    } else {
+        header("Location:index.php");
+    }
 }
-//header("Location: ../admin/index.php");
+?>
 
 ?>
 <!DOCTYPE html>

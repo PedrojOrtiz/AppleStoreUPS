@@ -1,5 +1,12 @@
 <?php
 session_start();
+if (isset($_SESSION['isLogin'])) {
+        if ($_SESSION['rol'] == 'admin') {
+                header("Location: ../../admin/view/index.php");
+        }
+} else {
+        header("Location: ../../../index.php");
+}
 include '../../../config/configDB.php';
 if (isset($_GET['storeId'])) { }
 $sqlDirUser = "SELECT * FROM usuario usu, direccion dir 

@@ -1,6 +1,13 @@
 <?php
+session_start();
+if (isset($_SESSION['isLogin'])) {
+    if ($_SESSION['rol'] == 'admin') {
+        header("Location: ../../admin/admin/view/index.php");
+    } else {
+        header("Location: ../../index.php");
+    }
+}
 include '../../config/configDB.php';
-
 
 $foto = $_FILES['foto']['name'];
 $temp = $_FILES['foto']['tmp_name'];

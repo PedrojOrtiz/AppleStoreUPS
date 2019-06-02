@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (isset($_SESSION['isLogin'])) {
+    if ($_SESSION['rol'] == 'admin') {
+        header("Location: ../../admin/admin/view/index.php");
+    }
+}
 //Pendiente query para la tienda 
 if (isset($_GET['carId'])) {
     include '../../config/configDB.php';
@@ -20,7 +25,7 @@ if (isset($_GET['carId'])) {
         writeContent();
     }
 } else {
-    echo '<h2>No hay la variable.</h2>';
+    header("Location: ../view/shopingcart.php");
 }
 
 function writeContent()
