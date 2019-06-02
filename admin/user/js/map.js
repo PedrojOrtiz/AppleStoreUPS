@@ -14,8 +14,6 @@ function initMap() {
 }
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-    //console.log(document.getElementById('start').value)
-    //console.log(document.getElementById('end').value)
 
     directionsService.route({
         origin: document.getElementById('start').value,

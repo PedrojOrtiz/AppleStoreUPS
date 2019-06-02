@@ -1,47 +1,114 @@
 <?php
-//unset($_GET['login']);
 session_start();
-if (!isset($_SESSION['isLogin'])) {
-    header("Location: index.php");
+if (isset($_SESSION['isLogin'])) {
+    //header("Location: ../admin/index.php");
+    if ($_SESSION['rol'] == 'admin') {
+        //header("Location: ../admin/index.php");
+    }
 }
-// elseif ($_SESSION['rol'] == 'user') {
-//     header("Location: ../usuario/index.php");
-// }
+?>
+<!DOCTYPE html>
+<html lang="es">
 
-if (isset($_GET['register'])) {
-    if ($_GET['register'] == 'true') {
-        //exito
-        echo 'Registro exitoso inicie session y edite su informacion <br>';
-        echo '<a href="login.php">login</a>';
-    } else {
-        //fracaso
-        if (isset($_GET['error'])) {
-            //fracaso
-            if ($_GET['error'] == '1062') {
-                //error de usuario duplicado
-                echo 'usuario duplicaco';
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="../css/globalStyle.css">
+    <link rel="stylesheet" href="../css/generalStyle.css">
+    <title>Successful4</title>
+</head>
+
+<body>
+    <header>
+        <?php
+        //echo (getcwd());
+        include("../../global/php/headerPublic.php");
+        ?>
+    </header>
+
+    <div class="headerImg pageError pageSuccess">
+
+        <?php
+        if (isset($_GET['register'])) {
+            if ($_GET['register'] == 'true') {
+                ?>
+        <div class="contentSucce">
+            <h2>Registro exitoso....</h2>
+            <p>Redirigiendo por favor espere...</p>
+            <i class="far fa-check-circle"></i>
+
+        </div>
+        <?php
+                header("Refresh:2; url=login.php");
             } else {
-                //error insesperado
-                echo ($_GET['error']);
+                //fracaso
+                if (isset($_GET['error'])) {
+                    //fracaso
+                    if ($_GET['error'] == '1062') {
+                        ?>
+        <div class="contentSucce">
+            <h2>El usuario ya existe</h2>
+            <p>Error al registrar..</p>
+            <i class="far fa-times-circle"></i>
+        </div>
+        <?php
+                        header("Refresh:2; url=signup.php");
+                    } else {
+                        ?>
+        <div class="contentSucce">
+            <h2>Error insesperado</h2>
+            <p><?php echo $_GET['error'] ?></p>
+            <p>Error al registrar..</p>
+            <i class="far fa-times-circle"></i>
+        </div>
+        <?php
+                        header("Refresh:2; url=signup.php");
+                    }
+                } else {
+                    header("Location: signup.php");
+                }
+            }
+        } elseif (isset($_GET['login'])) {
+            if ($_GET['login'] === 'true') {
+                ?>
+        <div class="contentSucce">
+            <h2>Logeo exitoso</h2>
+            <p>Redirigiendo por favor espere...</p>
+            <i class="far fa-check-circle"></i>
+        </div>
+        <?php
+                if ($_SESSION['rol'] == 'user') {
+                    header("Refresh:1; url=index.php");
+                } else {
+                    header("Refresh:2; url=../../admin/admin/view/index.php");
+                }
+            } else {
+                ?>
+        <div class="contentSucce">
+            <h2>Error datos de inicio incorrectos.</h2>
+            <p>Redirigiendo por favor espere...</p>
+            <i class="far fa-times-circle"></i>
+        </div>
+        <?php
+                header("Refresh:2; url=login.php");
             }
         }
-    }
-} elseif (isset($_GET['login'])) {
-    if ($_GET['login'] === 'true') {
-        //exito
-        echo 'Logeo exitoso<br>';
+        ?>
+    </div>
+    <footer>
+        <?php
+        //echo (getcwd());
+        include("../../global/php/footerPublic.php");
+        ?>
+    </footer>
 
-        if ($_SESSION['rol'] == 'user') {
-            echo 'Ir al inicio<br>';
-            echo '<a href="index.php">Inicio</a>';
-            //header("Refresh:2; url=../../admin/vista/admin/index.php");
-        } else {
-            echo 'Ir a la administracion<br>';
-            echo '<a href="../../admin/admin/view/index.php">Inicio</a>';
-            //     //header("Refresh:2; url=../../admin/vista/usuario/index.php");
-        }
-    } else {
-        //fracaso
-        echo 'Logeo incorrecto';
-    }
-}
+</body>
+
+</html>
+</body>
+
+</html>

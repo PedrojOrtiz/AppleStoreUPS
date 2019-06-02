@@ -123,6 +123,7 @@ var imag = []
 var indice = 0
 
 function galeria(img, i) {
+    console.log(img)
     imag[i] = img
 }
 

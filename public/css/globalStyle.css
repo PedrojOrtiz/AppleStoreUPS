@@ -599,3 +599,32 @@ body .headerImg.pageError p{
 #floatWindow .contentWindow i:hover{
     color: var(--colorRojo);
 }
+
+body .pageSuccess .contentSucce{
+    width: 40%;
+    height: 400px;
+    background-color: #FFF;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+body .pageSuccess .contentSucce h2{
+    font-size: .4em;
+    color: var(--colorDark);
+    opacity: .6;
+    text-align: center;
+}
+body .pageSuccess .contentSucce p{
+    font-size: .2em;
+}
+body .pageSuccess .contentSucce i{ 
+    opacity: .5;
+}
+body .pageSuccess .contentSucce i.fa-check-circle{
+    color: #69E4A6;
+}
+body .pageSuccess .contentSucce i.fa-times-circle{
+    color: var(--colorRojo);
+}

@@ -10,7 +10,7 @@ $sql = "SELECT * FROM usuario user, imagen img WHERE user.usu_id = img.USUARIO_u
 
 $result = $conn->query($sql);
 $result2 = $conn->query($sql);
-$rowUsuario= mysqli_fetch_assoc($result2);
+$rowUsuario = mysqli_fetch_assoc($result2);
 
 $id = $rowUsuario['usu_id'];
 $eliminado = $rowUsuario['usu_eliminado'];
@@ -21,35 +21,31 @@ $apellidos = $rowUsuario["usu_apellidos"];
 $correo = $rowUsuario["usu_correo"];
 
 if ($eliminado == '1') {
-    
-    echo "<p>Has sido eliminado por los administradores</p>";
 
+    echo "<p>Has sido eliminado por los administradores</p>";
 } else {
 
-    if ($result->num_rows > 0 && $rol == "admin") {  
+    if ($result->num_rows > 0 && $rol == "admin") {
         session_start();
-        $_SESSION['codigo']= $id;          
+        $_SESSION['codigo'] = $id;
         $_SESSION['isLogin'] = true;
         $_SESSION["rol"] = "admin";
-        $_SESSION['img'] = $img;  
+        $_SESSION['img'] = $img;
         $_SESSION['nombre'] = $nombres;
         $_SESSION['apellido'] = $apellidos;
-        header("Location: ../../admin/admin/view/index.php"); 
+        header("Location: ../../admin/admin/view/index.php");
     } else if ($result->num_rows > 0 && $rol == "user") {
         session_start();
-        $_SESSION['codigo']= $id;             
+        $_SESSION['codigo'] = $id;
         $_SESSION['isLogin'] = true;
         $_SESSION["rol"] = "user";
-        $_SESSION['img'] = $img; 
+        $_SESSION['img'] = $img;
         $_SESSION['nombre'] = $nombres;
         $_SESSION['apellido'] = $apellidos;
         header("Location: ../view/successful.php?login=true");
-    } else { 
-        //header("Location: ../view/successful.php?login=false");
-        echo $rol;
-        echo "correo o contraseña incorrecta";
-    } 
-
+    } else {
+        header("Location: ../view/successful.php?login=false");
+    }
 }
 
 
@@ -70,5 +66,3 @@ if ($eliminado == '1') {
 } */
 
 $conn->close();
-
-?>

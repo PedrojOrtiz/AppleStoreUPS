@@ -19,5 +19,5 @@ $sqlDirSuc = $conn->query($sqlDirSuc);
 $sqlDirSuc = $sqlDirSuc->fetch_assoc();
 $dirEnd = $sqlDirSuc['dir_nombre'] . ', ' . $sqlDirSuc['dir_calle_principal'] . ', ' . $sqlDirSuc['dir_calle_secundaria'] . ', ' . $sqlDirSuc['dir_ciudad'];
 
-echo '<input id="start" type="hidden" name="" value="Gualaceo, Nieves">';
+echo '<input id="start" type="hidden" name="" value="' . $dirStart . '">';
 echo '<input id="end" type="hidden" name="" value="' . $dirEnd . '">';

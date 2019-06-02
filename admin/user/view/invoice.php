@@ -181,8 +181,8 @@ if (isset($_SESSION['isLogin'])) {
                                 }
                                 ?>
                                 <div id="mapDir">
-                                    <input id="start" type="hidden" name="" value="Gualaceo">';
-                                    <input id="end" type="hidden" name="" value="Cuenca">';
+                                    <input id="start" type="hidden" name="" value="Gualaceo">
+                                    <input id="end" type="hidden" name="" value="Cuenca">
                                 </div>
 
                                 <!-- <tr>

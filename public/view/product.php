@@ -68,7 +68,7 @@ if (isset($_SESSION['isLogin'])) {
                 <div class="productSlideImg">
 
                     <?php
-                    $sqlimagen = 'SELECT  img_nombre FROM imagen WHERE PRODUCTO_pro_id=1;';
+                    $sqlimagen = 'SELECT  img_nombre FROM imagen WHERE PRODUCTO_pro_id=' . $_GET['producto'] . ';';
                     $resultimagen = $conn->query($sqlimagen);
                     $i = 0;
 
@@ -78,7 +78,7 @@ if (isset($_SESSION['isLogin'])) {
                             ?>
                     <script>
                     galeria('../../img/product/<?php echo $_GET['producto'] . '/' . $rowimagen['img_nombre'] ?>',
-                        <?php echo $i, '' ?>)
+                        <?php echo $i ?>)
                     </script>
                     <?php
                             $i = $i + 1;
