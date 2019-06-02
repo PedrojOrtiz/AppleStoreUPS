@@ -53,11 +53,11 @@ if (isset($_SESSION['isLogin'])) {
                 <div class="storeContact">
                     <h3>Horarios de atencion</h3>
                     <p>Lunes a Viernes de 8:00 a 16:00</p>
-                    <p><i class="fas fa-phone"></i> 0989420495</p>
-                    <p><i class="fas fa-tty"></i> (07)2255887</p>
+                    <p><i class="fas fa-phone"></i> 0982563215</p>
+                    <p><i class="fas fa-tty"></i> (07)23125</p>
                     <p><i class="fas fa-at"></i> <a
-                            href="mailto:aplestoreguayaquil@aple.com">applestoreguayaquil@apple.com</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i> Av.Juan Tamariz y 3 de Octubre</p>
+                            href="mailto:aplestoreguayaquil@aple.com">applestorequito@apple.com.ec</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Av.Amazonas N32-152</p>
                 </div>
             </div>
             <div class="storeMap">
