@@ -52,7 +52,7 @@ if (isset($_SESSION['isLogin'])) {
                                     <select id="selectStatus" onchange="status(this)">
                                         <option value="pendiente">todo</option>
                                         <option value="pendiente">pendiente</option>
-                                        <option value="enviado">recibido</option>
+                                        <option value="enviado">entregado</option>
                                     </select>
                                 </td>
                                 <td>Fecha</td>

@@ -5,6 +5,9 @@ if (isset($_SESSION['isLogin'])) {
         header("Location: ../../admin/admin/view/index.php");
     }
 }
+if (!isset($_GET['producto'])) {
+    header("Location: index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -47,8 +50,6 @@ if (isset($_SESSION['isLogin'])) {
             $precio = $row['pro_precio'];
             $descuento = $row['pro_descuento'];
             $categoria = $row['cat_id'];
-        } else {
-            //echo 'Error';
         }
         //Stock
         $sqlStock = "SELECT ps.pro_suc_stock FROM producto p, producto_sucursal ps, sucursal s
