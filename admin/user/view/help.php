@@ -50,12 +50,10 @@ if (isset($_SESSION['isLogin'])) {
                     <h2>Apple Store EC</h2>
 
                     <p>
-                        Somos una empresa distribuidora de los porductos oficiales de apple estamos a su entera
-                        dispocicion para cualquier problema nuestras oficinas estan distribuidas a loa largo de todo el
-                        pais contamos con 3 sucurasales oficiales en las principales ciudades del pais Quito, Guayaquil
-                        y Cuenca.<br>
-                        Para ponerte en contacto con nosotros puedes marcar los siguientes telefonos o escribir un
-                        mensaje directo a los administradores. Gracias por preferinos
+                        Somos una empresa distribuidora de los productos oficiales de apple nos puedes ubicar 
+                        en cualquiera de nuestras sucursales ya que estamos ubicados en Cuenca Guayaquil y Quito.<br>
+                        Puedes localizarnos atraves de nuestros telefonos o directamente escribir un
+                        mensaje a los administradores. Gracias por preferirnos.
                     </p>
                     <p><i class="fas fa-phone"></i> 0987654321</p>
                     <p><i class="fas fa-tty"></i> (07)3014329</p>

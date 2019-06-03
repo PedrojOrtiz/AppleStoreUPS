@@ -42,12 +42,10 @@ if (isset($_SESSION['isLogin'])) {
             <div class="storeDescription">
                 <div class="storeAbout">
                     <h3>Acerca de nosostros</h3>
-                    <p>Somos una empresa de éxito nacional y tecnología innovadora, cuya sede está ubicada en la ciudad
-                        de Cuenca.
-                        Nuestros productos y servicios nos han convertido en líder tecnológico en el mercado y en un
-                        socio fiable del sector de distribución de tecnología.
-                        Nuestra experiencia de más de 85 años en la venta de productos totalmente originales de Apple
-                        nos a llevado a una gran reputación a lo largo de este tiempo ya que nuestros productos son de
+                    <p>Somos una empresa de éxito nacional y tecnología innovadora, estamos ubicados en la ciudad de cuenca 
+                        nos puedes localizar atraves de nuestros telefonos o nuestra direccion.<br>
+                       Contamos con experiencia por más de 85 años en la venta de productos totalmente originales de Apple
+                         ya que nuestros productos son de
                         alta calidad y excelente garantía a nivel nacional.
                     </p>
                 </div>
