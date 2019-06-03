@@ -121,19 +121,48 @@ if (!isset($_GET['producto'])) {
                 <div class="productBtns">
                     <div class="valoration" id="valoration" onmousemove="elemento(event)">
                         <p class="clasificacion">
-                            <input id="radio1" type="radio" name="estrellas" value="5" onclick="prodValoration(this) ">
+                            <input id="radio1" type="radio" name="estrellas" value="5"
+                                onclick="prodValoration(this, <?php echo $_GET['producto'] ?>) ">
                             <label for="radio1">★</label>
-                            <input id="radio2" type="radio" name="estrellas" value="4" onclick="prodValoration(this) ">
+                            <input id="radio2" type="radio" name="estrellas" value="4"
+                                onclick="prodValoration(this, <?php echo $_GET['producto'] ?>) ">
                             <label for="radio2">★</label>
-                            <input id="radio3" type="radio" name="estrellas" value="3" onclick="prodValoration(this) ">
+                            <input id="radio3" type="radio" name="estrellas" value="3"
+                                onclick="prodValoration(this, <?php echo $_GET['producto'] ?>) ">
                             <label for="radio3">★</label>
-                            <input id="radio4" type="radio" name="estrellas" value="2" onclick="prodValoration(this) ">
+                            <input id="radio4" type="radio" name="estrellas" value="2"
+                                onclick="prodValoration(this, <?php echo $_GET['producto'] ?>) ">
                             <label for="radio4">★</label>
-                            <input id="radio5" type="radio" name="estrellas" value="1" onclick="prodValoration(this) ">
+                            <input id="radio5" type="radio" name="estrellas" value="1"
+                                onclick="prodValoration(this, <?php echo $_GET['producto'] ?>) ">
                             <label for="radio5">★</label>
                         </p>
+                        <?php
+                        if (isset($_SESSION['codigo'])) {
+                            $sqlRatP = "SELECT rat.rat_calificacion
+                                    FROM producto pro, rating rat, usuario usu
+                                    WHERE pro.pro_id = rat.PRODUCTO_pro_id AND
+                                    usu.usu_id = rat.USUARIO_usu_id AND
+                                    pro.pro_estado=0 AND
+                                    usu.usu_id=" . $_SESSION['codigo'] . " AND
+                                    pro.pro_id=" . $_GET['producto'] . ";";
+                        } else {
 
-                        <span id="clasificacion">3.0</span>
+                            $sqlRatP = "SELECT COALESCE(AVG(rat.rat_calificacion),0) AS rat_calificacion FROM producto pro, rating rat 
+                                            WHERE rat.PRODUCTO_pro_id = pro.pro_id AND
+                                            pro.pro_id=" . $_GET['producto'] . ";";
+                        }
+
+                        $resultRatP = $conn->query($sqlRatP);
+                        //echo $resultRatP->num_rows;
+                        if ($resultRatP->num_rows > 0) {
+                            $resultCal = $resultRatP->fetch_assoc();
+                            echo '<span id="clasificacion">' . $resultCal['rat_calificacion'] . '</span>';
+                        } else {
+                            echo '<span id="clasificacion">Sin calificar</span>';
+                        }
+                        ?>
+
                     </div>
                     <div class="btns">
                         <button onclick="cartAdd(<?php echo $_GET['producto']; ?>)">
@@ -152,13 +181,13 @@ if (!isset($_GET['producto'])) {
             <div class="contentCards">
 
                 <?php
-                $sql = "SELECT pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion 
-                            FROM producto pro, imagen img, rating rat, categoria cat
+                $sql = "SELECT pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre 
+                            FROM producto pro, imagen img, categoria cat
                             WHERE pro.pro_id = img.PRODUCTO_pro_id AND
-                            pro.pro_id = rat.PRODUCTO_pro_id AND
                             cat.cat_id = pro.CATEGORIA_cat_id AND
                             pro.pro_estado=0 AND
-                            cat.cat_id =3
+                            cat.cat_id = pro.CATEGORIA_cat_id AND
+                            pro.pro_id = " . $_GET['producto'] . "
                             limit 4;";
 
                 $result = $conn->query($sql);
@@ -174,7 +203,15 @@ if (!isset($_GET['producto'])) {
                         </div>
                         <div class="ranking">
                             <i class="fas fa-star"></i>
-                            <span><?php echo $row['rat_calificacion']; ?></span>
+                            <?php
+                                    $sqlRating = "SELECT COALESCE(AVG(rat.rat_calificacion),0) AS rat_calificacion FROM producto pro, rating rat 
+                                            WHERE rat.PRODUCTO_pro_id = pro.pro_id AND
+                                            pro.pro_id=" . $row['pro_id'] . ";";
+
+                                    $resultRating = $conn->query($sqlRating);
+                                    $rowRating = $resultRating->fetch_assoc();
+                                    echo '<span>' . $rowRating['rat_calificacion'] . '</span>';
+                                    ?>
                         </div>
                     </div>
                     <div class="contentDescription">

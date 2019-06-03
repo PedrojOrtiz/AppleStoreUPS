@@ -135,6 +135,7 @@ header .content .sessionItems{
     display: flex;
     align-items: center;
     margin-left: 82%;
+    z-index: 100;
 }
 header .content .sessionItems .imgUser{
     width: 50px;

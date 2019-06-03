@@ -40,16 +40,16 @@ function stock(elemnt) {
     xmlhttp.send()
 }
 
-function searchBtn() {
-    console.log('hola')
+function searchBtn(url) {
+    //console.log('hola')
     let txtSearch = document.getElementById('search').value
-    txtSearch =
-        window.location.href = 'search.php?searchName=' + txtSearch
+    txtSearch = txtSearch.toUpperCase()
+    window.location.href = url + '?searchName=' + txtSearch
 }
 
 function searchBox(elemnt) {
     let text = elemnt.value.trim()
-    text = text.toLowerCase()
+    text = text.toUpperCase()
     //console.log(text)
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest()
@@ -101,29 +101,28 @@ function cluseWindowCart() {
     windowFloat.style.display = "none"
 }
 
-function prodValoration(elemnt) {
+function prodValoration(elemnt, prodID) {
     let rat = elemnt.value
-    console.log(rat)
-    //console.log(text)
-    // if (window.XMLHttpRequest) {
-    //     xmlhttp = new XMLHttpRequest()
-    // } else {
-    //     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
-    // }
-    // xmlhttp.onreadystatechange = function () {
-    //     if (this.readyState == 4 && this.status == 200) {
-    //         document.getElementById("contentCards").innerHTML = this.responseText
-    //     }
-    // };
-    // xmlhttp.open("GET", "../controller/search.php?searchName=" + text, true)
-    // xmlhttp.send()
+    //console.log(rat)
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest()
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("clasificacion").innerHTML = this.responseText
+        }
+    };
+    xmlhttp.open("GET", "../controller/rat.php?rat=" + rat + "&prodID=" + prodID, true)
+    xmlhttp.send()
 }
 
 var imag = []
 var indice = 0
 
 function galeria(img, i) {
-    console.log(img)
+    //console.log(img)
     imag[i] = img
 }
 
@@ -186,7 +185,7 @@ function carNot(url) {
     }
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log('Notificacion')
+            //console.log('Notificacion')
             document.getElementById("fa-shopping-cart").innerHTML = this.responseText
         }
     };

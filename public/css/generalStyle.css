@@ -436,6 +436,9 @@ body .cartAdd i{
     margin-left: 15px;
     font-size: 1.3em;
 }
+#errorCPass{
+    color: #FF6565;
+}
 /* 
 td {
 	padding-top: 10px;

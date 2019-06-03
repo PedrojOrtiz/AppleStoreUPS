@@ -20,7 +20,8 @@ if (isset($_SESSION['isLogin'])) {
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/globalStyle.css">
     <link rel="stylesheet" href="../css/generalStyle.css">
-    <title>Sign UP</title>
+    <script src="../js/validaciones.js"></script>
+    <title>Registro</title>
 </head>
 
 <body>
@@ -32,17 +33,21 @@ if (isset($_SESSION['isLogin'])) {
 
     <div class="content">
         <div class="form">
-            <form enctype="multipart/form-data" action="../controller/signup.php" method="post">
+            <form enctype="multipart/form-data" action="../controller/signup.php"
+                onsubmit="return validarCamposObligatorios()" method="post">
                 <h2>Apple store EC</h2>
                 <p>Bienvenido! Por favor, ingrese sus datos.</p>
                 <div class="nombres">
-                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
-                    <input type="text" name="apellido" id="apellido" placeholder="Apellido" required>
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre"
+                        onkeyup="validarLetras(event,this)" required>
+                    <input type="text" name="apellido" id="apellido" placeholder="Apellido"
+                        onkeyup="validarLetras(event,this)" required>
                 </div>
                 <input type="email" name="email" id="email" placeholder="Correo" required>
                 <input type="password" name="pass" id="pass" placeholder="Contraseña" required>
-                <input type="password" name="epass" id="epass" placeholder="Confirmar contraseña" required>
-
+                <input type="password" name="epass" id="epass" placeholder="Confirmar contraseña"
+                    onkeyup="validarPass('errorCPass')" required>
+                <span class="error" id="errorCPass">Las contraseñas no coinciden</span>
                 <div class="remember">
                     <input type="file" name="foto" id="foto" required>
                     <label for="recordar">Seleccione una foto de perfil.</label>

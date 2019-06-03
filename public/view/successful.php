@@ -69,18 +69,44 @@ if (!isset($_GET['register']) || !isset($_GET['login'])) {
                 }
             }
         } elseif (isset($_GET['login'])) {
+
+
             if ($_GET['login'] === 'true') {
-                ?>
+                if ($_GET['delete'] == '1') {
+                    ?>
+        <div class="contentSucce">
+            <h2>Tu cuenta a sido desactivada </h2>
+            <p>Activando cuenta espere en breve sera redirigido gracias...</p>
+            <i class="far fa-check-circle"></i>
+        </div>
+        <?php
+                    $sql = "UPDATE usuario SET
+                    usu_eliminado=1,
+                    usu_fecha_modificacion='$date'
+                    WHERE usu_id=" . $_SESSION['codigo'] . ";";
+
+                    if ($conn->query($sql)) {
+                        if ($_SESSION['rol'] == 'user') {
+                            header("Refresh:2; url=index.php");
+                        } else {
+                            header("Refresh:2; url=../../admin/admin/view/index.php");
+                        }
+                    } else {
+                        header("Refresh:1; url=index.php");
+                    }
+                } else {
+                    ?>
         <div class="contentSucce">
             <h2>Logeo exitoso</h2>
             <p>Redirigiendo por favor espere...</p>
             <i class="far fa-check-circle"></i>
         </div>
         <?php
-                if ($_SESSION['rol'] == 'user') {
-                    header("Refresh:1; url=index.php");
-                } else {
-                    header("Refresh:2; url=../../admin/admin/view/index.php");
+                    if ($_SESSION['rol'] == 'user') {
+                        header("Refresh:2; url=index.php");
+                    } else {
+                        header("Refresh:2; url=../../admin/admin/view/index.php");
+                    }
                 }
             } else {
                 ?>

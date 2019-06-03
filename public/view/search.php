@@ -41,26 +41,25 @@ if (isset($_SESSION['isLogin'])) {
                 <?php
                 include '../../config/configDB.php';
                 if (isset($_GET['searchCat'])) {
-                    $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion, cat.cat_nombre
-                    FROM producto pro, imagen img, rating rat, categoria cat
+                    $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, cat.cat_nombre
+                    FROM producto pro, imagen img, categoria cat
                     WHERE pro.pro_id = img.PRODUCTO_pro_id AND
-                        pro.pro_id = rat.PRODUCTO_pro_id AND
                         cat.cat_id = pro.CATEGORIA_cat_id AND
                         cat.cat_nombre = '" . $_GET['searchCat'] . "' AND
-                        pro.pro_estado=0;";
+                        pro.pro_estado=0
+                        GROUP BY pro.pro_id;";
                 } elseif (isset($_GET['searchName'])) {
-                    $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion, cat.cat_nombre
-                    FROM producto pro, imagen img, rating rat, categoria cat
+                    $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, img.img_nombre, cat.cat_nombre
+                    FROM producto pro, imagen img, categoria cat
                     WHERE pro.pro_id = img.PRODUCTO_pro_id AND
-                        pro.pro_id = rat.PRODUCTO_pro_id AND
                         cat.cat_id = pro.CATEGORIA_cat_id AND
                         pro.pro_nombre LIKE '%" . $_GET['searchName'] . "%' AND
-                        pro.pro_estado=0;";
+                        pro.pro_estado=0
+                        GROUP BY pro.pro_id;";
                 } else {
-                    $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, pro_descuento, img.img_nombre, AVG(rat.rat_calificacion) AS rat_calificacion
+                    $sql = "SELECT pro.pro_fecha_creacion, pro.pro_id, pro.pro_nombre, pro.pro_descripcion, pro.pro_precio, pro_descuento, img.img_nombre
                                 FROM producto pro, imagen img, rating rat
                                 WHERE pro.pro_id = img.PRODUCTO_pro_id AND
-                                    pro.pro_id = rat.PRODUCTO_pro_id AND
                                     pro.pro_estado=0;";
                 }
 
@@ -101,7 +100,15 @@ if (isset($_SESSION['isLogin'])) {
 
                         <div class="ranking">
                             <i class="fas fa-star"></i>
-                            <span><?php echo $row['rat_calificacion']; ?></span>
+                            <?php
+                                    $sqlRating = "SELECT COALESCE(AVG(rat.rat_calificacion),0) AS rat_calificacion FROM producto pro, rating rat 
+                                            WHERE rat.PRODUCTO_pro_id = pro.pro_id AND
+                                            pro.pro_id=" . $row['pro_id'] . ";";
+
+                                    $resultRating = $conn->query($sqlRating);
+                                    $rowRating = $resultRating->fetch_assoc();
+                                    echo '<span>' . $rowRating['rat_calificacion'] . '</span>';
+                                    ?>
                         </div>
                     </div>
                     <div class="contentDescription">
