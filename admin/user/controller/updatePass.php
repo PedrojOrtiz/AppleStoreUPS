@@ -43,18 +43,18 @@ if (isset($_SESSION['isLogin'])) {
             $oldpass = isset($_POST["oldpass"]) ? trim($_POST["oldpass"]) : null;
             $newpass = isset($_POST["newpass"]) ? trim($_POST["newpass"]) : null;
             $repeatpass = isset($_POST["repeatpass"]) ? trim($_POST["repeatpass"]) : null;
-            $cod = isset($_POST["cod"]) ? trim($_POST["cod"]) : null;
+            $cod = isset($_POST["codigo"]) ? trim($_POST["codigo"]) : null;
 
-            $sql = "SELECT usu_password FROM usuario u WHERE u.usu_id='$cod';";
+            $sql = "SELECT usu_password FROM usuario WHERE usu_id='$cod';";
             $result = $conn->query($sql);
             $result = $result->fetch_assoc();
             $date = date(date("Y-m-d H:i:s"));
 
             if (MD5($oldpass) === $result["usu_password"]) {
                 if ($newpass === $repeatpass) {
-                    $sql = "UPDATE usuario u SET u.usu_password = MD5('$newpass'), u.usu_fecha_modificacion=null  WHERE  u.usu_id='$cod'";
+                    $sql = "UPDATE usuario SET usu_password = MD5('$newpass'), usu_fecha_modificacion=$date   WHERE  usu_id='$cod'";
                     if ($conn->query($sql) == true) {
-                        noerro();
+                        echo "<h2>Contraseña actualizada con exito</h2><br>";
                     } else {
                         echo "<h2>Error al actualizar la contraseña " . mysqli_error($conn) . "</h2>";
                         error($cod);
