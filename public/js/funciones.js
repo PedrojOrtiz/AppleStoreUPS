@@ -43,13 +43,13 @@ function stock(elemnt) {
 function searchBtn(url) {
     //console.log('hola')
     let txtSearch = document.getElementById('search').value
-    txtSearch =
-        window.location.href = url+'?searchName=' + txtSearch
+    txtSearch = txtSearch.toUpperCase()
+    window.location.href = url + '?searchName=' + txtSearch
 }
 
 function searchBox(elemnt) {
     let text = elemnt.value.trim()
-    text = text.toLowerCase()
+    text = text.toUpperCase()
     //console.log(text)
     if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest()
