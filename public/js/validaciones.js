@@ -3,31 +3,21 @@ var nombreUsuario = false
 var apellidoUsuario = false
 var contrasenia = false
 
-
-function validarCamposObligatorios() {
-    var bandera = false
-    for (var i = 0; i < document.forms[0].length; i++) {
-        var elemento = document.forms[0].elements[i]
-        if (elemento.value.trim() == "") {
-            bandera = true
-            elemento.style.border = "1px solid red"
-        }
-    }
-
-    //console.log("nombre: " + nombreUsuario)
-    //console.log("apellido: " + apellidoUsuario)
-    //console.log("pass: " + contrasenia)
-    if (bandera) {
-        alert("Llenar todos los campos")
-        return false
-    } else if (nombreUsuario == false || apellidoUsuario == false || contrasenia == false) {
-        alert("Corriga los campos")
-        return false
-    }
-    else {
-        return true
+function validarPass(label) {
+    let span = document.getElementById(label)
+    let pass1 = document.getElementById('pass').value
+    let pass2 = document.getElementById('epass').value
+    if (pass1 != pass2) {
+        span.innerHTML = "Las contraseñas no coinciden"
+        span.style.display = "block"
+        contrasenia = false
+    } else {
+        span.style.display = "none"
+        contrasenia = true
     }
 }
+
+
 
 function validarLetras(event, element) {
     //let span = document.getElementById(label)
@@ -63,18 +53,28 @@ function validarNombres(element) {
         //span.style.display = "none"
     }
 }
+function validarCamposObligatorios() {
+    var bandera = false
+    for (var i = 0; i < document.forms[0].length; i++) {
+        var elemento = document.forms[0].elements[i]
+        if (elemento.value.trim() == "") {
+            bandera = true
+            elemento.style.border = "1px solid red"
+        }
+    }
 
-
-function validarPass(label) {
-    let span = document.getElementById(label)
-    let pass1 = document.getElementById('pass').value
-    let pass2 = document.getElementById('epass').value
-    if (pass1 != pass2) {
-        span.innerHTML = "Las contraseñas no coinciden"
-        span.style.display = "block"
-        contrasenia = false
-    } else {
-        span.style.display = "none"
-        contrasenia = true
+    //console.log("nombre: " + nombreUsuario)
+    //console.log("apellido: " + apellidoUsuario)
+    //console.log("pass: " + contrasenia)
+    if (bandera) {
+        alert("Llenar todos los campos")
+        return false
+    } else if (nombreUsuario == false || apellidoUsuario == false || contrasenia == false) {
+        alert("Corriga los campos")
+        return false
+    }
+    else {
+        return true
     }
 }
+
