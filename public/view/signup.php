@@ -15,12 +15,13 @@ if (isset($_SESSION['isLogin'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/globalStyle.css">
     <link rel="stylesheet" href="../css/generalStyle.css">
     <script src="../js/validaciones.js"></script>
-    <title>Sign UP</title>
+    <title>Registro</title>
 </head>
 
 <body>
@@ -32,20 +33,21 @@ if (isset($_SESSION['isLogin'])) {
 
     <div class="content">
         <div class="form">
-            <form enctype="multipart/form-data" action="../controller/signup.php" onsubmit="return validarCamposObligatorios()" method="post">
+            <form enctype="multipart/form-data" action="../controller/signup.php"
+                onsubmit="return validarCamposObligatorios()" method="post">
                 <h2>Apple store EC</h2>
                 <p>Bienvenido! Por favor, ingrese sus datos.</p>
                 <div class="nombres">
-                    <span class="error" id="errorNombre">Error de Edicion</span>
-                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" onkeyup="validarLetras(event,'errorNombre',this)" required>
-                    <span class="error" id="errorApellido">Error de Edicion</span>
-                    <input type="text" name="apellido" id="apellido" placeholder="Apellido" onkeyup="validarLetras(event,'errorApellido',this)" required>
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre"
+                        onkeyup="validarLetras(event,this)" required>
+                    <input type="text" name="apellido" id="apellido" placeholder="Apellido"
+                        onkeyup="validarLetras(event,this)" required>
                 </div>
                 <input type="email" name="email" id="email" placeholder="Correo" required>
                 <input type="password" name="pass" id="pass" placeholder="Contraseña" required>
-                <span class="error" id="errorCPass">Error de Edicion</span>
-                <input type="password" name="epass" id="epass" placeholder="Confirmar contraseña" onkeyup="validarPass('errorCPass')" required>
-
+                <input type="password" name="epass" id="epass" placeholder="Confirmar contraseña"
+                    onkeyup="validarPass('errorCPass')" required>
+                <span class="error" id="errorCPass">Las contraseñas no coinciden</span>
                 <div class="remember">
                     <input type="file" name="foto" id="foto" required>
                     <label for="recordar">Seleccione una foto de perfil.</label>

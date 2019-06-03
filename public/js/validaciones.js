@@ -13,14 +13,14 @@ function validarCamposObligatorios() {
             elemento.style.border = "1px solid red"
         }
     }
-   
-    console.log("nombre: " + nombreUsuario)
-    console.log("apellido: " + apellidoUsuario)
-    console.log("pass: " + contrasenia)
+
+    //console.log("nombre: " + nombreUsuario)
+    //console.log("apellido: " + apellidoUsuario)
+    //console.log("pass: " + contrasenia)
     if (bandera) {
         alert("Llenar todos los campos")
         return false
-    } else if ( nombreUsuario == false || apellidoUsuario == false ||  contrasenia == false) {
+    } else if (nombreUsuario == false || apellidoUsuario == false || contrasenia == false) {
         alert("Corriga los campos")
         return false
     }
@@ -29,38 +29,38 @@ function validarCamposObligatorios() {
     }
 }
 
-function validarLetras(event, label, element) {
-    let span = document.getElementById(label)
+function validarLetras(event, element) {
+    //let span = document.getElementById(label)
     let letra = event.which || event.keyCode;
-    console.log(letra)
+    //console.log(letra)
     if (letra >= 65 && letra <= 90 || letra == 32 || letra == 8 || letra == 16) {
-        span.style.display = "none"
-        validarNombres(label, element)
+        //span.style.display = "none"
+        validarNombres(element)
     } else {
-        span.innerHTML = "Introdusca letras"
-        span.style.display = "block"
+        //span.innerHTML = "Introdusca letras"
+        //span.style.display = "block"
         let text = element.value
         text = text.substring(0, text.length - 1)
         element.value = text
     }
 }
 
-function validarNombres(label, element) {
-    let span = document.getElementById(label)
+function validarNombres(element) {
+    //let span = document.getElementById(label)
     let text = element.value
     if (text.split(" ").length > 2) {
         if (element.id == 'nombre') {
-            span.innerHTML = "Nombres incorrectos"
+            //span.innerHTML = "Nombres incorrectos"
             nombreUsuario = false
         } else {
-            span.innerHTML = "Apellidos incorrectos"
+            //span.innerHTML = "Apellidos incorrectos"
             apellidoUsuario = false
         }
-        span.style.display = "block"
+        //span.style.display = "block"
     } else {
         nombreUsuario = true
         apellidoUsuario = true
-        span.style.display = "none"
+        //span.style.display = "none"
     }
 }
 
