@@ -45,6 +45,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/globalStyle.css">
+    <link rel="stylesheet" href="../css/style2.css">
     <title>Perfil</title>
 </head>
 
@@ -90,19 +91,95 @@
             <div class="cardContent">
                 <h2>Sucursal: <?php echo strtoupper($sucNombre) ?></h2>
                 <div class="formData">
+                <h3>Ordenes Pendientes</h3>
+                    <table id="productos">
+
+                        <colgroup>
+                            <col style='width: 5%'>
+                            <col style='width: 5%'>
+                            <col style='width: 5%'>
+                            <col style='width: 5%'>
+                            <col style='width: 5%'>
+                            <col style='width: 5%'>
+                            <col style='width: 5%'>
+                            <col style='width: 5%'>
+                        </colgroup>
+
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>CI/RUC</th>
+                                <th>Metodo de pago</th>
+                                <th>Total</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tableHistory">
+                            <?php
+
+                                $sqlOrd = "SELECT fc.fac_cab_id, fc.fac_cab_metodo_pago, fc.USUARIO_usu_id, fc.fac_cab_estado, fc.fac_cab_total, fc.fac_cab_fecha
+                                            FROM factura_detalle fd, factura_cabecera fc
+                                            WHERE fd.FACTURA_CABECERA_fac_cab_id = fc.fac_cab_id AND
+                                                fd.SUCURSAL_suc_id = $sucId AND fc.fac_cab_estado LIKE 'pendiente'
+                                            GROUP BY fc.fac_cab_id
+                                            ORDER BY fc.fac_cab_fecha DESC";
+
+                                $resultOrd = $conn->query($sqlOrd);
+                                $i = 1;
+                                if ($resultOrd->num_rows > 0) {
+                                    $sumTotal = 0;
+                                    while ($rowOrd = $resultOrd->fetch_assoc()) {
+                                        $usuId = $rowOrd['USUARIO_usu_id'];
+                                        $sqlU = "SELECT * FROM usuario WHERE usu_id = $usuId";
+                                        $resultU = $conn->query($sqlU);
+                                        $rowU = mysqli_fetch_assoc($resultU);
+
+                            ?>
+                            <tr>
+                                <td><?php echo $i ?></td>
+                                <td><?php echo strtoupper($rowU['usu_nombres'])?> <?php echo strtoupper($rowU['usu_apellidos'])?></td>
+                                <td><?php echo $rowU['usu_cedula'] ?></td>
+                                <td><?php echo $rowOrd['fac_cab_metodo_pago'] ?></td>
+                                <td>$<?php echo $rowOrd['fac_cab_total'] ?></td>
+                                <td><?php echo $rowOrd['fac_cab_estado'] ?></td>
+                                <td><?php echo $rowOrd['fac_cab_fecha'] ?></td>
+                                <td><a href="../controller/ver_orden.php?idO=<?php echo $rowOrd['fac_cab_id']?>&idU=<?php echo $rowU['usu_id']?>">Ver orden</a></td>
+                            </tr>
+                            <?php
+                                        $i = $i + 1;
+                                        $sumTotal = $sumTotal + $rowOrd['fac_cab_total'];
+                                    }
+                                    echo "
+                                    
+                                    <tr>
+                                        <td colspan='7'> Total </td>
+                                        <td> $sumTotal </td>
+                                    </tr>
+                                    
+                                    ";
+                                } else {
+                                    echo '<td colspan="7"><h2>No hay facturas que mostrar</h2></td>';
+                                }
+
+                                $conn->close();
+
+                            ?>
+
+                        </tbody>
+                    </table>
                     
-                    <?php
 
-                        $sqlVentas = "SELECT * FROM ";
-
-                    ?>
 
                 </div>
             </div>
         </section>
     </div>
 
-
+    
 
 </body>
 
