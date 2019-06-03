@@ -30,7 +30,7 @@
             <input type="search" name="search" id="search" placeholder="Buscar">
             <i class="fas fa-search"></i>
         </div>
-        <a onclick="searchBtn()">Buscar</a>
+        <a onclick="searchBtn('../../../public/view/search.php')">Buscar</a>
     </div>
     <!-- <div class="buyCar itemsUser">
         <a href="../../../public/view/shoppingcart.php"><i class="fas fa-shopping-cart"></i></a>

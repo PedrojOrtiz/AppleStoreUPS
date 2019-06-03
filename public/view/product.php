@@ -121,19 +121,41 @@ if (!isset($_GET['producto'])) {
                 <div class="productBtns">
                     <div class="valoration" id="valoration" onmousemove="elemento(event)">
                         <p class="clasificacion">
-                            <input id="radio1" type="radio" name="estrellas" value="5" onclick="prodValoration(this) ">
+                            <input id="radio1" type="radio" name="estrellas" value="5"
+                                onclick="prodValoration(this, <?php echo $_GET['producto'] ?>) ">
                             <label for="radio1">★</label>
-                            <input id="radio2" type="radio" name="estrellas" value="4" onclick="prodValoration(this) ">
+                            <input id="radio2" type="radio" name="estrellas" value="4"
+                                onclick="prodValoration(this, <?php echo $_GET['producto'] ?>) ">
                             <label for="radio2">★</label>
-                            <input id="radio3" type="radio" name="estrellas" value="3" onclick="prodValoration(this) ">
+                            <input id="radio3" type="radio" name="estrellas" value="3"
+                                onclick="prodValoration(this, <?php echo $_GET['producto'] ?>) ">
                             <label for="radio3">★</label>
-                            <input id="radio4" type="radio" name="estrellas" value="2" onclick="prodValoration(this) ">
+                            <input id="radio4" type="radio" name="estrellas" value="2"
+                                onclick="prodValoration(this, <?php echo $_GET['producto'] ?>) ">
                             <label for="radio4">★</label>
-                            <input id="radio5" type="radio" name="estrellas" value="1" onclick="prodValoration(this) ">
+                            <input id="radio5" type="radio" name="estrellas" value="1"
+                                onclick="prodValoration(this, <?php echo $_GET['producto'] ?>) ">
                             <label for="radio5">★</label>
                         </p>
+                        <?php
 
-                        <span id="clasificacion">3.0</span>
+                        $sqlRatP = "SELECT rat.rat_calificacion
+                                    FROM producto pro, rating rat, usuario usu
+                                    WHERE pro.pro_id = rat.PRODUCTO_pro_id AND
+                                    usu.usu_id = rat.USUARIO_usu_id AND
+                                    pro.pro_estado=0 AND
+                                    usu.usu_id=" . $_SESSION['codigo'] . " AND
+                                    pro.pro_id=" . $_GET['producto'] . ";";
+                        $resultRatP = $conn->query($sqlRatP);
+                        //echo $resultRatP->num_rows;
+                        if ($resultRatP->num_rows > 0) {
+                            $resultCal = $resultRatP->fetch_assoc();
+                            echo '<span id="clasificacion">' . $resultCal['rat_calificacion'] . '</span>';
+                        } else {
+                            echo '<span id="clasificacion">Sin calificar</span>';
+                        }
+                        ?>
+
                     </div>
                     <div class="btns">
                         <button onclick="cartAdd(<?php echo $_GET['producto']; ?>)">

@@ -43,9 +43,7 @@ if (isset($_SESSION['isLogin'])) {
                 <div class="updatePass">
                     <h2>Cambiar contraseña</h2>
                     <div class="formData updatePass">
-                        <form action="../controller/updatePass.php">
-
-                            <input type="hidden" name="codigo" value="<?php $_SESSION["codigo"]; ?>">
+                        <form action="../controller/updatePass.php" method="post">
                             <label for="oldpass">Contraseña antigua</label>
                             <input type="password" name="oldpass" id="oldpass">
                             <label for="newpass">Contraseña nueva</label>
@@ -60,7 +58,7 @@ if (isset($_SESSION['isLogin'])) {
                 <div class="deleteAccount">
                     <h2>Desactivar cuenta</h2>
                     <div class="formData">
-                        <form action="">
+                        <form action="../controller/deleteUser.php" method="post">
                             <label for="deleteAccount">Introdusca su contraseña</label>
                             <input type="password" name="deleteAccount" id="deleteAccount">
                             <input type="submit" value="Desactivar">

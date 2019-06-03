@@ -42,7 +42,7 @@ if ($eliminado == '1') {
         $_SESSION['img'] = $img;
         $_SESSION['nombre'] = $nombres;
         $_SESSION['apellido'] = $apellidos;
-        header("Location: ../view/successful.php?login=true");
+        header("Location: ../view/successful.php?login=true&delete=" . $rowUsuario['usu_eliminado'] . "");
     } else {
         header("Location: ../view/successful.php?login=false");
     }
