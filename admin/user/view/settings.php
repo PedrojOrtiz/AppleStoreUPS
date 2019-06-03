@@ -45,7 +45,7 @@ if (isset($_SESSION['isLogin'])) {
                     <div class="formData updatePass">
                         <form action="../controller/updatePass.php">
 
-                            <input type="hidden" name="cod" value="<?php echo ($_GET["usu_id"]); ?>">
+                            <input type="hidden" name="codigo" value="<?php $_SESSION["codigo"]; ?>">
                             <label for="oldpass">Contraseña antigua</label>
                             <input type="password" name="oldpass" id="oldpass">
                             <label for="newpass">Contraseña nueva</label>
